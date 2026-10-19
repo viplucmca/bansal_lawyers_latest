@@ -9,6 +9,7 @@ const footerPracticeAreas = [
   { label: "Commercial Lawyers Melbourne", href: "/commercial-lawyers-melbourne/" },
   { label: "Property Lawyers Melbourne", href: "/property-lawyers-melbourne/" },
   { label: "Civil Lawyers Melbourne", href: "/civil-lawyers-melbourne/" },
+  { label: "Wills Lawyers Melbourne", href: "/wills-lawyers-melbourne/" },
 ];
 
 const footerNavLinks = [

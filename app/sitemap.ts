@@ -619,6 +619,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/criminal-lawyers-melbourne/theft-lawyer-melbourne",
     "/criminal-lawyers-melbourne/traffic-offence-lawyer-melbourne",
     "/property-lawyers-melbourne/indian-power-of-attorney-lawyer-melbourne",
+    "/wills-lawyers-melbourne",
+    "/indian-lawyers-melbourne",
   ] as const;
 
   const additionalRoutes: MetadataRoute.Sitemap = additionalPublicRoutes.map(
