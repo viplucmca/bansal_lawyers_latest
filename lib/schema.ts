@@ -1,5 +1,124 @@
-import { businessDetails, siteUrl } from "@/lib/site";
+import { businessDetails, siteUrl, socialLinks } from "@/lib/site";
 import type { BreadcrumbItem, FaqItem } from "@/types/content";
+
+const homeUrl = `${siteUrl}/`;
+const organizationId = `${siteUrl}/#organization`;
+const websiteId = `${siteUrl}/#website`;
+const homeWebPageId = `${siteUrl}/#webpage`;
+const homeFaqId = `${siteUrl}/#homepage-faq`;
+
+export const HOME_PAGE_SCHEMA_TITLE =
+  "Lawyers in Melbourne | Immigration, Family, Criminal & Commercial Law";
+export const HOME_PAGE_SCHEMA_DESCRIPTION =
+  "Explore immigration, family, criminal, commercial, property and civil law services from Bansal Lawyers in Melbourne.";
+
+const HOME_ORGANIZATION_DESCRIPTION =
+  "Bansal Lawyers provides legal services in Melbourne, including immigration, family, criminal, commercial, property and civil law.";
+
+/** Homepage JSON-LD @graph: LegalService, WebSite, WebPage, FAQPage (linked entities). */
+export function createHomePageGraphSchema(faqs: FaqItem[]) {
+  const nationalPhoneDigits = businessDetails.nationalLineTel.replace(/\D/g, "");
+  const directPhone = businessDetails.phoneTel.startsWith("tel:")
+    ? businessDetails.phoneTel.slice(4)
+    : businessDetails.phone;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LegalService",
+        "@id": organizationId,
+        name: businessDetails.name,
+        url: homeUrl,
+        description: HOME_ORGANIZATION_DESCRIPTION,
+        telephone: nationalPhoneDigits,
+        email: businessDetails.email,
+        image: `${siteUrl}/images/collins-street-office.webp`,
+        logo: `${siteUrl}/images/logo.webp`,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: businessDetails.streetAddress,
+          addressLocality: businessDetails.addressLocality,
+          addressRegion: businessDetails.addressRegion,
+          postalCode: businessDetails.postalCode,
+          addressCountry: businessDetails.addressCountry,
+        },
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            telephone: nationalPhoneDigits,
+            contactType: "customer service",
+          },
+          {
+            "@type": "ContactPoint",
+            telephone: directPhone,
+            contactType: "appointments",
+          },
+        ],
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "10:00",
+            closes: "18:00",
+          },
+        ],
+        areaServed: [
+          { "@type": "City", name: "Melbourne" },
+          { "@type": "AdministrativeArea", name: "Victoria" },
+          { "@type": "Country", name: "Australia" },
+        ],
+        sameAs: [
+          socialLinks.linkedin,
+          socialLinks.facebook,
+          "https://www.instagram.com/bansallawyers/",
+        ],
+        knowsAbout: [
+          "Immigration Law",
+          "Family Law",
+          "Criminal Law",
+          "Commercial Law",
+          "Property Law",
+          "Civil Law",
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        url: homeUrl,
+        name: businessDetails.name,
+        publisher: { "@id": organizationId },
+        inLanguage: "en-AU",
+      },
+      {
+        "@type": "WebPage",
+        "@id": homeWebPageId,
+        url: homeUrl,
+        name: HOME_PAGE_SCHEMA_TITLE,
+        description: HOME_PAGE_SCHEMA_DESCRIPTION,
+        isPartOf: { "@id": websiteId },
+        about: { "@id": organizationId },
+        mainEntity: { "@id": organizationId },
+        hasPart: { "@id": homeFaqId },
+        inLanguage: "en-AU",
+      },
+      {
+        "@type": "FAQPage",
+        "@id": homeFaqId,
+        url: homeUrl,
+        isPartOf: { "@id": homeWebPageId },
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: typeof item.answer === "string" ? item.answer : "",
+          },
+        })),
+      },
+    ],
+  };
+}
 
 export function createLegalServiceSchema() {
   return {

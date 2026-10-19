@@ -16,11 +16,11 @@ import {
 } from "@/components/ui";
 import { getTurnstileSiteKey } from "@/lib/booking/turnstile";
 import { createMetadata } from "@/lib/metadata";
-import { createFaqSchema, createLegalServiceSchema } from "@/lib/schema";
+import { createHomePageGraphSchema, HOME_PAGE_SCHEMA_TITLE } from "@/lib/schema";
 import { TypingHeroTitle } from "@/components/ui/TypingHeroTitle";
 
 export const metadata: Metadata = createMetadata({
-  title: "Lawyers in Melbourne | Immigration, Family, Criminal & Commercial Law",
+  title: HOME_PAGE_SCHEMA_TITLE,
   description:
     "Bansal Lawyers is a Melbourne law firm helping clients with immigration, family, criminal, commercial, property and civil law matters. Book a consultation today.",
   path: "/",
@@ -174,8 +174,7 @@ export default function HomePage() {
   const turnstileSiteKey = getTurnstileSiteKey();
   return (
     <>
-      <StructuredData data={createLegalServiceSchema()} />
-      <StructuredData data={createFaqSchema(homepageFaqs)} />
+      <StructuredData data={createHomePageGraphSchema(homepageFaqs)} />
 
       {/* 1. Hero Section */}
       <Hero
