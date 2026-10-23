@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse, after } from "next/server";
 import { validateEnquiry, type ContactEnquiry } from "@/lib/contact";
+import { isSpamEnquiry, spamScore } from "@/lib/contact/spam";
 import { verifyTurnstile } from "@/lib/booking/turnstile";
 import { syncEnquiryToCrmLead } from "@/lib/contact/crm-lead";
 import { saveEnquiryToDatabase } from "@/lib/db";
@@ -68,6 +69,25 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     return NextResponse.json(
       { error: "Please verify all required fields and ensure contact details are accurate." },
       { status: 400 }
+    );
+  }
+
+  // Marketing pitches (SEO, review removal, lead-gen) are acknowledged and dropped
+  // so they are not saved, emailed, or synced. The success response is intentional:
+  // telling the sender it was rejected just teaches them to reword the pitch.
+  if (isSpamEnquiry(enquiry)) {
+    const { score, matches } = spamScore(enquiry);
+    console.warn(
+      `[API Contact] Spam enquiry discarded. score=${score} matches=${matches.join(",")} email=${enquiry.email}`
+    );
+    return NextResponse.json(
+      {
+        ok: true,
+        message: "Thank you. Your enquiry has been received by Bansal Lawyers Melbourne.",
+        enquiryId: null,
+        dbSaved: true,
+      },
+      { status: 200, headers: { "Cache-Control": "no-store, max-age=0" } }
     );
   }
 

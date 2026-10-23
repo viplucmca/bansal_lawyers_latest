@@ -1,9 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
-import "@fontsource/libre-baskerville/400.css";
-import "@fontsource/libre-baskerville/700.css";
+import { Inter, Libre_Baskerville } from "next/font/google";
+import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
 import { MicrosoftClarity } from "@/components/analytics/MicrosoftClarity";
 import { Footer, Header } from "@/components/layout";
 import { SiteChrome } from "@/components/layout/SiteChrome";
@@ -11,6 +8,24 @@ import { getTurnstileSiteKey } from "@/lib/booking/turnstile";
 import { siteUrl } from "@/lib/site";
 import "./globals.css";
 import "./refinements.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  style: "normal",
+  display: "swap",
+  variable: "--font-inter",
+  fallback: ["Arial", "sans-serif"],
+});
+
+const libreBaskerville = Libre_Baskerville({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: "normal",
+  display: "swap",
+  variable: "--font-libre",
+  fallback: ["Georgia", "serif"],
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -76,8 +91,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU">
+    <html lang="en-AU" className={`${inter.variable} ${libreBaskerville.variable}`}>
       <body>
+        <GoogleTagManager />
         <SiteChrome header={<Header />} footer={<Footer />} turnstileSiteKey={getTurnstileSiteKey()}>
           {children}
         </SiteChrome>

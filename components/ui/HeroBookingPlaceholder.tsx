@@ -194,7 +194,7 @@ export function HeroBookingPlaceholder({
       </div>
 
       <div className="hero-booking-card__header">
-        <h3 className="hero-booking-card__title">Book a Consultation</h3>
+        <h2 className="hero-booking-card__title">Book a Consultation</h2>
         <p className="hero-booking-card__subtitle">
           Confidential legal advice at our Melbourne CBD office, by phone or secure video.
         </p>
