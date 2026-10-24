@@ -17,13 +17,18 @@ import {
 import { getTurnstileSiteKey } from "@/lib/booking/turnstile";
 import { createMetadata } from "@/lib/metadata";
 import { createHomePageGraphSchema, HOME_PAGE_SCHEMA_TITLE } from "@/lib/schema";
+import { siteUrl } from "@/lib/site";
 import { TypingHeroTitle } from "@/components/ui/TypingHeroTitle";
+
+/** Home-only: keep trailing slash (Next Metadata API would strip it on "/"). */
+const homeCanonicalUrl = `${siteUrl}/`;
 
 export const metadata: Metadata = createMetadata({
   title: HOME_PAGE_SCHEMA_TITLE,
   description:
     "Bansal Lawyers is a Melbourne law firm helping clients with immigration, family, criminal, commercial, property and civil law matters. Book a consultation today.",
   path: "/",
+  skipCanonical: true,
   keywords: [
     "Lawyers in Melbourne",
     "Immigration Lawyers Melbourne",
@@ -174,6 +179,7 @@ export default function HomePage() {
   const turnstileSiteKey = getTurnstileSiteKey();
   return (
     <>
+      <link rel="canonical" href={homeCanonicalUrl} />
       <StructuredData data={createHomePageGraphSchema(homepageFaqs)} />
 
       {/* 1. Hero Section */}

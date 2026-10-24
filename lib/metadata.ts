@@ -9,6 +9,7 @@ export function createMetadata({
   keywords,
   image,
   noIndex = false,
+  skipCanonical = false,
 }: PageSeo): Metadata {
   const canonical = new URL(path, siteUrl).toString();
   const shareImageUrl = image
@@ -28,7 +29,9 @@ export function createMetadata({
     title: metadataTitle,
     description,
     keywords,
-    alternates: { canonical },
+    // Next Metadata API strips a trailing slash on "/" (uses origin only). Home sets
+    // skipCanonical and emits <link rel="canonical"> itself so href can keep "/".
+    ...(skipCanonical ? {} : { alternates: { canonical } }),
     robots: noIndex
       ? { index: false, follow: false }
       : { index: true, follow: true },

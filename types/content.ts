@@ -37,4 +37,6 @@ export type PageSeo = {
   keywords?: string[] | string;
   image?: string;
   noIndex?: boolean;
+  /** When true, omit Metadata API canonical (e.g. home uses a raw <link> to keep a trailing slash). */
+  skipCanonical?: boolean;
 };
