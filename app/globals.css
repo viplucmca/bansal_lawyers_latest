@@ -3531,7 +3531,7 @@ a.matter-item:hover .matter-item__arrow {
   margin: 1.15rem 0 0;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(251, 191, 36, 0.5);
-  color: #fbbf24;
+  color: #e8c16b;
   font-family: var(--font-heading), Georgia, serif;
   font-size: clamp(1.05rem, 0.95rem + 0.35vw, 1.28rem);
   font-weight: 700;
@@ -3580,6 +3580,27 @@ a.matter-item:hover .matter-item__arrow {
   gap: 0.75rem;
   font-style: normal;
   font-size: 0.92rem;
+}
+
+.footer-contact__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.footer-contact__row--hours {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.footer-contact__icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  color: var(--gold, #c9a227);
 }
 
 .footer-bottom {

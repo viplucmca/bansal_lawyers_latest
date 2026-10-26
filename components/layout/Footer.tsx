@@ -202,18 +202,42 @@ export function Footer() {
         <div>
           <h2 className="footer-heading">Melbourne Office</h2>
           <address className="footer-contact">
-            <span>{businessDetails.address}</span>
-            <a href={businessDetails.nationalLineTel}>
-              <strong>Call:</strong> {businessDetails.nationalLineDisplay}
+            <span className="footer-contact__row">
+              <svg className="footer-contact__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
+              <span>{businessDetails.address}</span>
+            </span>
+            <a href={businessDetails.nationalLineTel} className="footer-contact__row">
+              <svg className="footer-contact__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z" />
+              </svg>
+              <span>
+                <strong>Call:</strong> {businessDetails.nationalLineDisplay}
+              </span>
             </a>
-            <a href={businessDetails.phoneTel}>
-              <strong>Mobile:</strong> {businessDetails.phone}
+            <a href={businessDetails.phoneTel} className="footer-contact__row">
+              <svg className="footer-contact__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 14a1 1 0 100-2 1 1 0 000 2z" />
+              </svg>
+              <span>
+                <strong>Mobile:</strong> {businessDetails.phone}
+              </span>
             </a>
-            <a href={businessDetails.emailMailto}>
-              <strong>Email:</strong> {businessDetails.email}
+            <a href={businessDetails.emailMailto} className="footer-contact__row">
+              <svg className="footer-contact__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
+              <span>
+                <strong>Email:</strong> {businessDetails.email}
+              </span>
             </a>
-            <span style={{ fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.65)", marginTop: "0.25rem" }}>
-              {officeHoursFooter}
+            <span className="footer-contact__row footer-contact__row--hours">
+              <svg className="footer-contact__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clipRule="evenodd" />
+              </svg>
+              <span>{officeHoursFooter}</span>
             </span>
           </address>
         </div>
