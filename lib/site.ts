@@ -19,7 +19,7 @@ export const businessDetails = {
   addressRegion: "VIC",
   postalCode: "3000",
   addressCountry: "AU",
-  phone: "0422 905 860",
+  phone: "+61422 905 860",
   phoneTel: "tel:+61422905860",
   nationalLine: "1300 226 725",
   nationalLineDisplay: "1300 BANSAL (1300 226 725)",

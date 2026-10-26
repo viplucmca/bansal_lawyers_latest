@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { FaqItem } from "@/types/content";
+import { businessDetails } from "@/lib/site";
 
 export interface FaqProps {
   items: FaqItem[];
@@ -23,7 +24,7 @@ export function Faq({
   contactText = "Speak with our legal team or send us an email.",
   contactButtonLabel,
   contactEmail = "info@bansallawyers.com.au",
-  contactPhone = "0422 905 860",
+  contactPhone = businessDetails.phone,
   contactHref = "/contact",
   hideContactCard = false,
   className = "",
@@ -75,7 +76,7 @@ export function Faq({
                 </Link>
                 {contactPhone && (
                   <a
-                    href={`tel:${contactPhone.replace(/\s+/g, "")}`}
+                    href={businessDetails.phoneTel}
                     className="faq-contact-card__phone-link"
                     title={`Call Bansal Lawyers: ${contactPhone}`}
                   >

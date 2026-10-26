@@ -78,7 +78,7 @@ test("walks a booking up to the confirmation summary", () => {
 
   const named = advanceGuided(catalog, withTime.draft, "Mary Anne");
   const emailed = advanceGuided(catalog, named.draft, "mary@example.com");
-  const phoned = advanceGuided(catalog, emailed.draft, "0422 905 860");
+  const phoned = advanceGuided(catalog, emailed.draft, "+61422 905 860");
   const detailed = advanceGuided(catalog, phoned.draft, "I need advice about parenting arrangements.");
   assert.equal(detailed.draft.awaitingConfirm, true);
   assert.match(detailed.reply, /Shall I book this/);

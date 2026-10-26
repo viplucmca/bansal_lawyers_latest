@@ -155,7 +155,7 @@ export function ContactForm({ turnstileSiteKey = null }: ContactFormProps) {
             autoComplete="tel"
             required
             maxLength={40}
-            placeholder="e.g. 0422 905 860"
+            placeholder={`e.g. ${businessDetails.phone}`}
           />
         </label>
         <label>

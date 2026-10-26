@@ -198,7 +198,7 @@ export function Header() {
             <a
               href={businessDetails.phoneTel}
               className="utility-phone"
-              aria-label="Call Bansal Lawyers mobile on 0422 905 860"
+              aria-label={`Call Bansal Lawyers mobile on ${businessDetails.phone}`}
             >
               <span>Mobile {businessDetails.phone}</span>
             </a>

@@ -1,6 +1,7 @@
 import { after } from "next/server";
 import type { RowDataPacket } from "mysql2/promise";
 import { getDbPool } from "@/lib/db";
+import { businessDetails } from "@/lib/site";
 import {
   getAvailabilityConfig,
   getBookableService,
@@ -90,7 +91,7 @@ export async function submitBooking(body: Record<string, unknown>): Promise<Subm
         body: {
           success: false,
           code: "PAYMENT_UNAVAILABLE",
-          message: "Online payment is not available yet. Please call 0422 905 860 to book a paid consultation.",
+          message: `Online payment is not available yet. Please call ${businessDetails.phone} to book a paid consultation.`,
         },
       };
     }
@@ -175,7 +176,7 @@ export async function submitBooking(body: Record<string, unknown>): Promise<Subm
         await cancelPendingBooking(orderHash).catch(() => {});
         return {
           status: 502,
-          body: { success: false, message: "We couldn't start the online payment. Please try again or call 0422 905 860." },
+          body: { success: false, message: `We couldn't start the online payment. Please try again or call ${businessDetails.phone}.` },
         };
       }
     }
@@ -255,7 +256,7 @@ export async function submitBooking(body: Record<string, unknown>): Promise<Subm
     console.error("[Booking] Failed to create appointment:", error);
     return {
       status: 500,
-      body: { success: false, message: "We couldn't complete your booking. Please try again or call 0422 905 860." },
+      body: { success: false, message: `We couldn't complete your booking. Please try again or call ${businessDetails.phone}.` },
     };
   }
 }

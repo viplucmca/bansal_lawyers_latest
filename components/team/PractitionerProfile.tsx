@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container, CtaSection, Section, TrustBar } from "@/components/ui";
+import { businessDetails } from "@/lib/site";
 
 type FocusArea = { title: string; description: string };
 
@@ -32,7 +33,7 @@ export function PractitionerProfile({
               <p className="practitioner-hero__summary">{summary}</p>
               <div className="practitioner-hero__actions">
                 <Link href="/contact" className="button button--light">Book a Consultation</Link>
-                <a href="tel:+61422905860" className="button button--white-outline">Call 0422 905 860</a>
+                <a href={businessDetails.phoneTel} className="button button--white-outline">Call {businessDetails.phone}</a>
               </div>
             </div>
             <div className="practitioner-hero__portrait">
@@ -72,7 +73,7 @@ export function PractitionerProfile({
         title={ctaText}
         text={`Speak with ${name} and the Bansal Lawyers team about your legal matter.`}
         action={{ label: "Book a Consultation", href: "/contact" }}
-        secondaryAction={{ label: "Call 0422 905 860", href: "tel:+61422905860" }}
+        secondaryAction={{ label: `Call ${businessDetails.phone}`, href: businessDetails.phoneTel }}
         phone="1300 226 725"
         phoneLabel="Direct Practitioner Contact"
         badges={["Melbourne CBD consultations", "Virtual appointments", "Clear legal advice"]}

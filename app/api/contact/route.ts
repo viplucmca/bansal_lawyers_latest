@@ -5,6 +5,7 @@ import { verifyTurnstile } from "@/lib/booking/turnstile";
 import { syncEnquiryToCrmLead } from "@/lib/contact/crm-lead";
 import { saveEnquiryToDatabase } from "@/lib/db";
 import { sendEnquiryNotificationToFirm } from "@/lib/mail";
+import { businessDetails } from "@/lib/site";
 // import { sendClientAcknowledgement } from "@/lib/mail";
 
 export const runtime = "nodejs";
@@ -39,7 +40,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
   if (isRateLimited(ipAddress)) {
     return NextResponse.json(
-      { error: "Too many requests. Please wait a few moments or call 0422 905 860." },
+      { error: `Too many requests. Please wait a few moments or call ${businessDetails.phone}.` },
       { status: 429, headers: { "Retry-After": "60" } }
     );
   }

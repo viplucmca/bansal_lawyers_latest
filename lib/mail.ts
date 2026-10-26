@@ -1,5 +1,6 @@
 import nodemailer, { Transporter } from "nodemailer";
 import type { ContactEnquiry } from "@/lib/contact";
+import { businessDetails } from "@/lib/site";
 
 // Cached Nodemailer transporter
 let transporter: Transporter | null = null;
@@ -263,7 +264,7 @@ export async function sendClientAcknowledgement(
           <p>If your legal issue is time-sensitive (such as an urgent court date, police interview, tribunal deadline, or immediate visa refusal), please contact our office directly by telephone:</p>
 
           <p style="font-size: 16px;">
-            <strong>Phone:</strong> <a href="tel:+61422905860" style="color: #1d4ed8; font-weight: 600;">0422 905 860</a><br>
+            <strong>Phone:</strong> <a href="${businessDetails.phoneTel}" style="color: #1d4ed8; font-weight: 600;">${businessDetails.phone}</a><br>
             <strong>Email:</strong> <a href="mailto:info@bansallawyers.com.au" style="color: #1d4ed8;">info@bansallawyers.com.au</a><br>
             <strong>Office:</strong> Level 8, 278 Collins Street, Melbourne VIC 3000
           </p>
@@ -286,7 +287,7 @@ export async function sendClientAcknowledgement(
       from: config.fromEmail,
       to: enquiry.email,
       subject: `Enquiry Received — Bansal Lawyers Melbourne (${matterTitle})`,
-      text: `Dear ${enquiry.name},\n\nThank you for reaching out to Bansal Lawyers. We have received your enquiry regarding ${matterTitle}.\n\nA member of our legal team will review your enquiry and contact you during business hours.\n\nFor urgent matters, please call 0422 905 860.\n\nWarm regards,\nBansal Lawyers Melbourne`,
+      text: `Dear ${enquiry.name},\n\nThank you for reaching out to Bansal Lawyers. We have received your enquiry regarding ${matterTitle}.\n\nA member of our legal team will review your enquiry and contact you during business hours.\n\nFor urgent matters, please call ${businessDetails.phone}.\n\nWarm regards,\nBansal Lawyers Melbourne`,
       html: htmlContent,
     });
 

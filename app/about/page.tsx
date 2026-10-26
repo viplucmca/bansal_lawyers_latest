@@ -13,6 +13,7 @@ import {
 } from "@/components/ui";
 import { createMetadata } from "@/lib/metadata";
 import { createAboutPageSchema, createBreadcrumbSchema } from "@/lib/schema";
+import { businessDetails } from "@/lib/site";
 
 export const metadata: Metadata = createMetadata({
   title: "About Bansal Lawyers | Trusted Law Firm in Melbourne",
@@ -138,8 +139,8 @@ const legalTeamMembers = [
     name: "Ajay Bansal",
     role: "Director & Principal Lawyer",
     email: "info@bansallawyers.com.au",
-    phone: "0422 905 860",
-    phoneHref: "tel:+61422905860",
+    phone: businessDetails.phone,
+    phoneHref: businessDetails.phoneTel,
     profileHref: "/about/ajay-bansal",
     image: "/images/team/ajay-bansal-director.webp",
     alt: "Ajay Bansal - Director & Principal Lawyer at Bansal Lawyers Melbourne",
@@ -148,8 +149,8 @@ const legalTeamMembers = [
     name: "Michael Saleh",
     role: "Solicitor",
     email: "info@bansallawyers.com.au",
-    phone: "0422 905 860",
-    phoneHref: "tel:+61422905860",
+    phone: businessDetails.phone,
+    phoneHref: businessDetails.phoneTel,
     profileHref: "/about/michael-saleh",
     image: "/images/team/michael-saleh-solicitor.png",
     alt: "Michael Saleh - Solicitor at Bansal Lawyers Melbourne",

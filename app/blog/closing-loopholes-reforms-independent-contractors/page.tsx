@@ -575,7 +575,7 @@ export default function ClosingLoopholesReformsPage() {
                     Book a Consultation
                   </ButtonLink>
                   <ButtonLink href="tel:+61422905860" variant="white-outline">
-                    Call 0422 905 860
+                    Call +61422 905 860
                   </ButtonLink>
                 </div>
               </div>

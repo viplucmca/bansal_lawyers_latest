@@ -27,7 +27,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = createMetadata({
   title: "Contact Bansal Lawyers | Melbourne Lawyers on Collins Street",
   description:
-    "Contact Bansal Lawyers in Melbourne CBD for legal support in migration, family, criminal, commercial, business, property, and conveyancing matters. Call 0422 905 860 or book a consultation.",
+    `Contact Bansal Lawyers in Melbourne CBD for legal support in migration, family, criminal, commercial, business, property, and conveyancing matters. Call ${businessDetails.phone} or book a consultation.`,
   path: "/contact",
   keywords: [
     "Contact Bansal Lawyers",
@@ -48,7 +48,7 @@ const contactFaqs = [
   {
     question: "How can I contact Bansal Lawyers?",
     answer:
-      "You can contact our Melbourne office by calling 1300 226 725, calling our mobile on 0422 905 860, emailing info@bansallawyers.com.au, or submitting the message form on this page.",
+      `You can contact our Melbourne office by calling 1300 226 725, calling our mobile on ${businessDetails.phone}, emailing info@bansallawyers.com.au, or submitting the message form on this page.`,
   },
   {
     question: "Where is Bansal Lawyers located?",
@@ -120,7 +120,7 @@ export default function ContactPage() {
         primaryAction={{ label: "Send Message Now", href: "#contact-form" }}
         secondaryAction={{
           label: "Call Us Directly",
-          href: "tel:0422905860",
+          href: businessDetails.phoneTel,
         }}
       />
 

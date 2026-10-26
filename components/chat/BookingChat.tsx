@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { TurnstileWidget } from "@/components/booking/TurnstileWidget";
+import { businessDetails } from "@/lib/site";
 import "./booking-chat.css";
 
 interface ChatMessage {
@@ -81,7 +82,7 @@ export function BookingChat({ turnstileSiteKey }: { turnstileSiteKey?: string | 
       }
       applyResponse(data, nextText, history);
     } catch {
-      setError("The booking assistant is unavailable. Please use the appointment form or call 0422 905 860.");
+      setError(`The booking assistant is unavailable. Please use the appointment form or call ${businessDetails.phone}.`);
     } finally {
       setBusy(false);
     }

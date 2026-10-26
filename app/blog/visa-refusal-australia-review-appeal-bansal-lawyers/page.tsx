@@ -1041,14 +1041,14 @@ export default function VisaRefusalReviewAppealPage() {
                     Speak directly with an Australian immigration legal
                     practitioner. Call us at{" "}
                     <a
-                      href="tel:0422905860"
+                      href="tel:+61422905860"
                       style={{
                         color: "#38bdf8",
                         fontWeight: 700,
                         textDecoration: "underline",
                       }}
                     >
-                      0422905860
+                      +61422 905 860
                     </a>{" "}
                     or email{" "}
                     <a

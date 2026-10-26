@@ -17,6 +17,7 @@ import {
   createFaqSchema,
   createLegalServiceSchema,
 } from "@/lib/schema";
+import { businessDetails } from "@/lib/site";
 
 export const metadata: Metadata = createMetadata({
   title: "Wills Lawyers Melbourne | Australia & India",
@@ -101,7 +102,7 @@ export default function WillsLawyersMelbournePage() {
           </>
         }
         primaryAction={{ label: "Book a Consultation", href: "/contact" }}
-        secondaryAction={{ label: "Call 0422 905 860", href: "tel:+61422905860" }}
+        secondaryAction={{ label: `Call ${businessDetails.phone}`, href: businessDetails.phoneTel }}
         aside={<HeroBookingPlaceholder defaultPracticeArea="other" turnstileSiteKey={turnstileSiteKey} />}
       />
 
@@ -195,7 +196,7 @@ export default function WillsLawyersMelbournePage() {
         title="Talk to a Lawyer About Your Will"
         text="Bring a list of what you own in Australia and in India. We will tell you whether you need one will or two, and which powers of attorney fit."
         action={{ label: "Book a Consultation", href: "/contact" }}
-        secondaryAction={{ label: "Call 0422 905 860", href: "tel:+61422905860" }}
+        secondaryAction={{ label: `Call ${businessDetails.phone}`, href: businessDetails.phoneTel }}
         phone="1300 226 725"
         phoneLabel="Call the Office"
         badges={[
