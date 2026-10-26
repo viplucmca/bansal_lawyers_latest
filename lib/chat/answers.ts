@@ -1,4 +1,4 @@
-import { businessDetails } from "@/lib/site";
+import { businessDetails, officeHoursDescription } from "@/lib/site";
 
 interface AnswerCatalog {
   services: { title: string; isFree: boolean; priceLabel: string }[];
@@ -44,7 +44,7 @@ export function answerEnquiry(text: string, catalog: AnswerCatalog): string {
   }
 
   if (value === "office and hours" || (/\b(hour|hours|open|opening)\b/.test(value) && /\b(address|where|office|located)\b/.test(value))) {
-    return `The office is at ${businessDetails.address}, open Monday to Friday, 10:00 am to 6:00 pm. Consultations are also available by phone or video. Call ${businessDetails.phone}.`;
+    return `The office is at ${businessDetails.address}, open ${officeHoursDescription}. Consultations are also available by phone or video. Call ${businessDetails.phone}.`;
   }
 
   if (/\b(address|where|office|located|collins|visit)\b/.test(value)) {
@@ -52,7 +52,7 @@ export function answerEnquiry(text: string, catalog: AnswerCatalog): string {
   }
 
   if (/\b(hour|hours|open|opening|close|closed)\b/.test(value)) {
-    return `The office is open Monday to Friday, 10:00 am to 6:00 pm. Appointments are booked ahead, and same-day times aren't offered online. Call ${businessDetails.nationalLineDisplay} or ${businessDetails.phone}.`;
+    return `The office is open ${officeHoursDescription}. Appointments are booked ahead, and same-day times aren't offered online. Call ${businessDetails.nationalLineDisplay} or ${businessDetails.phone}.`;
   }
 
   if (/\b(phone number|call you|email|contact|get in touch)\b/.test(value)) {

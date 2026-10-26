@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { businessDetails } from "@/lib/site";
+import { businessDetails, officeHoursFooter } from "@/lib/site";
 
 const footerPracticeAreas = [
   { label: "Immigration Lawyers Melbourne", href: "/immigration-lawyers-melbourne/" },
@@ -212,7 +212,7 @@ export function Footer() {
               <strong>Email:</strong> {businessDetails.email}
             </a>
             <span style={{ fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.65)", marginTop: "0.25rem" }}>
-              Mon–Fri: 10 AM to 6 PM (Melbourne time)
+              {officeHoursFooter}
             </span>
           </address>
         </div>

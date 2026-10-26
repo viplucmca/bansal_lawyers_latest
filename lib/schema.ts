@@ -59,7 +59,7 @@ export function createHomePageGraphSchema(faqs: FaqItem[]) {
           {
             "@type": "OpeningHoursSpecification",
             dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            opens: "10:00",
+            opens: "09:30",
             closes: "18:00",
           },
         ],
@@ -203,7 +203,7 @@ export function createLegalServiceSchema() {
           "Thursday",
           "Friday",
         ],
-        opens: "10:00",
+        opens: "09:30",
         closes: "18:00",
       },
     ],

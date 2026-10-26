@@ -11,6 +11,12 @@ export const siteUrl = rawSiteUrl.replace(
   "https://www.bansallawyers.com.au"
 );
 
+/** Shown in footer and other Melbourne office hour labels. */
+export const officeHoursFooter = "Mon–Fri: 09:30 AM to 6 PM (Melbourne time)";
+
+/** Prose form for chat and assistant copy. */
+export const officeHoursDescription = "Monday to Friday, 9:30 am to 6:00 pm";
+
 export const businessDetails = {
   name: "Bansal Lawyers",
   address: "Level 8, 278 Collins Street, Melbourne VIC 3000",

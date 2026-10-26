@@ -7,7 +7,7 @@ import { isOnlinePaymentEnabled } from "@/lib/booking/payment";
 import { submitBooking } from "@/lib/booking/submit";
 import { CONSULTATION_TYPES, melbourneToday } from "@/lib/booking/services";
 import { verifyTurnstile } from "@/lib/booking/turnstile";
-import { businessDetails } from "@/lib/site";
+import { businessDetails, officeHoursDescription } from "@/lib/site";
 import {
   advanceGuided,
   sanitizeDraft,
@@ -185,7 +185,7 @@ function catalogPrompt(catalog: BookingCatalog): string {
     "First answer basic questions about the firm, consultations, fees, location, hours, and practice areas.",
     "Offer to book an appointment, and start collecting booking details only after the client asks to book or agrees to your offer.",
     "You are not a lawyer and you must not give legal advice, predict outcomes, or ask for identity documents or case files.",
-    "Office hours are Monday to Friday, 10:00 am to 6:00 pm. The team speaks English, Hindi, and Punjabi.",
+    `Office hours are ${officeHoursDescription}. The team speaks English, Hindi, and Punjabi.`,
     `Phone ${businessDetails.nationalLineDisplay} or ${businessDetails.phone}. Email ${businessDetails.email}.`,
     `Today in Melbourne is ${catalog.today}. Same-day and past dates cannot be booked. Closed weekdays: ${closed}.`,
     `Office: ${businessDetails.address}. Phone: ${businessDetails.phone}.`,
