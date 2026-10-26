@@ -5,6 +5,7 @@ import { ButtonLink } from "@/components/ui/Button";
 export type HeroProps = {
   eyebrow?: string;
   title: ReactNode;
+  tagline?: ReactNode;
   intro?: ReactNode;
   primaryAction?: { label: string; href: string };
   secondaryAction?: { label: string; href: string };
@@ -15,6 +16,7 @@ export type HeroProps = {
 export function Hero({
   eyebrow,
   title,
+  tagline,
   intro,
   primaryAction,
   secondaryAction,
@@ -30,6 +32,14 @@ export function Hero({
           <div className="hero__content">
             {eyebrow && <span className="eyebrow eyebrow--light">{eyebrow}</span>}
             <h1>{title}</h1>
+            {tagline &&
+              (typeof tagline === "string" ? (
+                <h3 className="hero__tagline">
+                  <span className="hero-typing-word">{tagline}</span>
+                </h3>
+              ) : (
+                <h3 className="hero__tagline hero-typing-word">{tagline}</h3>
+              ))}
             {intro && (typeof intro === "string" ? <p>{intro}</p> : intro)}
             {(primaryAction || secondaryAction) && (
               <div className="hero__actions">

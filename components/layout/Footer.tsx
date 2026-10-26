@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { businessDetails, officeHoursFooter } from "@/lib/site";
+import { businessDetails, firmMotto, officeHoursFooter } from "@/lib/site";
 
 const footerPracticeAreas = [
   { label: "Immigration Lawyers Melbourne", href: "/immigration-lawyers-melbourne/" },
@@ -34,6 +34,7 @@ export function Footer() {
               className="brand__img brand__img--footer"
             />
           </Link>
+          <h3 className="footer-brand__motto">{firmMotto}</h3>
           <p>
             Bansal Lawyers is a Melbourne law firm giving practical legal advice on immigration, family, criminal, commercial, property and civil law.
           </p>

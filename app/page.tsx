@@ -17,7 +17,7 @@ import {
 import { getTurnstileSiteKey } from "@/lib/booking/turnstile";
 import { createMetadata } from "@/lib/metadata";
 import { createHomePageGraphSchema, HOME_PAGE_SCHEMA_TITLE } from "@/lib/schema";
-import { siteUrl } from "@/lib/site";
+import { firmMotto, siteUrl } from "@/lib/site";
 import { TypingHeroTitle } from "@/components/ui/TypingHeroTitle";
 
 /** Home-only: keep trailing slash (Next Metadata API would strip it on "/"). */
@@ -185,6 +185,7 @@ export default function HomePage() {
       {/* 1. Hero Section */}
       <Hero
         title={<TypingHeroTitle />}
+        tagline={firmMotto}
         intro={
           <>
             <p>

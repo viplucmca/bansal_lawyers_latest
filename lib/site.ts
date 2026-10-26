@@ -17,6 +17,9 @@ export const officeHoursFooter = "Mon–Fri: 09:30 AM to 6 PM (Melbourne time)";
 /** Prose form for chat and assistant copy. */
 export const officeHoursDescription = "Monday to Friday, 9:30 am to 6:00 pm";
 
+/** Firm motto (homepage hero and footer). */
+export const firmMotto = "There is no legal puzzle that we can't solve.";
+
 export const businessDetails = {
   name: "Bansal Lawyers",
   address: "Level 8, 278 Collins Street, Melbourne VIC 3000",
