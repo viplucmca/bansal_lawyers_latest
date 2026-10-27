@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { StructuredData } from "@/components/seo";
 import {
   Breadcrumbs,
+  ButtonLink,
   CtaSection,
   Faq,
   Hero,
@@ -14,15 +16,36 @@ import {
 import { getTurnstileSiteKey } from "@/lib/booking/turnstile";
 import { createMetadata } from "@/lib/metadata";
 import {
-  createBreadcrumbSchema,
-  createFaqSchema,
-  createLegalServiceSchema,
+  createImmigrationLawyersPageSchema,
+  IMMIGRATION_LAWYERS_PAGE_DESCRIPTION,
+  IMMIGRATION_LAWYERS_PAGE_TITLE,
 } from "@/lib/schema";
+import { businessDetails } from "@/lib/site";
+
+const lawyers = [
+  {
+    name: "Ajay Bansal",
+    role: "Director & Principal Lawyer",
+    email: businessDetails.email,
+    phoneHref: businessDetails.phoneTel,
+    profileHref: "/about/ajay-bansal",
+    image: "/images/team/ajay-bansal-director.webp",
+    alt: "Ajay Bansal - Director & Principal Lawyer at Bansal Lawyers Melbourne",
+  },
+  {
+    name: "Michael Saleh",
+    role: "Solicitor",
+    email: businessDetails.email,
+    phoneHref: businessDetails.phoneTel,
+    profileHref: "/about/michael-saleh",
+    image: "/images/team/michael-saleh-solicitor.png",
+    alt: "Michael Saleh - Solicitor at Bansal Lawyers Melbourne",
+  },
+];
 
 export const metadata: Metadata = createMetadata({
-  title: "Immigration Lawyers Melbourne | Visa Refusals, Appeals & Migration Law",
-  description:
-    "Immigration lawyers in Melbourne for visa refusals, cancellations, ART appeals, judicial review, character decisions, and citizenship refusals.",
+  title: IMMIGRATION_LAWYERS_PAGE_TITLE,
+  description: IMMIGRATION_LAWYERS_PAGE_DESCRIPTION,
   path: "/immigration-lawyers-melbourne",
   keywords: [
     "Immigration Lawyers Melbourne",
@@ -117,9 +140,7 @@ export default function ImmigrationLawyersMelbournePage() {
 
   return (
     <>
-      <StructuredData data={createLegalServiceSchema()} />
-      <StructuredData data={createBreadcrumbSchema(breadcrumbs)} />
-      <StructuredData data={createFaqSchema(immigrationFaqs)} />
+      <StructuredData data={createImmigrationLawyersPageSchema(immigrationFaqs)} />
 
       <Breadcrumbs items={breadcrumbs} />
 
@@ -316,7 +337,122 @@ export default function ImmigrationLawyersMelbournePage() {
         </div>
       </Section>
 
-      {/* 8. Speak With Immigration Lawyers in Melbourne [H2] */}
+      <Section tone="white" id="our-team">
+        <div className="team-clean-header">
+          <div className="team-clean-eyebrow">
+            <span className="team-clean-eyebrow__line" aria-hidden="true" />
+            <span>LEGAL PRACTITIONERS</span>
+            <span className="team-clean-eyebrow__line" aria-hidden="true" />
+          </div>
+          <h2 className="team-clean-title">
+            Meet Our <span className="team-clean-title__serif">Legal Team</span>
+          </h2>
+          <p className="team-clean-intro">
+            Ajay Bansal is the director and principal lawyer. Michael Saleh is a solicitor. Read each profile, then book a consultation.
+          </p>
+        </div>
+
+        <div className="team-clean-grid">
+          {lawyers.map((member) => (
+            <article key={member.name} className="team-clean-card">
+              <Link
+                href={member.profileHref}
+                className="team-clean-card__media-link"
+                title={`View ${member.name}'s profile`}
+              >
+                <Image
+                  src={member.image}
+                  alt={member.alt}
+                  fill
+                  sizes="(max-width: 580px) 100vw, 420px"
+                  className="team-clean-card__img"
+                />
+              </Link>
+              <div className="team-clean-card__content">
+                <h3 className="team-clean-card__name">
+                  <Link href={member.profileHref}>{member.name}</Link>
+                </h3>
+                <a href={`mailto:${member.email}`} className="team-clean-card__email">
+                  {member.email}
+                </a>
+                <p className="team-clean-card__role">{member.role}</p>
+                <div className="team-clean-card__socials">
+                  <a
+                    href={member.phoneHref}
+                    className="team-clean-card__icon-link"
+                    aria-label={`Call ${member.name}`}
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </a>
+                  <Link
+                    href={member.profileHref}
+                    className="team-clean-card__icon-link"
+                    aria-label={`View ${member.name}'s profile`}
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="8.5" cy="7" r="4" />
+                      <polyline points="17 11 19 13 23 9" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      <Section tone="warm" id="office">
+        <div className="location-grid">
+          <div>
+            <span className="eyebrow">Collins Street</span>
+            <h2>Our Melbourne Office</h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.7", color: "var(--ink)" }}>
+              The office is at Level 8, 278 Collins Street, Melbourne VIC 3000, between Swanston and Elizabeth Streets. Trams on Collins Street stop nearby.
+            </p>
+            <p style={{ color: "var(--ink-secondary)", lineHeight: "1.7", marginTop: "1rem" }}>
+              Book a consultation to talk through a refusal, a cancellation, a tribunal deadline, or a court challenge.
+            </p>
+            <address style={{ fontStyle: "normal", margin: "1.5rem 0", color: "var(--navy-950)", fontWeight: 600 }}>
+              Level 8, 278 Collins Street,<br />
+              Melbourne VIC 3000
+            </address>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
+              <ButtonLink href="/contact" variant="primary">
+                Book a Consultation
+              </ButtonLink>
+              <ButtonLink
+                href="https://www.google.com/maps/dir/?api=1&destination=Level+8,+278+Collins+Street+Melbourne+VIC+3000"
+                variant="secondary"
+              >
+                Get Directions
+              </ButtonLink>
+            </div>
+          </div>
+          <div className="office-map-frame" aria-label="Map of the Bansal Lawyers Collins Street office">
+            <iframe
+              title="Bansal Lawyers Melbourne Office Location"
+              src="https://maps.google.com/maps?q=Level%208,%20278%20Collins%20Street,%20Melbourne%20VIC%203000&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="white" id="faqs">
+        <Faq
+          items={immigrationFaqs}
+          title="Frequently Asked Questions"
+          subtitle="Quick answers to what people usually ask before they book."
+          contactTitle="Need advice about your visa or a letter from the Department?"
+          contactButtonLabel="Book a Confidential Consultation"
+          contactHref="/contact"
+        />
+      </Section>
+
       <CtaSection
         title="Speak With Immigration Lawyers in Melbourne"
         text="If you have a refusal, a cancellation, a tribunal decision, or a detention notice, we can tell you what the deadline is and what can still be done."
@@ -329,18 +465,6 @@ export default function ImmigrationLawyersMelbournePage() {
           "Melbourne CBD & remote consultations",
         ]}
       />
-
-      {/* 9. FAQs [H2] */}
-      <Section tone="warm" id="faqs">
-        <Faq
-          items={immigrationFaqs}
-          title="Frequently Asked Questions"
-          subtitle="Quick answers to what people usually ask before they book."
-          contactTitle="Need advice about your visa or a letter from the Department?"
-          contactButtonLabel="Book a Confidential Consultation"
-          contactHref="/contact"
-        />
-      </Section>
     </>
   );
 }

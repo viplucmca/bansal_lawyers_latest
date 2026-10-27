@@ -217,6 +217,105 @@ export function createLegalServiceSchema() {
   };
 }
 
+export const IMMIGRATION_LAWYERS_PAGE_TITLE =
+  "Immigration Lawyers Melbourne, VIC 3000 | Bansal Lawyers";
+export const IMMIGRATION_LAWYERS_PAGE_DESCRIPTION =
+  "Immigration lawyers in Melbourne for visa refusals, cancellations, ART appeals, judicial review, character decisions, and citizenship refusals. Call 1300 226 725.";
+
+/** Immigration lawyers page JSON-LD. Reuses the site organization id and the lawyer profile ids. */
+export function createImmigrationLawyersPageSchema(faqs: FaqItem[]) {
+  const pageUrl = `${siteUrl}/immigration-lawyers-melbourne`;
+  const pageId = `${pageUrl}#webpage`;
+  const breadcrumbId = `${pageUrl}#breadcrumb`;
+  const faqId = `${pageUrl}#faq`;
+  const ajayId = `${siteUrl}/about/ajay-bansal#person`;
+  const michaelId = `${siteUrl}/about/michael-saleh#person`;
+  const { "@context": _context, ...organization } = createLegalServiceSchema();
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        ...organization,
+        employee: [{ "@id": ajayId }, { "@id": michaelId }],
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        url: homeUrl,
+        name: businessDetails.name,
+        publisher: { "@id": organizationId },
+        inLanguage: "en-AU",
+      },
+      {
+        "@type": "WebPage",
+        "@id": pageId,
+        url: pageUrl,
+        name: IMMIGRATION_LAWYERS_PAGE_TITLE,
+        description: IMMIGRATION_LAWYERS_PAGE_DESCRIPTION,
+        inLanguage: "en-AU",
+        isPartOf: { "@id": websiteId },
+        about: { "@id": organizationId },
+        mainEntity: { "@id": organizationId },
+        breadcrumb: { "@id": breadcrumbId },
+        hasPart: { "@id": faqId },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": breadcrumbId,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: homeUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Immigration Lawyers Melbourne",
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        "@type": "Person",
+        "@id": ajayId,
+        name: "Ajay Bansal",
+        jobTitle: "Director & Principal Lawyer",
+        email: businessDetails.email,
+        image: `${siteUrl}/images/team/ajay-bansal-director.webp`,
+        url: `${siteUrl}/about/ajay-bansal`,
+        worksFor: { "@id": organizationId },
+      },
+      {
+        "@type": "Person",
+        "@id": michaelId,
+        name: "Michael Saleh",
+        jobTitle: "Solicitor",
+        email: businessDetails.email,
+        image: `${siteUrl}/images/team/michael-saleh-solicitor.png`,
+        url: `${siteUrl}/about/michael-saleh`,
+        worksFor: { "@id": organizationId },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": faqId,
+        url: `${pageUrl}#faqs`,
+        isPartOf: { "@id": pageId },
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: typeof item.answer === "string" ? item.answer : "",
+          },
+        })),
+      },
+    ],
+  };
+}
+
 export function createContactPageSchema() {
   const contactUrl = `${siteUrl}/contact`;
 
