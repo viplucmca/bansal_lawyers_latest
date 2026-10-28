@@ -20,6 +20,24 @@ export const officeHoursDescription = "Monday to Friday, 9:30 am to 6:00 pm";
 /** Firm motto (homepage hero and footer). */
 export const firmMotto = "There is no legal puzzle that we can't solve.";
 
+/** Google Business Profile (reviews & listing). */
+export const googleBusinessProfileUrl = "https://share.google/BwO1gQmlYQweKWxbh";
+
+export const googleBusinessReviewsSummary = {
+  displayName: "BANSAL Lawyers",
+  rating: 5.0,
+  reviewCount: 61,
+  mapsAddress: "Level 8/278 Collins St, Melbourne VIC 3000, Australia",
+  featuredReview: {
+    author: "Arshdeep Singh",
+    authorReviewCount: 8,
+    relativeTime: "3 months ago",
+    rating: 5,
+    text:
+      "I am really grateful to Ajay Bansal for his guidance and support throughout my visa matter. He handled everything properly. Finally, on 15 July 2026, his visa was granted. Highly recommended!",
+  },
+} as const;
+
 export const businessDetails = {
   name: "Bansal Lawyers",
   address: "Level 8, 278 Collins Street, Melbourne VIC 3000",

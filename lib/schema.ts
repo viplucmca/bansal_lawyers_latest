@@ -222,30 +222,90 @@ export const IMMIGRATION_LAWYERS_PAGE_TITLE =
 export const IMMIGRATION_LAWYERS_PAGE_DESCRIPTION =
   "Immigration lawyers in Melbourne for visa refusals, cancellations, ART appeals, judicial review, character decisions, and citizenship refusals. Call 1300 226 725.";
 
-/** Immigration lawyers page JSON-LD. Reuses the site organization id and the lawyer profile ids. */
+const IMMIGRATION_ORGANIZATION_DESCRIPTION =
+  "Melbourne law firm providing legal advice and representation in Australian immigration law, ART reviews, visa refusals and cancellations, judicial review, character decisions and citizenship refusals.";
+
+function schemaNationalTelephoneHyphenated(): string {
+  const spaced = businessDetails.nationalLine.trim().replace(/\s+/g, "-");
+  if (/^1300-/i.test(spaced) || spaced.startsWith("1300")) {
+    return `+61-${spaced}`;
+  }
+  return businessDetails.nationalLine;
+}
+
+/** Immigration lawyers page JSON-LD @graph (LegalService, WebPage, WebSite, breadcrumbs, team, FAQ). */
 export function createImmigrationLawyersPageSchema(faqs: FaqItem[]) {
   const pageUrl = `${siteUrl}/immigration-lawyers-melbourne`;
   const pageId = `${pageUrl}#webpage`;
   const breadcrumbId = `${pageUrl}#breadcrumb`;
   const faqId = `${pageUrl}#faq`;
-  const ajayId = `${siteUrl}/about/ajay-bansal#person`;
-  const michaelId = `${siteUrl}/about/michael-saleh#person`;
-  const { "@context": _context, ...organization } = createLegalServiceSchema();
+  const ajayId = `${pageUrl}#ajay-bansal`;
+  const michaelId = `${pageUrl}#michael-saleh`;
+  const nationalPhone = schemaNationalTelephoneHyphenated();
+  const mapQuery = encodeURIComponent(
+    `${businessDetails.streetAddress}, ${businessDetails.addressLocality} ${businessDetails.addressRegion} ${businessDetails.postalCode}`
+  );
 
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
-        ...organization,
-        employee: [{ "@id": ajayId }, { "@id": michaelId }],
-      },
-      {
-        "@type": "WebSite",
-        "@id": websiteId,
-        url: homeUrl,
+        "@type": "LegalService",
+        "@id": organizationId,
         name: businessDetails.name,
-        publisher: { "@id": organizationId },
-        inLanguage: "en-AU",
+        alternateName: "Bansal Lawyers Melbourne",
+        url: homeUrl,
+        description: IMMIGRATION_ORGANIZATION_DESCRIPTION,
+        telephone: nationalPhone,
+        email: businessDetails.email,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/images/logo.webp`,
+        },
+        image: `${siteUrl}/images/collins-street-office.webp`,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: businessDetails.streetAddress,
+          addressLocality: businessDetails.addressLocality,
+          addressRegion: businessDetails.addressRegion,
+          postalCode: businessDetails.postalCode,
+          addressCountry: businessDetails.addressCountry,
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: -37.8164,
+          longitude: 144.965,
+        },
+        hasMap: `https://www.google.com/maps/search/?api=1&query=${mapQuery}`,
+        areaServed: [
+          { "@type": "City", name: "Melbourne" },
+          { "@type": "AdministrativeArea", name: "Victoria" },
+          { "@type": "Country", name: "Australia" },
+        ],
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "09:30",
+            closes: "18:00",
+          },
+        ],
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: nationalPhone,
+          email: businessDetails.email,
+          contactType: "customer service",
+          areaServed: "AU",
+          availableLanguage: ["English", "Hindi", "Punjabi"],
+        },
+        sameAs: [
+          socialLinks.facebook,
+          socialLinks.instagram,
+          socialLinks.linkedin,
+          socialLinks.twitter,
+          socialLinks.youtube,
+        ],
+        employee: [{ "@id": ajayId }, { "@id": michaelId }],
       },
       {
         "@type": "WebPage",
@@ -258,7 +318,15 @@ export function createImmigrationLawyersPageSchema(faqs: FaqItem[]) {
         about: { "@id": organizationId },
         mainEntity: { "@id": organizationId },
         breadcrumb: { "@id": breadcrumbId },
-        hasPart: { "@id": faqId },
+        hasPart: [{ "@id": faqId }],
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        url: homeUrl,
+        name: businessDetails.name,
+        publisher: { "@id": organizationId },
+        inLanguage: "en-AU",
       },
       {
         "@type": "BreadcrumbList",
@@ -284,9 +352,8 @@ export function createImmigrationLawyersPageSchema(faqs: FaqItem[]) {
         name: "Ajay Bansal",
         jobTitle: "Director & Principal Lawyer",
         email: businessDetails.email,
-        image: `${siteUrl}/images/team/ajay-bansal-director.webp`,
-        url: `${siteUrl}/about/ajay-bansal`,
         worksFor: { "@id": organizationId },
+        url: ajayId,
       },
       {
         "@type": "Person",
@@ -294,9 +361,8 @@ export function createImmigrationLawyersPageSchema(faqs: FaqItem[]) {
         name: "Michael Saleh",
         jobTitle: "Solicitor",
         email: businessDetails.email,
-        image: `${siteUrl}/images/team/michael-saleh-solicitor.png`,
-        url: `${siteUrl}/about/michael-saleh`,
         worksFor: { "@id": organizationId },
+        url: michaelId,
       },
       {
         "@type": "FAQPage",

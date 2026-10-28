@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { StructuredData } from "@/components/seo";
+import { OfficeLocationSection } from "@/components/sections/OfficeLocationSection";
+import { ImmigrationMatterCtaBanner } from "@/components/sections/ImmigrationMatterCtaBanner";
 import {
   Breadcrumbs,
   ButtonLink,
-  CtaSection,
   Faq,
   Hero,
   HeroBookingPlaceholder,
@@ -405,42 +406,10 @@ export default function ImmigrationLawyersMelbournePage() {
       </Section>
 
       <Section tone="warm" id="office">
-        <div className="location-grid">
-          <div>
-            <span className="eyebrow">Collins Street</span>
-            <h2>Our Melbourne Office</h2>
-            <p style={{ fontSize: "1.05rem", lineHeight: "1.7", color: "var(--ink)" }}>
-              The office is at Level 8, 278 Collins Street, Melbourne VIC 3000, between Swanston and Elizabeth Streets. Trams on Collins Street stop nearby.
-            </p>
-            <p style={{ color: "var(--ink-secondary)", lineHeight: "1.7", marginTop: "1rem" }}>
-              Book a consultation to talk through a refusal, a cancellation, a tribunal deadline, or a court challenge.
-            </p>
-            <address style={{ fontStyle: "normal", margin: "1.5rem 0", color: "var(--navy-950)", fontWeight: 600 }}>
-              Level 8, 278 Collins Street,<br />
-              Melbourne VIC 3000
-            </address>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
-              <ButtonLink href="/contact" variant="primary">
-                Book a Consultation
-              </ButtonLink>
-              <ButtonLink
-                href="https://www.google.com/maps/dir/?api=1&destination=Level+8,+278+Collins+Street+Melbourne+VIC+3000"
-                variant="secondary"
-              >
-                Get Directions
-              </ButtonLink>
-            </div>
-          </div>
-          <div className="office-map-frame" aria-label="Map of the Bansal Lawyers Collins Street office">
-            <iframe
-              title="Bansal Lawyers Melbourne Office Location"
-              src="https://maps.google.com/maps?q=Level%208,%20278%20Collins%20Street,%20Melbourne%20VIC%203000&t=&z=15&ie=UTF8&iwloc=&output=embed"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-        </div>
+        <OfficeLocationSection />
       </Section>
+
+      <ImmigrationMatterCtaBanner />
 
       <Section tone="white" id="faqs">
         <Faq
@@ -452,19 +421,6 @@ export default function ImmigrationLawyersMelbournePage() {
           contactHref="/contact"
         />
       </Section>
-
-      <CtaSection
-        title="Speak With Immigration Lawyers in Melbourne"
-        text="If you have a refusal, a cancellation, a tribunal decision, or a detention notice, we can tell you what the deadline is and what can still be done."
-        action={{ label: "Book a Consultation", href: "/contact" }}
-        phone="1300 226 725"
-        phoneLabel="Speak With Our Immigration Team"
-        badges={[
-          "Ready to talk about your visa matter? Get in touch today.",
-          "Strictly confidential consultation",
-          "Melbourne CBD & remote consultations",
-        ]}
-      />
     </>
   );
 }
