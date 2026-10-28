@@ -316,22 +316,142 @@ export function createImmigrationLawyersPageSchema(faqs: FaqItem[]) {
   };
 }
 
-export function createContactPageSchema() {
+const CONTACT_PAGE_SCHEMA_NAME = "Contact Bansal Lawyers | Melbourne Lawyers";
+const CONTACT_PAGE_SCHEMA_DESCRIPTION =
+  "Contact Bansal Lawyers in Melbourne CBD for enquiries about immigration, family, criminal, commercial, property and civil law. Call 1300 226 725 or request a consultation.";
+
+const CONTACT_ORGANIZATION_DESCRIPTION =
+  "Bansal Lawyers is a Melbourne law firm providing legal assistance in immigration, family, criminal, commercial, property and civil law.";
+
+function schemaMobileTelephoneE164Display(): string {
+  const digits = businessDetails.phoneTel.replace(/\D/g, "");
+  if (digits.startsWith("614") && digits.length >= 11) {
+    const national = digits.slice(2);
+    return `+61 ${national.slice(0, 3)} ${national.slice(3, 6)} ${national.slice(6)}`;
+  }
+  return businessDetails.phone;
+}
+
+/** Contact page JSON-LD @graph: ContactPage, WebSite, LegalService, BreadcrumbList. */
+export function createContactPageGraphSchema() {
   const contactUrl = `${siteUrl}/contact`;
+  const contactWebPageId = `${contactUrl}#webpage`;
+  const contactBreadcrumbId = `${contactUrl}#breadcrumb`;
+  const mapQuery = encodeURIComponent(
+    `${businessDetails.streetAddress}, ${businessDetails.addressLocality} ${businessDetails.addressRegion} ${businessDetails.postalCode}`
+  );
 
   return {
     "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "@id": `${contactUrl}#webpage`,
-    url: contactUrl,
-    name: "Contact Bansal Lawyers | Melbourne Lawyers on Collins Street",
-    description:
-      "Contact Bansal Lawyers at Level 8, 278 Collins Street, Melbourne VIC 3000 for legal support in migration, family, criminal, commercial, property, and civil matters. Call 1300 226 725 or book a consultation.",
-    inLanguage: "en-AU",
-    mainEntity: {
-      "@id": `${siteUrl}/#organization`,
-    },
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": contactWebPageId,
+        url: contactUrl,
+        name: CONTACT_PAGE_SCHEMA_NAME,
+        description: CONTACT_PAGE_SCHEMA_DESCRIPTION,
+        inLanguage: "en-AU",
+        isPartOf: { "@id": websiteId },
+        about: { "@id": organizationId },
+        mainEntity: { "@id": organizationId },
+        breadcrumb: { "@id": contactBreadcrumbId },
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        url: homeUrl,
+        name: businessDetails.name,
+        inLanguage: "en-AU",
+        publisher: { "@id": organizationId },
+      },
+      {
+        "@type": ["LegalService", "Attorney"],
+        "@id": organizationId,
+        name: businessDetails.name,
+        url: homeUrl,
+        description: CONTACT_ORGANIZATION_DESCRIPTION,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/images/logo.webp`,
+        },
+        image: `${siteUrl}/images/collins-street-office.webp`,
+        telephone: businessDetails.nationalLine,
+        email: businessDetails.email,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: businessDetails.streetAddress,
+          addressLocality: businessDetails.addressLocality,
+          addressRegion: businessDetails.addressRegion,
+          postalCode: businessDetails.postalCode,
+          addressCountry: businessDetails.addressCountry,
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: -37.8164,
+          longitude: 144.965,
+        },
+        hasMap: `https://www.google.com/maps/search/?api=1&query=${mapQuery}`,
+        areaServed: [
+          { "@type": "City", name: "Melbourne" },
+          { "@type": "AdministrativeArea", name: "Victoria" },
+          { "@type": "Country", name: "Australia" },
+        ],
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            telephone: businessDetails.nationalLine,
+            contactType: "customer service",
+            areaServed: "AU",
+            availableLanguage: ["English", "Hindi", "Punjabi"],
+          },
+          {
+            "@type": "ContactPoint",
+            telephone: schemaMobileTelephoneE164Display(),
+            contactType: "legal enquiries",
+            areaServed: "AU",
+          },
+        ],
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "09:30",
+            closes: "18:00",
+          },
+        ],
+        sameAs: [
+          socialLinks.linkedin,
+          socialLinks.facebook,
+          "https://www.instagram.com/bansallawyers",
+          socialLinks.twitter,
+          socialLinks.youtube,
+        ],
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": contactBreadcrumbId,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: homeUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Contact Bansal Lawyers",
+            item: contactUrl,
+          },
+        ],
+      },
+    ],
   };
+}
+
+/** @deprecated Use createContactPageGraphSchema on the contact page. */
+export function createContactPageSchema() {
+  return createContactPageGraphSchema();
 }
 
 export function createBreadcrumbSchema(items: BreadcrumbItem[]) {

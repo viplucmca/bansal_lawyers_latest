@@ -13,12 +13,7 @@ import {
 } from "@/components/ui";
 import { getTurnstileSiteKey } from "@/lib/booking/turnstile";
 import { createMetadata } from "@/lib/metadata";
-import {
-  createBreadcrumbSchema,
-  createContactPageSchema,
-  createFaqSchema,
-  createLegalServiceSchema,
-} from "@/lib/schema";
+import { createContactPageGraphSchema, createFaqSchema } from "@/lib/schema";
 import { businessDetails } from "@/lib/site";
 
 // Turnstile site key is read at request time so a runtime env change is not baked into static HTML.
@@ -104,9 +99,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Schema.org Structured Data */}
-      <StructuredData data={createContactPageSchema()} />
-      <StructuredData data={createLegalServiceSchema()} />
-      <StructuredData data={createBreadcrumbSchema(breadcrumbs)} />
+      <StructuredData data={createContactPageGraphSchema()} />
       <StructuredData data={createFaqSchema(contactFaqs)} />
 
       {/* Breadcrumbs Navigation */}
@@ -115,7 +108,7 @@ export default function ContactPage() {
       {/* H1 & Hero Section */}
       <Hero
         eyebrow="Contact Bansal Lawyers"
-        title="Let's Start Your Legal Journey"
+        title="Contact Bansal Lawyers in Melbourne"
         intro="Get expert legal assistance from our Melbourne law firm. We're here to help you navigate complex legal matters with confidence and clarity."
         primaryAction={{ label: "Send Message Now", href: "#contact-form" }}
         secondaryAction={{
