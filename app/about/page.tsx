@@ -12,7 +12,7 @@ import {
   TrustBar,
 } from "@/components/ui";
 import { createMetadata } from "@/lib/metadata";
-import { createAboutPageSchema, createBreadcrumbSchema } from "@/lib/schema";
+import { createAboutPageGraphSchema } from "@/lib/schema";
 import { businessDetails } from "@/lib/site";
 
 export const metadata: Metadata = createMetadata({
@@ -165,14 +165,13 @@ export default function AboutPage() {
 
   return (
     <>
-      <StructuredData data={createAboutPageSchema()} />
-      <StructuredData data={createBreadcrumbSchema(breadcrumbs)} />
+      <StructuredData data={createAboutPageGraphSchema()} />
       <Breadcrumbs items={breadcrumbs} />
 
       {/* 1. Hero Section */}
       <Hero
         eyebrow="Law Firm Melbourne"
-        title="About Bansal Lawyers"
+        title="About Bansal Lawyers | Melbourne Law Firm"
         intro={
           <>
             <p>

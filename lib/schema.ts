@@ -622,65 +622,113 @@ export function createCaseUpdateSchema({
   };
 }
 
-export function createAboutPageSchema() {
+const ABOUT_PAGE_SCHEMA_NAME = "About Bansal Lawyers | Trusted Law Firm in Melbourne";
+const ABOUT_PAGE_SCHEMA_DESCRIPTION =
+  "Learn about Bansal Lawyers, a Melbourne law firm led by Ajay Bansal, providing legal services in immigration, family, criminal, commercial and property law.";
+
+const ABOUT_ORGANIZATION_DESCRIPTION =
+  "Bansal Lawyers is a Melbourne law firm providing legal services in immigration, family, criminal, commercial, property and civil law.";
+
+/** About page JSON-LD @graph: LegalService, AboutPage, WebSite, Person, BreadcrumbList. */
+export function createAboutPageGraphSchema() {
   const aboutUrl = `${siteUrl}/about`;
+  const aboutWebPageId = `${aboutUrl}#webpage`;
+  const aboutBreadcrumbId = `${aboutUrl}#breadcrumb`;
+  const ajayId = `${siteUrl}/about/ajay-bansal#person`;
+  const michaelId = `${siteUrl}/about/michael-saleh#person`;
 
   return {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "@id": `${aboutUrl}#webpage`,
-    url: aboutUrl,
-    name: "About Bansal Lawyers | Trusted Law Firm in Melbourne",
-    description:
-      "Learn about Bansal Lawyers, a Melbourne law firm led by Ajay Bansal at Level 8, 278 Collins Street, providing legal services in immigration, family, criminal, commercial, property and civil law.",
-    inLanguage: "en-AU",
-    mainEntity: {
-      "@type": ["LegalService", "LawFirm", "LocalBusiness"],
-      "@id": `${siteUrl}/#organization`,
-      name: "Bansal Lawyers",
-      url: siteUrl,
-      image: `${siteUrl}/images/logo.webp`,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteUrl}/images/logo.webp`,
+    "@graph": [
+      {
+        "@type": "LegalService",
+        "@id": organizationId,
+        name: businessDetails.name,
+        url: homeUrl,
+        description: ABOUT_ORGANIZATION_DESCRIPTION,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/images/logo.webp`,
+        },
+        image: `${siteUrl}/images/collins-street-office.webp`,
+        telephone: businessDetails.nationalLine,
+        email: businessDetails.email,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: businessDetails.streetAddress,
+          addressLocality: businessDetails.addressLocality,
+          addressRegion: businessDetails.addressRegion,
+          postalCode: businessDetails.postalCode,
+          addressCountry: businessDetails.addressCountry,
+        },
+        founder: { "@id": ajayId },
+        employee: [{ "@id": ajayId }, { "@id": michaelId }],
+        sameAs: [
+          socialLinks.linkedin,
+          socialLinks.facebook,
+          socialLinks.instagram,
+          socialLinks.twitter,
+        ],
       },
-      priceRange: "$$",
-      telephone: businessDetails.nationalLine,
-      email: businessDetails.email,
-      founder: {
+      {
+        "@type": "AboutPage",
+        "@id": aboutWebPageId,
+        url: aboutUrl,
+        name: ABOUT_PAGE_SCHEMA_NAME,
+        description: ABOUT_PAGE_SCHEMA_DESCRIPTION,
+        inLanguage: "en-AU",
+        isPartOf: { "@id": websiteId },
+        mainEntity: { "@id": organizationId },
+        breadcrumb: { "@id": aboutBreadcrumbId },
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        url: homeUrl,
+        name: businessDetails.name,
+        inLanguage: "en-AU",
+        publisher: { "@id": organizationId },
+      },
+      {
         "@type": "Person",
+        "@id": ajayId,
         name: "Ajay Bansal",
         jobTitle: "Director & Principal Lawyer",
         url: `${siteUrl}/about/ajay-bansal`,
+        worksFor: { "@id": organizationId },
       },
-      employee: [
-        {
-          "@type": "Person",
-          name: "Ajay Bansal",
-          jobTitle: "Director & Principal Lawyer",
-          url: `${siteUrl}/about/ajay-bansal`,
-        },
-        {
-          "@type": "Person",
-          name: "Michael Saleh",
-          jobTitle: "Solicitor",
-          url: `${siteUrl}/about/michael-saleh`,
-        },
-      ],
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: businessDetails.streetAddress,
-        addressLocality: "Melbourne",
-        addressRegion: "VIC",
-        postalCode: "3000",
-        addressCountry: "AU",
+      {
+        "@type": "Person",
+        "@id": michaelId,
+        name: "Michael Saleh",
+        jobTitle: "Solicitor",
+        url: `${siteUrl}/about/michael-saleh`,
+        worksFor: { "@id": organizationId },
       },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: "-37.8164",
-        longitude: "144.9650",
+      {
+        "@type": "BreadcrumbList",
+        "@id": aboutBreadcrumbId,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: homeUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "About Bansal Lawyers",
+            item: aboutUrl,
+          },
+        ],
       },
-    },
+    ],
   };
+}
+
+/** @deprecated Use createAboutPageGraphSchema on the about page. */
+export function createAboutPageSchema() {
+  return createAboutPageGraphSchema();
 }
 
