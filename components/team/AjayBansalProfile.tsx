@@ -152,7 +152,7 @@ export function AjayBansalProfile() {
             language when you call or book. Court papers, contracts and letters will still be in
             English, so Ajay will go through them with you in whichever language suits you.
           </p>
-          <h3>Experience across Victorian and Federal courts</h3>
+          <h3>Experience across Victorian and Federal Courts</h3>
           <p>
             Ajay founded Bansal Lawyers and is its Director and Principal Lawyer. Over seven years in
             practice, he&apos;s worked on family, property, commercial, criminal and civil matters.
@@ -216,7 +216,7 @@ export function AjayBansalProfile() {
         <div className="practitioner-profile__grid">
           <div className="practitioner-profile__biography">
             <p className="practitioner-profile__label">Professional profile</p>
-            <h2>Clear advice and focused representation</h2>
+            <h2>Clear Advice and Focused Representation</h2>
             <div className="practitioner-profile__prose">
               {biography.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -224,7 +224,7 @@ export function AjayBansalProfile() {
             </div>
 
             <div className="practitioner-profile__focus">
-              <h2>Practice focus</h2>
+              <h2>Practice Focus</h2>
               <div className="practitioner-profile__focus-grid">
                 {focusAreas.map((area) => (
                   <article className="practitioner-focus-card" key={area.title}>
@@ -245,7 +245,7 @@ export function AjayBansalProfile() {
             Legal trouble rarely comes at a convenient time. Here&apos;s what Ajay and the team can
             help with.
           </p>
-          <h3>Family Law</h3>
+          <h3>Family law</h3>
           <p>
             Separation is hard enough without court dates and forms on top. Ajay helps with
             divorce, parenting and property when your marriage is recognised in Australia. When you
@@ -269,7 +269,7 @@ export function AjayBansalProfile() {
             immediate danger, call 000. We act for people applying for an order and for people
             responding to one.
           </p>
-          <h3>Criminal Law</h3>
+          <h3>Criminal law</h3>
           <p>
             A charge, a police interview or a court summons can throw your whole life off track. The
             earlier you speak to a{" "}
@@ -301,7 +301,7 @@ export function AjayBansalProfile() {
             Not sure whether we take your type of charge? Give us a call and ask. We&apos;ll give you
             a straight answer.
           </p>
-          <h3>Civil and Commercial Law</h3>
+          <h3>Civil and Commercial law</h3>
           <p>
             Money and contract problems tend to go wrong in the same few ways. Someone stops paying.
             Two people read the same agreement differently. A business partner stops returning your
@@ -329,7 +329,7 @@ export function AjayBansalProfile() {
             for breach of contract from when the breach happened, though shorter deadlines can apply in
             some agreements.
           </p>
-          <h3>Property Law and Indian Power of Attorney</h3>
+          <h3>Property law and Indian power of attorney</h3>
           <p>
             Buying or selling a property, signing a lease, or dealing with a settlement that&apos;s
             gone wrong? It mostly comes down to paperwork and deadlines. Before you sign anything,
