@@ -13,7 +13,28 @@ export interface FaqProps {
   contactPhone?: string;
   contactHref?: string;
   hideContactCard?: boolean;
+  /** Split column (default) or centered stacked accordion (reference-style FAQ block). */
+  layout?: "split" | "centered";
   className?: string;
+}
+
+function FaqChevron() {
+  return (
+    <span className="faq-pill-chevron" aria-hidden="true">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polyline points="6 9 12 15 18 9" />
+      </svg>
+    </span>
+  );
 }
 
 export function Faq({
@@ -27,10 +48,35 @@ export function Faq({
   contactPhone = businessDetails.phone,
   contactHref = "/contact",
   hideContactCard = false,
+  layout = "split",
   className = "",
 }: FaqProps) {
   if (!items || items.length === 0) {
     return null;
+  }
+
+  if (layout === "centered") {
+    return (
+      <div className={`faq-centered-layout ${className}`.trim()}>
+        <header className="faq-centered-header">
+          <h2>{title}</h2>
+          {subtitle ? <p className="faq-centered-subtitle">{subtitle}</p> : null}
+        </header>
+        <div className="faq-centered-list">
+          {items.map((item, index) => (
+            <details key={`${item.question}-${index}`} className="faq-centered-item">
+              <summary className="faq-centered-summary">
+                <span className="faq-centered-question">
+                  <strong>Q:</strong> {item.question}
+                </span>
+                <FaqChevron />
+              </summary>
+              <div className="faq-centered-answer">{item.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -39,7 +85,7 @@ export function Faq({
       <div className="faq-split-left">
         <div className="faq-split-header">
           <h2 className="faq-split-title">{title}</h2>
-          <p className="faq-split-subtitle">{subtitle}</p>
+          {subtitle ? <p className="faq-split-subtitle">{subtitle}</p> : null}
         </div>
 
         {!hideContactCard && (
@@ -96,20 +142,7 @@ export function Faq({
             <details key={`${item.question}-${index}`} className="faq-pill-item">
               <summary className="faq-pill-summary">
                 <span className="faq-pill-question">{item.question}</span>
-                <span className="faq-pill-chevron" aria-hidden="true">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                </span>
+                <FaqChevron />
               </summary>
               <div className="faq-pill-answer">
                 {item.answer}

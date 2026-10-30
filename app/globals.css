@@ -2918,6 +2918,96 @@ h3 {
   margin-bottom: 0;
 }
 
+/* Centered stacked FAQ (full-width accordion rows) */
+.faq-centered-layout {
+  width: 100%;
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+.faq-centered-header {
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+  text-align: center;
+}
+
+.faq-centered-header h2 {
+  margin: 0;
+  color: var(--navy-950);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.faq-centered-subtitle {
+  max-width: 36rem;
+  margin: 0.85rem auto 0;
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.faq-centered-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.faq-centered-item {
+  overflow: hidden;
+  background: #f8f9fa;
+  transition: background-color 0.2s ease;
+}
+
+.faq-centered-item:hover {
+  background: #f1f3f5;
+}
+
+.faq-centered-item[open] {
+  background: #f8f9fa;
+}
+
+.faq-centered-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.05rem clamp(1.1rem, 3vw, 1.65rem);
+  color: var(--navy-950);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.45;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.faq-centered-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-centered-question {
+  flex: 1;
+  text-align: left;
+}
+
+.faq-centered-question strong {
+  font-weight: 700;
+}
+
+.faq-centered-item[open] .faq-pill-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-centered-answer {
+  padding: 0 clamp(1.1rem, 3vw, 1.65rem) 1.2rem;
+  color: #475569;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  animation: faqPillFadeIn 0.22s ease-out;
+}
+
 @keyframes faqPillFadeIn {
   from {
     opacity: 0;
@@ -3605,6 +3695,602 @@ h3 {
 
 .google-reviews-card__more:hover {
   text-decoration: underline;
+}
+
+/* Ajay profile — client testimonials carousel (Google-style cards) */
+.client-testimonials-section {
+  position: relative;
+  padding: clamp(3rem, 6vw, 4.5rem) 0 clamp(3.25rem, 6vw, 4.75rem);
+  background-color: #0a192f;
+  background-image: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.94)),
+    url("/images/cases/court-case-review.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--white);
+}
+
+.client-testimonials-section__header {
+  max-width: 48rem;
+  margin: 0 auto clamp(2rem, 4vw, 2.75rem);
+  text-align: center;
+}
+
+.client-testimonials-section__header h2 {
+  margin: 0 0 0.85rem;
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(1.85rem, 3.5vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.client-testimonials-section__header h2::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  margin: 0.85rem auto 0;
+  border-radius: 2px;
+  background: var(--gold);
+}
+
+.client-testimonials-carousel {
+  position: relative;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.client-testimonials-carousel__viewport {
+  overflow: hidden;
+}
+
+.client-testimonials-carousel__track {
+  display: grid;
+  gap: clamp(0.85rem, 2vw, 1.15rem);
+  align-items: stretch;
+}
+
+.client-testimonial-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 16.5rem;
+  padding: 1.15rem 1.2rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--white);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  color: var(--ink);
+}
+
+.client-testimonial-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.client-testimonial-card__reviewer {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.client-testimonial-card__avatar {
+  display: inline-flex;
+  width: 2.35rem;
+  height: 2.35rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.client-testimonial-card__author {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.client-testimonial-card__meta {
+  margin: 0.12rem 0 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.client-testimonial-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.55rem;
+}
+
+.client-testimonial-card__stars {
+  display: inline-flex;
+  gap: 0.08rem;
+  color: #fbbc04;
+}
+
+.client-testimonial-card__verified {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.client-testimonial-card__text {
+  flex: 1;
+  margin: 0;
+  color: var(--ink-secondary);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.client-testimonial-card__read-more {
+  align-self: flex-start;
+  margin-top: 0.45rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 0.82rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.client-testimonial-card__read-more:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.client-testimonials-carousel__nav {
+  position: absolute;
+  top: 50%;
+  right: -0.35rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transform: translateY(-50%);
+}
+
+.client-testimonials-carousel__arrow {
+  display: inline-flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  color: var(--navy-950);
+  font-size: 1.65rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.client-testimonials-carousel__arrow:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.client-testimonials-carousel__arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+@media (max-width: 760px) {
+  .client-testimonials-carousel__nav {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1.15rem;
+    transform: none;
+  }
+}
+
+/* Ajay Bansal profile page heading structure */
+.ajay-profile-section {
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+.ajay-profile-section > h2 {
+  margin-bottom: 0.65rem;
+}
+
+.ajay-profile-section > p {
+  color: var(--ink-secondary);
+  font-size: 1.03rem;
+  line-height: 1.75;
+}
+
+.ajay-profile-section > p + p {
+  margin-top: 0.85rem;
+}
+
+.ajay-profile-why > p {
+  margin: 0;
+}
+
+.ajay-profile-why > p + p {
+  margin-top: 0.65rem;
+}
+
+.ajay-profile-why > h3 {
+  margin: 1rem 0 0.45rem;
+  color: var(--navy-950);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(1.12rem, 1.8vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.ajay-profile-why > h3 + p {
+  margin-top: 0;
+}
+
+.ajay-profile-why > h3 + .ajay-profile-checklist {
+  margin-top: 0;
+}
+
+.ajay-profile-divider {
+  margin: 0.65rem 0 0.75rem;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.ajay-profile-why > .ajay-profile-divider + h3 {
+  margin-top: 0;
+}
+
+.ajay-profile-indian__intro {
+  margin-bottom: 0.35rem;
+}
+
+.ajay-profile-indian__intro + h3 {
+  margin-top: 0.65rem;
+}
+
+.ajay-profile-indian a {
+  color: var(--brand-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ajay-profile-indian a:hover {
+  text-decoration: underline;
+}
+
+.ajay-profile-indian.ajay-profile-why > p + p {
+  margin-top: 0.55rem;
+}
+
+.ajay-profile-list-lead {
+  margin-bottom: 0.35rem;
+}
+
+.ajay-profile-checklist {
+  margin: 0.35rem 0 0.65rem;
+  padding-left: 1.2rem;
+  color: var(--ink-secondary);
+  line-height: 1.65;
+}
+
+.ajay-profile-checklist li + li {
+  margin-top: 0.35rem;
+}
+
+.ajay-profile-list {
+  margin: 1.25rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--ink-secondary);
+  line-height: 1.75;
+}
+
+.ajay-profile-list li + li {
+  margin-top: 0.45rem;
+}
+
+.ajay-profile-section-header {
+  max-width: none;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+.ajay-profile-final-cta {
+  max-width: 44rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.ajay-profile-final-cta h2 {
+  margin: 0 0 0.85rem;
+  color: var(--white);
+}
+
+.ajay-profile-final-cta p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.ajay-profile-final-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.35rem;
+}
+
+.section.ajay-profile-office-media {
+  padding-block: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+/* Ajay Bansal profile — page shell (aligned with practice-area pages) */
+.ajay-bansal-page {
+  --ajay-content-width: 52rem;
+  --ajay-scroll-aside-offset: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.ajay-bansal-page .section {
+  padding-block: clamp(2.75rem, 5vw, 4.25rem);
+}
+
+.ajay-bansal-page .ajay-profile-section > h2,
+.ajay-bansal-page .ajay-profile-why > h2 {
+  margin: 0 0 0.85rem;
+  color: var(--navy-950);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.ajay-bansal-page .client-testimonials-section {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+}
+
+.ajay-bansal-page #faqs .faq-split-layout {
+  max-width: none;
+}
+
+.ajay-bansal-page #faqs .faq-split-title {
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(1.85rem, 3.2vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.ajay-bansal-page #faqs .faq-contact-card {
+  max-width: none;
+}
+
+.ajay-bansal-hero .practitioner-hero__grid {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+
+.ajay-bansal-hero h1 {
+  margin: 0;
+}
+
+.ajay-bansal-hero .practitioner-hero__lead,
+.ajay-bansal-hero .ajay-hero-intro p {
+  max-width: 42rem;
+  margin: 0;
+  color: rgb(255 255 255 / 86%);
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+  line-height: 1.65;
+}
+
+.ajay-bansal-hero .practitioner-hero__lead {
+  margin-top: 0.85rem;
+}
+
+.ajay-bansal-hero .ajay-hero-divider {
+  margin: 0.85rem 0;
+  border: 0;
+  border-top: 1px solid rgb(255 255 255 / 22%);
+}
+
+.ajay-bansal-hero .ajay-hero-intro p + p {
+  margin-top: 0.75rem;
+}
+
+.ajay-bansal-hero .practitioner-hero__actions {
+  margin-top: 1.15rem;
+}
+
+.ajay-profile-scroll-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 21rem);
+  column-gap: clamp(1.75rem, 4vw, 3rem);
+  row-gap: 0;
+  align-items: start;
+  max-width: calc(var(--container-max, 75rem) + 3rem);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 1.5rem);
+  background: var(--white);
+}
+
+.ajay-profile-scroll-layout__content {
+  display: contents;
+}
+
+.ajay-profile-scroll-layout__content > .section {
+  grid-column: 1;
+}
+
+.ajay-bansal-page .ajay-profile-scroll-layout__content > .section:not(.ajay-indian-community-section) {
+  padding-inline: 0;
+  background: var(--white);
+}
+
+.ajay-bansal-page .ajay-profile-scroll-layout__content > .ajay-practitioner-profile {
+  padding-block-end: 0;
+}
+
+.ajay-bansal-page .ajay-profile-scroll-layout__content > .ajay-indian-community-section {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 21rem);
+  column-gap: clamp(1.75rem, 4vw, 3rem);
+  padding-inline: 0;
+  background: var(--surface-alt);
+}
+
+.ajay-bansal-page .ajay-profile-scroll-layout__content > .ajay-indian-community-section .container {
+  grid-column: 1;
+  width: min(calc(100% - (var(--gutter) * 2)), var(--container));
+  max-width: 100%;
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+.ajay-profile-scroll-layout__content > .ajay-profile-scroll-first-section {
+  padding-block-start: var(--ajay-scroll-aside-offset);
+}
+
+.ajay-profile-scroll-layout__aside {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  position: sticky;
+  top: 7.25rem;
+  align-self: start;
+  padding-top: var(--ajay-scroll-aside-offset);
+  z-index: 1;
+}
+
+.ajay-profile-scroll-layout__aside .ajay-at-a-glance-card,
+.ajay-profile-scroll-layout__aside .practitioner-profile__details {
+  position: static;
+  top: auto;
+}
+
+.ajay-bansal-page .ajay-practitioner-profile .practitioner-profile__grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.ajay-profile-why > .ajay-at-a-glance-card--mobile-only {
+  margin: 1.35rem 0 1.75rem;
+}
+
+.ajay-bansal-hero .practitioner-hero__portrait--google-review {
+  aspect-ratio: auto;
+  width: min(100%, 26rem);
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ajay-hero-google-review {
+  width: 100%;
+  padding: 1.15rem 1.25rem 1.1rem;
+}
+
+.ajay-hero-google-review__bar {
+  position: relative;
+}
+
+.ajay-hero-google-review__bar .mockup-title-badge {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ajay-hero-google-review__panel {
+  margin-top: 0.15rem;
+  padding: 0.85rem 0.95rem 0.75rem;
+  border-radius: calc(var(--radius-sm) - 2px);
+  box-shadow: none;
+}
+
+.ajay-hero-google-review__header {
+  margin-bottom: 0.5rem;
+}
+
+.ajay-hero-google-review__summary {
+  margin-bottom: 0.55rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.ajay-hero-google-review__viewport {
+  --ajay-hero-review-scroll-end: 0px;
+  height: clamp(14.5rem, 34vw, 18.75rem);
+  overflow: hidden;
+}
+
+.ajay-hero-google-review__track {
+  will-change: transform;
+}
+
+.ajay-hero-google-review__review + .ajay-hero-google-review__review {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(218 220 224 / 65%);
+}
+
+.ajay-hero-google-review__footer {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 960px) {
+  .ajay-profile-scroll-layout {
+    display: block;
+  }
+
+  .ajay-profile-scroll-layout__content {
+    display: block;
+  }
+
+  .ajay-profile-scroll-layout__aside {
+    position: static;
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    max-width: 21rem;
+    margin: var(--ajay-scroll-aside-offset) auto clamp(2rem, 5vw, 2.75rem);
+    padding-top: 0;
+  }
+
+  .ajay-bansal-page .ajay-profile-scroll-layout__content > .ajay-indian-community-section {
+    display: block;
+    width: auto;
+    max-width: none;
+    margin-left: 0;
+    padding-inline: 0;
+  }
+
+  .ajay-bansal-page .ajay-profile-scroll-layout__content > .ajay-indian-community-section .container {
+    max-width: none;
+    margin-inline: auto;
+    padding-inline: unset;
+  }
+
+  .ajay-profile-scroll-layout__content > .section {
+    padding-inline: unset;
+  }
+
+  .ajay-at-a-glance-card--desktop-only {
+    display: none;
+  }
+}
+
+@media (min-width: 961px) {
+  .ajay-at-a-glance-card--mobile-only {
+    display: none;
+  }
 }
 
 .form-grid {

@@ -211,6 +211,17 @@ html { scroll-padding-top: 8.5rem; }
 }
 .site-main--refined .section--warm,
 .site-main--refined .section--slate { background: var(--modern-muted); }
+.site-main--refined .ajay-bansal-page .ajay-profile-scroll-layout .section:not(.ajay-indian-community-section) {
+  padding-block: clamp(2.75rem, 5vw, 4.25rem);
+  background: var(--white);
+}
+.site-main--refined .ajay-bansal-page .ajay-profile-scroll-layout .section.ajay-profile-scroll-first-section {
+  padding-block-start: var(--ajay-scroll-aside-offset);
+  padding-block-end: clamp(2.75rem, 5vw, 4.25rem);
+}
+.site-main--refined .ajay-bansal-page .ajay-profile-scroll-layout .ajay-indian-community-section {
+  background: var(--modern-muted);
+}
 .site-main--refined .section-header { margin-bottom: clamp(2rem, 4vw, 3.25rem); }
 .site-main--refined .section-header h2 {
   max-width: 18ch;

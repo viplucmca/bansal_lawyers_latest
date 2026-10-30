@@ -1,3 +1,4 @@
+import { ajayBansalFaqSchemaEntities } from "@/lib/ajay-bansal-faqs";
 import { businessDetails, siteUrl, socialLinks } from "@/lib/site";
 import type { BreadcrumbItem, FaqItem } from "@/types/content";
 
@@ -796,5 +797,76 @@ export function createAboutPageGraphSchema() {
 /** @deprecated Use createAboutPageGraphSchema on the about page. */
 export function createAboutPageSchema() {
   return createAboutPageGraphSchema();
+}
+
+const AJAY_BANSAL_PERSON_DESCRIPTION =
+  "Looking for an Indian lawyer in Melbourne? Ajay Bansal founding Director & Principal Lawyer at Bansal Lawyers offers legal guidance in English, Hindi and Punjabi across family, criminal, civil and commercial law. Contact our team today to book a consultation!";
+
+/** Ajay Bansal profile JSON-LD @graph: Person, BreadcrumbList, FAQPage. */
+export function createAjayBansalPageGraphSchema() {
+  const profileUrl = `${siteUrl}/about/ajay-bansal`;
+  const personId = `${profileUrl}#person`;
+  const breadcrumbId = `${profileUrl}#breadcrumb`;
+  const faqId = `${profileUrl}#faqs`;
+  const aboutUrl = `${siteUrl}/about`;
+  const mobileTel = businessDetails.phoneTel.startsWith("tel:")
+    ? businessDetails.phoneTel.slice(4)
+    : businessDetails.phoneTel.replace(/\D/g, "");
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": personId,
+        name: "Ajay Bansal",
+        url: profileUrl,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": profileUrl,
+        },
+        image: `${siteUrl}/images/team/ajay-bansal-director.webp`,
+        jobTitle: "Director & Principal Lawyer",
+        worksFor: {
+          "@type": ["LegalService", "LawFirm", "LocalBusiness"],
+          "@id": organizationId,
+        },
+        telephone: mobileTel,
+        email: businessDetails.email,
+        knowsLanguage: ["English", "Hindi", "Punjabi"],
+        description: AJAY_BANSAL_PERSON_DESCRIPTION,
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": breadcrumbId,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: homeUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "About Us",
+            item: aboutUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: "Ajay Bansal",
+            item: profileUrl,
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": faqId,
+        url: `${profileUrl}#faqs`,
+        mainEntity: ajayBansalFaqSchemaEntities(),
+      },
+    ],
+  };
 }
 
