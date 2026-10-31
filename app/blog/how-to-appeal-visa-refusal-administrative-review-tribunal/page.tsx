@@ -1366,7 +1366,7 @@ export default function HowToAppealVisaRefusalArtPage() {
                         textDecoration: "underline",
                       }}
                     >
-                      +61422 905 860
+                      0422 905 860
                     </a>{" "}
                     or email us at{" "}
                     <a

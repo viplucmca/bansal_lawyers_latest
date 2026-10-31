@@ -188,7 +188,9 @@ export function createLegalServiceSchema() {
       },
       {
         "@type": "ContactPoint",
-        telephone: businessDetails.phone,
+        telephone: businessDetails.phoneTel.startsWith("tel:")
+          ? businessDetails.phoneTel.slice(4)
+          : businessDetails.phone,
         contactType: "Direct Solicitor Line",
         areaServed: "AU",
         availableLanguage: ["English", "Hindi", "Punjabi"],
