@@ -3895,6 +3895,123 @@ h3 {
   }
 }
 
+.google-review-badge-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+/* Indian lawyers page: Google badge below carousel, bottom-left of content column */
+.client-testimonials-section--corner-badge {
+  padding-bottom: clamp(3.25rem, 6vw, 4.5rem);
+}
+
+.client-testimonials-section--corner-badge .client-testimonials-carousel {
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.client-testimonials-section--corner-badge .google-review-badge-wrap {
+  position: static;
+  justify-content: flex-start;
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  padding-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  border-top: 1px solid rgb(255 255 255 / 12%);
+}
+
+@media (max-width: 760px) {
+  .client-testimonials-section--corner-badge .google-review-badge-wrap {
+    margin-top: clamp(2.25rem, 6vw, 3rem);
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .client-testimonials-section--corner-badge .google-review-badge {
+    width: 100%;
+    max-width: 20rem;
+  }
+}
+
+.google-review-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 220px;
+  padding: 0.5rem 0.85rem 0.5rem 0.5rem;
+  background: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 3px rgb(60 64 67 / 15%);
+  transition:
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.google-review-badge:hover {
+  box-shadow: 0 2px 8px rgb(60 64 67 / 22%);
+  border-color: #bdc1c6;
+}
+
+.google-review-badge__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #dadce0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.google-review-badge__text {
+  line-height: 1.15;
+}
+
+.google-review-badge__label {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.google-review-badge__row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.1rem;
+}
+
+.google-review-badge__score {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #1a73e8;
+}
+
+.google-review-badge__stars {
+  display: inline-flex;
+  gap: 1px;
+  color: #fbbc04;
+}
+
+.google-review-badge__stars svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+.google-review-badge__count {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #1a73e8;
+  opacity: 0.88;
+}
+
 /* Ajay Bansal profile page heading structure */
 .ajay-profile-section {
   max-width: 52rem;

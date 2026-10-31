@@ -383,6 +383,68 @@ export function createImmigrationLawyersPageSchema(faqs: FaqItem[]) {
   };
 }
 
+export const INDIAN_LAWYERS_MELBOURNE_PAGE_TITLE =
+  "Indian Lawyers in Melbourne | Family, Criminal, Disputes & Wills";
+export const INDIAN_LAWYERS_MELBOURNE_PAGE_DESCRIPTION =
+  "Need an Indian lawyer in Melbourne? Bansal Lawyers offers legal advice in family, criminal, civil, commercial and dispute matters. Advice in English, Hindi and Punjabi. Contact our team today to discuss your legal needs.";
+
+/** Indian lawyers Melbourne page JSON-LD @graph: WebPage, BreadcrumbList, FAQPage. */
+export function createIndianLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
+  const pageUrl = `${siteUrl}/indian-lawyers-melbourne`;
+  const pageId = `${pageUrl}#webpage`;
+  const breadcrumbId = `${pageUrl}#breadcrumb`;
+  const faqId = `${pageUrl}#faq`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": pageId,
+        url: pageUrl,
+        name: INDIAN_LAWYERS_MELBOURNE_PAGE_TITLE,
+        description: INDIAN_LAWYERS_MELBOURNE_PAGE_DESCRIPTION,
+        inLanguage: "en-AU",
+        about: { "@id": organizationId },
+        breadcrumb: { "@id": breadcrumbId },
+        mainEntity: { "@id": faqId },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": breadcrumbId,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: homeUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Indian Lawyers in Melbourne",
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": faqId,
+        url: pageUrl,
+        inLanguage: "en-AU",
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: typeof item.answer === "string" ? item.answer : "",
+          },
+        })),
+      },
+    ],
+  };
+}
+
 const CONTACT_PAGE_SCHEMA_NAME = "Contact Bansal Lawyers | Melbourne Lawyers";
 const CONTACT_PAGE_SCHEMA_DESCRIPTION =
   "Contact Bansal Lawyers in Melbourne CBD for enquiries about immigration, family, criminal, commercial, property and civil law. Call 1300 226 725 or request a consultation.";

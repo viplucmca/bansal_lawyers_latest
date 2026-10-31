@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ClientTestimonialsCarousel } from "@/components/sections/ClientTestimonialsCarousel";
+import { GoogleReviewSummaryBadge } from "@/components/sections/GoogleReviewSummaryBadge";
 import { StructuredData } from "@/components/seo";
 import {
   Breadcrumbs,
   ButtonLink,
+  Container,
   CtaSection,
   Faq,
   Hero,
@@ -13,18 +16,18 @@ import {
   TrustBar,
 } from "@/components/ui";
 import { getTurnstileSiteKey } from "@/lib/booking/turnstile";
+import { indianLawyersMelbourneTestimonials } from "@/lib/indian-lawyers-melbourne-testimonials";
 import { createMetadata } from "@/lib/metadata";
 import {
-  createBreadcrumbSchema,
-  createFaqSchema,
-  createLegalServiceSchema,
+  createIndianLawyersMelbournePageGraphSchema,
+  INDIAN_LAWYERS_MELBOURNE_PAGE_DESCRIPTION,
+  INDIAN_LAWYERS_MELBOURNE_PAGE_TITLE,
 } from "@/lib/schema";
 import { businessDetails } from "@/lib/site";
 
 export const metadata: Metadata = createMetadata({
-  title: "Indian Lawyers in Melbourne | Family, Disputes & Wills",
-  description:
-    "Melbourne lawyers for the Indian community: divorce, property settlement, business and commercial disputes, and wills. Advice in English, Hindi and Punjabi.",
+  title: INDIAN_LAWYERS_MELBOURNE_PAGE_TITLE,
+  description: INDIAN_LAWYERS_MELBOURNE_PAGE_DESCRIPTION,
   path: "/indian-lawyers-melbourne",
   keywords: [
     "Indian Lawyers Melbourne",
@@ -85,6 +88,36 @@ const indianFaqs = [
     answer:
       "Yes. You can take advice in English, Hindi or Punjabi. That includes meetings at the Collins Street office and online consultations if you are elsewhere in Australia, or if family in India are joining the call. Court documents are still prepared in English.",
   },
+  {
+    question: "What documents should I bring to a consultation about a family business dispute?",
+    answer:
+      "Bring whatever you can find. That’s usually partnership or shareholder agreements, company records, bank and accounting statements, contracts, invoices, and any emails or messages with the other side. A rough timeline helps too. If something’s missing, come anyway and we’ll tell you what to look for.",
+  },
+  {
+    question: "Can I consult Bansal Lawyers if I live outside Melbourne?",
+    answer:
+      "Yes. We act for clients across Australia by phone or secure video, and we also advise overseas clients on Australian law. If you’d prefer to meet in person, you’re welcome at our Collins Street office. Just tell us which you’d like when you book.",
+  },
+  {
+    question: "Can family members in India participate in an online legal consultation?",
+    answer:
+      "Yes. They can join by phone or video from wherever they are. What you tell us is confidential, so we’ll check who’s on the call before we discuss your matter. Tell us when you book who’ll be joining and we’ll set it up.",
+  },
+  {
+    question: "Do you act in criminal matters?",
+    answer:
+      "Yes. If you’re looking for Indian criminal lawyers in Melbourne, our criminal lawyers act for people facing criminal charges, traffic offences and police matters. That includes bail applications and breaches of intervention orders. If you’ve got a court date or the police have contacted you, call us early.",
+  },
+  {
+    question: "What's the difference between a will and a power of attorney?",
+    answer:
+      "A will takes effect after you die. A power of attorney works while you’re alive. In Victoria, an enduring power of attorney lets someone make financial and personal decisions for you, even if you later lose capacity. If you own assets in two countries, you may need more than one document. Our wills lawyers can go through what suits you.",
+  },
+  {
+    question: "Do my documents need to be translated into English?",
+    answer:
+      "If a document is in Hindi or Punjabi and will be used in court, it generally needs an English translation from a certified translator. Bring the originals to your first meeting and we’ll tell you which ones need translating, so you don’t pay for translations you won’t use.",
+  },
 ];
 
 export default function IndianLawyersMelbournePage() {
@@ -96,15 +129,13 @@ export default function IndianLawyersMelbournePage() {
 
   return (
     <>
-      <StructuredData data={createLegalServiceSchema()} />
-      <StructuredData data={createBreadcrumbSchema(breadcrumbs)} />
-      <StructuredData data={createFaqSchema(indianFaqs)} />
+      <StructuredData data={createIndianLawyersMelbournePageGraphSchema(indianFaqs)} />
 
       <Breadcrumbs items={breadcrumbs} />
 
       <Hero
         eyebrow="Bansal Lawyers · Melbourne"
-        title="Indian Lawyers in Melbourne – Family Law, Business Disputes & Wills"
+        title="Indian Lawyers in Melbourne"
         intro={
           <>
             <p>
@@ -123,7 +154,7 @@ export default function IndianLawyersMelbournePage() {
       <TrustBar
         items={[
           "English, Hindi and Punjabi",
-          "Family Law, Business Disputes and Wills",
+          "Family, Civil, Criminal, Business Disputes and Wills",
           "Collins Street Office",
           "Online Consultations in Australia and India",
         ]}
@@ -216,29 +247,84 @@ export default function IndianLawyersMelbournePage() {
 
       <Section tone="white" id="why-clients-choose-us">
         <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
-          <h2>Why Clients from the Indian Community Instruct Us</h2>
+          <h2>Why Choose Bansal Lawyers for Indian-Community Legal Matters?</h2>
           <p style={{ fontSize: "1.08rem", lineHeight: "1.75", color: "var(--ink)", marginTop: "1rem" }}>
-            Consultations are available in English, Hindi and Punjabi. That helps when a spouse, a parent or a business partner is more at ease in Hindi or Punjabi, while the court documents remain in English.
+            Maybe your marriage has ended. Maybe your brother wants out of the family shop. Or maybe your dad&apos;s will covers a flat in India and a house in Melbourne, and no one knows how the two fit together. These things are hard enough without wondering whether your lawyer will get where you&apos;re coming from.
           </p>
           <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
-            The family and business structures in this work are familiar ones. A marriage under Indian law. Parents who paid a deposit. Shares held for a brother who lives in India. A flat still in a parent&apos;s name. Those facts change the advice, so we ask about them at the first meeting.
+            Bansal Lawyers is a Melbourne firm that works with a lot of Indian families and business owners. If you&apos;re searching for{" "}
+            <strong>Indian lawyers in Melbourne</strong>, here&apos;s what you can expect from us.
+          </p>
+          <h3 style={{ marginTop: "1.75rem", fontSize: "1.25rem" }}>We Listen First</h3>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            We begin by asking questions. What do you want to happen? Who&apos;s involved? What paperwork do you have? Many of our clients come to us with a situation that&apos;s tangled up with family, money or two countries, and that takes time to sort out. We won&apos;t rush you or jump to conclusions. If something is difficult to talk about, you can say it in the language you&apos;re most comfortable in. Once we&apos;ve got the full picture, we&apos;ll give you advice.
+          </p>
+          <h3 style={{ marginTop: "1.75rem", fontSize: "1.25rem" }}>Speak in Your Own Language</h3>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            Talk to us in Hindi, Punjabi or English, whichever feels easiest. That goes for anyone looking for a{" "}
+            <Link href="/about/ajay-bansal/">Hindi-speaking lawyer in Melbourne</Link> or a{" "}
+            <Link href="/about/ajay-bansal/#punjabi-speaking-lawyer">Punjabi-speaking lawyer in Melbourne</Link>.
+            Court documents are written in English, but we&apos;ll walk you through them.
+          </p>
+          <h3 style={{ marginTop: "1.75rem", fontSize: "1.25rem" }}>Matters That Reach Across Borders</h3>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            Many of our clients married in India, own property there, or run a business with relatives. Some of those questions are answered by Australian law, others by Indian law. We&apos;ll tell you what we can do here, and whether you&apos;ll need a lawyer in India as well. If you&apos;re in a partnership or shareholder fight, a{" "}
+            <Link href="/civil-lawyers-melbourne/business-related-dispute-lawyer-melbourne/">
+              business dispute lawyer in Melbourne
+            </Link>{" "}
+            will begin with your agreement and the company records.
+          </p>
+          <hr className="ajay-profile-divider" />
+          <h3 style={{ marginTop: "1.75rem", fontSize: "1.25rem" }}>You&apos;ll Know What Happens Next</h3>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            We&apos;ll tell you where you stand, what might go wrong and what comes next. If there&apos;s a deadline or a court date, we&apos;ll point it out early so it doesn&apos;t catch you off guard. We explain each step in plain language, including what we&apos;ll do and what we need from you. After that, we keep you in the loop, and if anything changes along the way, you&apos;ll hear it from us straight away.
+          </p>
+          <h3 style={{ marginTop: "1.75rem", fontSize: "1.25rem" }}>Visit Us in the CBD or Meet Online</h3>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            Our office is on Level 8, 278 Collins Street, in the Melbourne CBD. If getting there is hard, you can book a{" "}
+            <Link href="/contact/">legal consultation in Melbourne</Link> by phone or video instead. Family members in India can join the call too.
           </p>
           <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
-            You do not need to be in the CBD for every appointment. We consult online with clients across Australia, and with family in India when they should be on the call. The Collins Street office is available when meeting in person is the better option.
+            People often search for <strong>Indian family lawyers in Melbourne</strong>,{" "}
+            <strong>Indian commercial lawyers in Melbourne</strong> or <strong>Indian civil lawyers in Melbourne</strong>.
+            Our <Link href="/family-lawyers-melbourne/">family lawyers</Link>,{" "}
+            <Link href="/commercial-lawyers-melbourne/">commercial lawyers</Link> and{" "}
+            <Link href="/civil-lawyers-melbourne/">civil lawyers</Link> cover all of these areas. We also take on{" "}
+            <Link href="/criminal-lawyers-melbourne/">criminal</Link>,{" "}
+            <Link href="/property-lawyers-melbourne/">property</Link> and{" "}
+            <Link href="/wills-lawyers-melbourne/">wills</Link> matters.
           </p>
         </div>
       </Section>
 
-      <Section tone="warm" id="our-team">
+      <Section tone="warm" id="meet-ajay-bansal">
+        <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
+          <h2>Meet Ajay Bansal – Director &amp; Principal Lawyer</h2>
+          <p style={{ fontSize: "1.08rem", lineHeight: "1.75", color: "var(--ink)", marginTop: "1rem" }}>
+            Ajay Bansal founded Bansal Lawyers and is its Director and Principal Lawyer. Over 7 years, he&apos;s helped hundreds of clients with{" "}
+            <Link href="/immigration-lawyers-melbourne/">immigration</Link>, family, property, commercial, criminal and civil matters. He appears in the Victorian and Federal courts and acts for clients all over Australia.
+          </p>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            His approach is simple. He gets to know your situation, explains where you stand in plain terms, and helps you make decisions without dragging things out. The firm was built on honest, practical advice that people can actually follow.
+          </p>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            For families, he deals with parenting arrangements, property settlement and family violence matters. For business owners, he handles contracts, transactions, property and disputes.
+          </p>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            Ajay speaks English, Hindi and Punjabi. So if you want an <strong>Indian lawyer in Melbourne</strong>, you can talk about sensitive things in the language you&apos;re most at ease with. He works alongside solicitor{" "}
+            <Link href="/about/michael-saleh/">Michael Saleh</Link> and the rest of the team.
+          </p>
+        </div>
+      </Section>
+
+      <Section tone="white" id="our-team">
         <div className="team-clean-header">
           <div className="team-clean-eyebrow">
             <span className="team-clean-eyebrow__line" aria-hidden="true" />
             <span>LEGAL PRACTITIONERS</span>
             <span className="team-clean-eyebrow__line" aria-hidden="true" />
           </div>
-          <h2 className="team-clean-title">
-            Meet Our <span className="team-clean-title__serif">Legal Team</span>
-          </h2>
+          <h2 className="team-clean-title">Meet Our Legal Team</h2>
           <p className="team-clean-intro">
             Ajay Bansal is the director and principal lawyer. Michael Saleh is a solicitor. Read each profile, then book a consultation.
           </p>
@@ -296,7 +382,60 @@ export default function IndianLawyersMelbournePage() {
         </div>
       </Section>
 
-      <Section tone="white" id="office">
+      <section
+        className="client-testimonials-section client-testimonials-section--corner-badge"
+        id="client-reviews"
+      >
+        <Container>
+          <header className="client-testimonials-section__header">
+            <h2>What Our Clients Say About Us</h2>
+          </header>
+          <ClientTestimonialsCarousel items={indianLawyersMelbourneTestimonials} />
+          <GoogleReviewSummaryBadge />
+        </Container>
+      </section>
+
+      <Section tone="white" id="consultation-prep">
+        <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
+          <h2>How to Prepare for Your First Legal Consultation</h2>
+          <p style={{ fontSize: "1.08rem", lineHeight: "1.75", color: "var(--ink)", marginTop: "1rem" }}>
+            A little preparation helps you get more out of the first meeting. You don&apos;t need to have it all sorted. These steps will help.
+          </p>
+          <h3 style={{ marginTop: "1.75rem", fontSize: "1.25rem" }}>1. Identify Your Legal Issue</h3>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            Start with a rough idea of the problem. Is it a divorce, a business dispute, a property issue, a will or a criminal charge? Pick whichever is closest. If you&apos;re not sure, just tell us what happened and we&apos;ll work out where it fits.
+          </p>
+          <h3 style={{ marginTop: "1.75rem", fontSize: "1.25rem" }}>2. Gather Your Documents</h3>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            What you&apos;ll need depends on the matter. A divorce calls for different papers than a business dispute. Common ones are:
+          </p>
+          <ul style={{ marginTop: "0.75rem", paddingLeft: "1.25rem", lineHeight: "1.75", color: "var(--ink-secondary)" }}>
+            <li>Marriage certificate and ID</li>
+            <li>Court, police or tribunal papers</li>
+            <li>Property records and loan statements</li>
+            <li>Contracts, company records and messages</li>
+            <li>Any existing will</li>
+          </ul>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            Can&apos;t find everything? Bring what you&apos;ve got and we&apos;ll tell you what else is needed.
+          </p>
+          <h3 style={{ marginTop: "1.75rem", fontSize: "1.25rem" }}>3. Prepare a Timeline</h3>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            Jot down the key dates: when you married or separated, when the dispute began, and any earlier court steps. If you have a court date or a letter with a deadline, let us know as soon as you can. Some time limits are short.
+          </p>
+          <h3 style={{ marginTop: "1.75rem", fontSize: "1.25rem" }}>4. List Your Questions</h3>
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            Most people want to know their options, what happens next, how long it could take and what it might cost. Write your questions down so you don&apos;t forget them once you&apos;re in the meeting.
+          </p>
+          <h3 style={{ marginTop: "1.75rem", fontSize: "1.25rem" }}>5. Discuss the Next Steps</h3>
+          <hr className="ajay-profile-divider" />
+          <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
+            We may need to read through your documents before we can advise on your options. We can&apos;t promise an outcome, a timeframe or a fee until we&apos;ve looked at your matter.
+          </p>
+        </div>
+      </Section>
+
+      <Section tone="warm" id="office">
         <div className="location-grid">
           <div>
             <span className="eyebrow">Collins Street</span>
