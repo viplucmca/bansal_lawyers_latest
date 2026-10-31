@@ -1,4 +1,7 @@
-import { googleBusinessProfileUrl } from "@/lib/site";
+import {
+  googleBusinessProfileUrl,
+  googleBusinessReviewsSummary,
+} from "@/lib/site";
 
 function StarIcon() {
   return (
@@ -10,8 +13,8 @@ function StarIcon() {
 
 /** Compact Google reviews badge (links to the firm’s Google Business profile). */
 export function GoogleReviewSummaryBadge({
-  rating = 5.0,
-  reviewCount = 224,
+  rating = googleBusinessReviewsSummary.rating,
+  reviewCount = googleBusinessReviewsSummary.reviewCount,
 }: {
   rating?: number;
   reviewCount?: number;
