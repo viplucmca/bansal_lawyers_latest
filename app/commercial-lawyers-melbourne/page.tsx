@@ -155,7 +155,7 @@ export default function CommercialLawyersMelbournePage() {
         primaryAction={{ label: "Book a Consultation", href: "/contact" }}
         secondaryAction={{
           label: "Call Our Commercial Law Team",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         aside={<HeroBookingPlaceholder defaultPracticeArea="commercial" turnstileSiteKey={turnstileSiteKey} />}
       />
@@ -310,7 +310,7 @@ export default function CommercialLawyersMelbournePage() {
         action={{ label: "Book a Consultation", href: "/contact" }}
         secondaryAction={{
           label: "Call Our Commercial Law Team",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         phone="1300 226 725"
         phoneLabel="Direct Commercial Solicitor"

@@ -153,7 +153,7 @@ export default function VisaRefusalLawyerMelbournePage() {
         primaryAction={{ label: "Book a Consultation", href: "/contact/" }}
         secondaryAction={{
           label: "Speak With a Visa Refusal Lawyer",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
       />
 
@@ -362,7 +362,7 @@ export default function VisaRefusalLawyerMelbournePage() {
         action={{ label: "Book a Consultation", href: "/contact" }}
         secondaryAction={{
           label: "Speak With Our Visa Refusal Team",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         phone="1300 226 725"
         phoneLabel="Direct Immigration Solicitor"

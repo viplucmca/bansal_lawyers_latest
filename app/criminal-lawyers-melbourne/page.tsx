@@ -102,7 +102,7 @@ export default function CriminalLawyersMelbournePage() {
         }
         primaryAction={{
           label: "Speak With a Criminal Lawyer",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         secondaryAction={{
           label: "Book a Consultation",

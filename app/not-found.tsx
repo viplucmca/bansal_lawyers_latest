@@ -119,7 +119,7 @@ export default function NotFound() {
                 Book a Consultation
               </ButtonLink>
               <a
-                href="tel:+61422905860"
+                href={businessDetails.phoneTel}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",

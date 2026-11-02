@@ -141,7 +141,7 @@ export default function SpousalMaintenanceLawyerMelbournePage() {
         }
         primaryAction={{
           label: "Speak With a Spousal Maintenance Lawyer",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         secondaryAction={{
           label: "Book a Consultation",
@@ -272,7 +272,7 @@ export default function SpousalMaintenanceLawyerMelbournePage() {
         action={{ label: "Book a Consultation", href: "/contact" }}
         secondaryAction={{
           label: "Speak With Our Family Law Team",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         phone="1300 226 725"
         phoneLabel="Direct Family Solicitor"

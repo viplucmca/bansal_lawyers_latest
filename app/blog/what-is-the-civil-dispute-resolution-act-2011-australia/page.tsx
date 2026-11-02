@@ -426,7 +426,7 @@ export default function CivilDisputeResolutionActPage() {
                   <ButtonLink href="/contact" variant="light">
                     Book a Consultation
                   </ButtonLink>
-                  <ButtonLink href="tel:+61422905860" variant="white-outline">
+                  <ButtonLink href="tel:0422905860" variant="white-outline">
                     Call 0422 905 860
                   </ButtonLink>
                 </div>

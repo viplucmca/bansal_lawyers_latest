@@ -189,7 +189,8 @@ export default function HomePage() {
         intro={
           <>
             <p>
-              Bansal Lawyers is a Melbourne law firm that helps people and businesses with legal matters, from visas and separations to contracts and court dates.
+              <span className="hero-intro-lead">Lawyers in Melbourne</span> who help people and
+              businesses with legal matters, from visas and separations to contracts and court dates.
             </p>
             <p style={{ marginTop: "0.75rem" }}>
               We&apos;ll talk through your options in words you can follow, and stay with you at every step.

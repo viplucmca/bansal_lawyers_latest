@@ -164,7 +164,7 @@ export default function FamilyViolenceLawyerMelbournePage() {
         }
         primaryAction={{
           label: "Speak With a Family Violence Lawyer",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         secondaryAction={{
           label: "Book a Consultation",
@@ -411,7 +411,7 @@ export default function FamilyViolenceLawyerMelbournePage() {
         action={{ label: "Book a Consultation", href: "/contact" }}
         secondaryAction={{
           label: "Speak With Our Family Law Team",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         phone="1300 226 725"
         phoneLabel="Direct Family Solicitor"

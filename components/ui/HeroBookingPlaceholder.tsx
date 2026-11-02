@@ -291,7 +291,7 @@ export function HeroBookingPlaceholder({
 
           <div style={{ display: "flex", gap: "0.5rem", width: "100%", marginTop: "0.5rem" }}>
             <a
-              href="tel:+61422905860"
+              href={businessDetails.phoneTel}
               style={{
                 flex: 1,
                 display: "inline-flex",

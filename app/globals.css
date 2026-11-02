@@ -1152,6 +1152,11 @@ h3 {
   line-height: 1.65;
 }
 
+.hero-intro-lead {
+  color: var(--white);
+  font-weight: 800;
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;

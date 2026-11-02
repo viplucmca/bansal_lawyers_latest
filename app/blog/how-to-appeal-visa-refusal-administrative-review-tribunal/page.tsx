@@ -1359,7 +1359,7 @@ export default function HowToAppealVisaRefusalArtPage() {
                     For expert advice and assistance with your ART appeal, call us
                     today at{" "}
                     <a
-                      href="tel:+61422905860"
+                      href="tel:0422905860"
                       style={{
                         color: "#38bdf8",
                         fontWeight: 700,

@@ -118,7 +118,7 @@ export default function PoliceInterviewLawyerMelbournePage() {
             </p>
           </>
         }
-        primaryAction={{ label: "Speak With a Police Interview Lawyer", href: "tel:+61422905860" }}
+        primaryAction={{ label: "Speak With a Police Interview Lawyer", href: "tel:0422905860" }}
         secondaryAction={{ label: "Book a Consultation", href: "/contact/" }}
       />
 

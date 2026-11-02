@@ -19,9 +19,7 @@ const HOME_ORGANIZATION_DESCRIPTION =
 /** Homepage JSON-LD @graph: LegalService, WebSite, WebPage, FAQPage (linked entities). */
 export function createHomePageGraphSchema(faqs: FaqItem[]) {
   const nationalPhoneDigits = businessDetails.nationalLineTel.replace(/\D/g, "");
-  const directPhone = businessDetails.phoneTel.startsWith("tel:")
-    ? businessDetails.phoneTel.slice(4)
-    : businessDetails.phone;
+  const directPhone = businessDetails.phone;
 
   return {
     "@context": "https://schema.org",
@@ -188,9 +186,7 @@ export function createLegalServiceSchema() {
       },
       {
         "@type": "ContactPoint",
-        telephone: businessDetails.phoneTel.startsWith("tel:")
-          ? businessDetails.phoneTel.slice(4)
-          : businessDetails.phone,
+        telephone: businessDetails.phone,
         contactType: "Direct Solicitor Line",
         areaServed: "AU",
         availableLanguage: ["English", "Hindi", "Punjabi"],
@@ -454,12 +450,7 @@ const CONTACT_PAGE_SCHEMA_DESCRIPTION =
 const CONTACT_ORGANIZATION_DESCRIPTION =
   "Bansal Lawyers is a Melbourne law firm providing legal assistance in immigration, family, criminal, commercial, property and civil law.";
 
-function schemaMobileTelephoneE164Display(): string {
-  const digits = businessDetails.phoneTel.replace(/\D/g, "");
-  if (digits.startsWith("614") && digits.length >= 11) {
-    const national = digits.slice(2);
-    return `+61 ${national.slice(0, 3)} ${national.slice(3, 6)} ${national.slice(6)}`;
-  }
+function schemaMobileTelephoneDisplay(): string {
   return businessDetails.phone;
 }
 
@@ -537,7 +528,7 @@ export function createContactPageGraphSchema() {
           },
           {
             "@type": "ContactPoint",
-            telephone: schemaMobileTelephoneE164Display(),
+            telephone: schemaMobileTelephoneDisplay(),
             contactType: "legal enquiries",
             areaServed: "AU",
           },
@@ -873,9 +864,7 @@ export function createAjayBansalPageGraphSchema() {
   const breadcrumbId = `${profileUrl}#breadcrumb`;
   const faqId = `${profileUrl}#faqs`;
   const aboutUrl = `${siteUrl}/about`;
-  const mobileTel = businessDetails.phoneTel.startsWith("tel:")
-    ? businessDetails.phoneTel.slice(4)
-    : businessDetails.phoneTel.replace(/\D/g, "");
+  const mobileTel = businessDetails.phone;
 
   return {
     "@context": "https://schema.org",

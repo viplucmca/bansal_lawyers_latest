@@ -173,7 +173,7 @@ export default function PropertySettlementLawyerMelbournePage() {
         }
         primaryAction={{
           label: "Speak With a Property Settlement Lawyer",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         secondaryAction={{
           label: "Book a Consultation",
@@ -435,7 +435,7 @@ export default function PropertySettlementLawyerMelbournePage() {
         action={{ label: "Book a Consultation", href: "/contact" }}
         secondaryAction={{
           label: "Speak With Our Property Settlement Team",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         phone="1300 226 725"
         phoneLabel="Direct Family Solicitor"

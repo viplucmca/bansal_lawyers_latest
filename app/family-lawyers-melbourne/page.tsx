@@ -177,7 +177,7 @@ export default function FamilyLawyersMelbournePage() {
         primaryAction={{ label: "Book a Consultation", href: "/contact" }}
         secondaryAction={{
           label: "Call Our Family Law Team",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         aside={<HeroBookingPlaceholder defaultPracticeArea="family" turnstileSiteKey={turnstileSiteKey} />}
       />
@@ -368,7 +368,7 @@ export default function FamilyLawyersMelbournePage() {
         action={{ label: "Book a Consultation", href: "/contact" }}
         secondaryAction={{
           label: "Call Our Family Law Team",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         phone="1300 226 725"
         phoneLabel="Direct Family Law Line"

@@ -11,8 +11,6 @@ import "./refinements.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  style: "normal",
   display: "swap",
   variable: "--font-inter",
   fallback: ["Arial", "sans-serif"],

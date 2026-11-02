@@ -111,7 +111,7 @@ export default function JudicialReviewLawyerMelbournePage() {
             </p>
           </>
         }
-        primaryAction={{ label: "Speak With a Judicial Review Lawyer", href: "tel:+61422905860" }}
+        primaryAction={{ label: "Speak With a Judicial Review Lawyer", href: "tel:0422905860" }}
         secondaryAction={{ label: "Book a Consultation", href: "/contact/" }}
       />
 
@@ -255,7 +255,7 @@ export default function JudicialReviewLawyerMelbournePage() {
         title="Contact Bansal Lawyers"
         text="These pathways involve strict deadlines and technical legal requirements. Early advice significantly improves available options. Contact Bansal Lawyers for an assessment of your circumstances."
         action={{ label: "Book a Consultation", href: "/contact" }}
-        secondaryAction={{ label: "Call the firm", href: "tel:+61422905860" }}
+        secondaryAction={{ label: "Call the firm", href: "tel:0422905860" }}
         phone="1300 226 725"
         phoneLabel="Immigration solicitors"
         badges={["35-day deadline", "Decision record review", "Melbourne CBD consultations"]}

@@ -174,7 +174,7 @@ export default function VisaCancellationLawyerMelbournePage() {
         }
         primaryAction={{
           label: "Speak With a Visa Cancellation Lawyer",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         secondaryAction={{
           label: "Book a Consultation",
@@ -424,7 +424,7 @@ export default function VisaCancellationLawyerMelbournePage() {
         action={{ label: "Book a Consultation", href: "/contact" }}
         secondaryAction={{
           label: "Speak With Our Cancellation Team",
-          href: "tel:+61422905860",
+          href: "tel:0422905860",
         }}
         phone="1300 226 725"
         phoneLabel="Direct Immigration Solicitor"

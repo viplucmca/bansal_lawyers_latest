@@ -125,7 +125,7 @@ export default function MinisterialInterventionLawyerPage() {
             </p>
           </>
         }
-        primaryAction={{ label: "Speak With a Solicitor", href: "tel:+61422905860" }}
+        primaryAction={{ label: "Speak With a Solicitor", href: "tel:0422905860" }}
         secondaryAction={{ label: "Book a Consultation", href: "/contact/" }}
       />
 
@@ -276,7 +276,7 @@ export default function MinisterialInterventionLawyerPage() {
         title="Contact Bansal Lawyers"
         text="These pathways involve strict deadlines and technical legal requirements. Early advice significantly improves available options. Contact Bansal Lawyers for an assessment of your circumstances."
         action={{ label: "Book a Consultation", href: "/contact" }}
-        secondaryAction={{ label: "Call the firm", href: "tel:+61422905860" }}
+        secondaryAction={{ label: "Call the firm", href: "tel:0422905860" }}
         phone="1300 226 725"
         phoneLabel="Immigration solicitors"
         badges={["Guideline screening", "Section 351", "Section 501J"]}

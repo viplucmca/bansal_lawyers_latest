@@ -118,7 +118,7 @@ export default function ContractDisputeLawyerMelbournePage() {
             </p>
           </>
         }
-        primaryAction={{ label: "Speak With a Contract Dispute Lawyer", href: "tel:+61422905860" }}
+        primaryAction={{ label: "Speak With a Contract Dispute Lawyer", href: "tel:0422905860" }}
         secondaryAction={{ label: "Book a Consultation", href: "/contact/" }}
       />
 

@@ -119,7 +119,7 @@ export default function CommercialLeaseLawyerMelbournePage() {
             </p>
           </>
         }
-        primaryAction={{ label: "Speak With a Commercial Lease Lawyer", href: "tel:+61422905860" }}
+        primaryAction={{ label: "Speak With a Commercial Lease Lawyer", href: "tel:0422905860" }}
         secondaryAction={{ label: "Book a Consultation", href: "/contact/" }}
       />
 

@@ -110,7 +110,7 @@ export default function CommercialAgreementLawyerMelbournePage() {
           </>
         }
         primaryAction={{ label: "Discuss Your Agreement", href: "/contact" }}
-        secondaryAction={{ label: "Call Our Team", href: "tel:+61422905860" }}
+        secondaryAction={{ label: "Call Our Team", href: "tel:0422905860" }}
       />
 
       <TrustBar
