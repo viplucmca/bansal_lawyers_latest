@@ -28,6 +28,8 @@ export type ProcessItem = {
 export type FaqItem = {
   question: string;
   answer: ReactNode;
+  /** Plain-text answer for FAQ JSON-LD when `answer` is JSX or includes links. */
+  answerText?: string;
 };
 
 export type PageSeo = {

@@ -111,7 +111,9 @@ export function createHomePageGraphSchema(faqs: FaqItem[]) {
           name: item.question,
           acceptedAnswer: {
             "@type": "Answer",
-            text: typeof item.answer === "string" ? item.answer : "",
+            text:
+              item.answerText ??
+              (typeof item.answer === "string" ? item.answer : ""),
           },
         })),
       },
@@ -373,7 +375,9 @@ export function createImmigrationLawyersPageSchema(faqs: FaqItem[]) {
           name: item.question,
           acceptedAnswer: {
             "@type": "Answer",
-            text: typeof item.answer === "string" ? item.answer : "",
+            text:
+              item.answerText ??
+              (typeof item.answer === "string" ? item.answer : ""),
           },
         })),
       },
@@ -435,7 +439,153 @@ export function createIndianLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
           name: item.question,
           acceptedAnswer: {
             "@type": "Answer",
-            text: typeof item.answer === "string" ? item.answer : "",
+            text:
+              item.answerText ??
+              (typeof item.answer === "string" ? item.answer : ""),
+          },
+        })),
+      },
+    ],
+  };
+}
+
+export const CIVIL_LAWYERS_MELBOURNE_PAGE_TITLE =
+  "Civil Dispute Lawyers in Melbourne | Bansal Lawyers";
+export const CIVIL_LAWYERS_MELBOURNE_PAGE_DESCRIPTION =
+  "Need civil lawyers in Melbourne? Bansal Lawyers assists with contract disputes, debt recovery, legal notices and civil litigation. Contact our team today.";
+
+const CIVIL_SERVICE_DESCRIPTION =
+  "Bansal Lawyers assists individuals and businesses with civil disputes, contract disagreements, debt recovery, legal notices, negotiation and court-related matters in Melbourne.";
+
+/** Civil lawyers Melbourne hub JSON-LD @graph. */
+export function createCivilLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
+  const pageUrl = `${siteUrl}/civil-lawyers-melbourne`;
+  const pageId = `${pageUrl}#webpage`;
+  const serviceId = `${pageUrl}#service`;
+  const breadcrumbId = `${pageUrl}#breadcrumb`;
+  const faqId = `${pageUrl}#faq`;
+  const mobileTelDigits = businessDetails.phone.replace(/\s/g, "");
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LegalService", "LocalBusiness"],
+        "@id": organizationId,
+        name: businessDetails.name,
+        url: homeUrl,
+        telephone: businessDetails.nationalLine,
+        email: businessDetails.email,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: businessDetails.streetAddress,
+          addressLocality: businessDetails.addressLocality,
+          addressRegion: businessDetails.addressRegion,
+          postalCode: businessDetails.postalCode,
+          addressCountry: businessDetails.addressCountry,
+        },
+        areaServed: [
+          { "@type": "City", name: "Melbourne" },
+          { "@type": "AdministrativeArea", name: "Victoria" },
+          { "@type": "Country", name: "Australia" },
+        ],
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "09:30",
+            closes: "18:00",
+          },
+        ],
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: mobileTelDigits,
+          contactType: "customer service",
+          email: businessDetails.email,
+          availableLanguage: ["English", "Hindi", "Punjabi"],
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        url: homeUrl,
+        name: businessDetails.name,
+        publisher: { "@id": organizationId },
+        inLanguage: "en-AU",
+      },
+      {
+        "@type": "WebPage",
+        "@id": pageId,
+        url: pageUrl,
+        name: CIVIL_LAWYERS_MELBOURNE_PAGE_TITLE,
+        description: CIVIL_LAWYERS_MELBOURNE_PAGE_DESCRIPTION,
+        isPartOf: { "@id": websiteId },
+        publisher: { "@id": organizationId },
+        about: { "@id": serviceId },
+        mainEntity: { "@id": serviceId },
+        breadcrumb: { "@id": breadcrumbId },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/images/collins-street-office.webp`,
+        },
+        inLanguage: "en-AU",
+      },
+      {
+        "@type": "Service",
+        "@id": serviceId,
+        name: "Civil Dispute Lawyers in Melbourne",
+        serviceType: [
+          "Civil Dispute Resolution",
+          "Civil Litigation",
+          "Contract Disputes",
+          "Debt Recovery",
+          "Debt Disputes",
+          "Legal Notices",
+          "Breach of Contract Disputes",
+          "Dispute Resolution",
+        ],
+        description: CIVIL_SERVICE_DESCRIPTION,
+        provider: { "@id": organizationId },
+        areaServed: [
+          { "@type": "City", name: "Melbourne" },
+          { "@type": "AdministrativeArea", name: "Victoria" },
+        ],
+        audience: [
+          { "@type": "Audience", audienceType: "Individuals" },
+          { "@type": "Audience", audienceType: "Businesses" },
+        ],
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": breadcrumbId,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: homeUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Civil Lawyers Melbourne",
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": faqId,
+        url: pageUrl,
+        isPartOf: { "@id": pageId },
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text:
+              item.answerText ??
+              (typeof item.answer === "string" ? item.answer : ""),
           },
         })),
       },

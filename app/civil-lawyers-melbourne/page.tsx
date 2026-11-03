@@ -1,28 +1,55 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { StructuredData } from "@/components/seo";
+import { CivilLawyersMelbourneSections } from "@/components/civil/CivilLawyersMelbourneSections";
+import { ClientTestimonialsCarousel } from "@/components/sections/ClientTestimonialsCarousel";
+import { GoogleReviewSummaryBadge } from "@/components/sections/GoogleReviewSummaryBadge";
+import { OfficeMapEmbed } from "@/components/sections/OfficeMapEmbed";
 import {
   Breadcrumbs,
-  ButtonLink,
   Container,
   CtaSection,
   Faq,
   Hero,
+  HeroBookingPlaceholder,
   Section,
-  SectionHeader,
   TrustBar,
 } from "@/components/ui";
+import { getTurnstileSiteKey } from "@/lib/booking/turnstile";
+import { civilLawyersMelbourneTestimonials } from "@/lib/civil-lawyers-melbourne-testimonials";
 import { createMetadata } from "@/lib/metadata";
 import {
-  createBreadcrumbSchema,
-  createFaqSchema,
-  createLegalServiceSchema,
+  CIVIL_LAWYERS_MELBOURNE_PAGE_DESCRIPTION,
+  CIVIL_LAWYERS_MELBOURNE_PAGE_TITLE,
+  createCivilLawyersMelbournePageGraphSchema,
 } from "@/lib/schema";
+import { businessDetails } from "@/lib/site";
+
+const lawyers = [
+  {
+    name: "Ajay Bansal",
+    role: "Director & Principal Lawyer",
+    email: businessDetails.email,
+    phoneHref: businessDetails.phoneTel,
+    profileHref: "/about/ajay-bansal",
+    image: "/images/team/ajay-bansal-director.webp",
+    alt: "Ajay Bansal - Director & Principal Lawyer at Bansal Lawyers Melbourne",
+  },
+  {
+    name: "Michael Saleh",
+    role: "Solicitor",
+    email: businessDetails.email,
+    phoneHref: businessDetails.phoneTel,
+    profileHref: "/about/michael-saleh",
+    image: "/images/team/michael-saleh-solicitor.png",
+    alt: "Michael Saleh - Solicitor at Bansal Lawyers Melbourne",
+  },
+];
 
 export const metadata: Metadata = createMetadata({
-  title: "Civil Lawyers Melbourne | Civil Disputes & Legal Notices",
-  description:
-    "Civil lawyers in Melbourne for contract and debt disputes, legal notices, negotiation and court-related steps. Book a consultation with Bansal Lawyers.",
+  title: CIVIL_LAWYERS_MELBOURNE_PAGE_TITLE,
+  description: CIVIL_LAWYERS_MELBOURNE_PAGE_DESCRIPTION,
   path: "/civil-lawyers-melbourne",
   keywords: [
     "Civil Lawyers Melbourne",
@@ -35,62 +62,6 @@ export const metadata: Metadata = createMetadata({
     "Civil Procedure Act Victoria",
   ],
 });
-
-const civilMatters = [
-  {
-    title: "Civil disputes",
-    href: "#notices-and-negotiation",
-  },
-  {
-    title: "Contract disputes",
-    href: "#contract-and-debt-disputes",
-  },
-  {
-    title: "Debt disputes",
-    href: "#contract-and-debt-disputes",
-  },
-  {
-    title: "Legal notices",
-    href: "#notices-and-negotiation",
-  },
-  {
-    title: "Negotiation support",
-    href: "#notices-and-negotiation",
-  },
-  {
-    title: "Document preparation",
-    href: "#court-matters",
-  },
-  {
-    title: "Compensation-related matters",
-    href: "/contact/",
-  },
-  {
-    title: "Property-related disputes",
-    href: "/property-lawyers-melbourne/",
-  },
-  {
-    title: "Business-related disputes",
-    href: "/commercial-lawyers-melbourne/",
-  },
-  {
-    title: "Court document preparation",
-    href: "#court-matters",
-  },
-  {
-    title: "General civil litigation advice",
-    href: "/contact/",
-  },
-];
-
-const approachPoints = [
-  "Review of facts, documents and evidence",
-  "Clear explanation of legal options",
-  "Assistance with legal notices and responses",
-  "Practical advice on dispute resolution",
-  "Support with negotiation and preparation",
-  "Professional handling of court-related steps",
-];
 
 const civilFaqs = [
   {
@@ -118,9 +89,88 @@ const civilFaqs = [
     answer:
       "When a dispute starts, before you send a legal notice, before you respond to a claim, and before you take any court-related step.",
   },
+  {
+    question: "What types of matters do civil lawyers in Melbourne handle?",
+    answer: (
+      <>
+        Civil lawyers handle disputes that aren&apos;t criminal, whether they&apos;re between individuals,
+        businesses or other parties. That covers contract disagreements, unpaid debts, money claims,
+        property disputes and arguments over legal rights. The goal is usually to settle the dispute or
+        get compensation, not to punish anyone. Not sure if your problem counts as a civil matter?{" "}
+        <Link href="/contact">Ask us.</Link> We&apos;ll tell you in the first conversation.
+      </>
+    ),
+    answerText:
+      "Civil lawyers handle disputes that aren't criminal, whether they're between individuals, businesses or other parties. That covers contract disagreements, unpaid debts, money claims, property disputes and arguments over legal rights. The goal is usually to settle the dispute or get compensation, not to punish anyone. Not sure if your problem counts as a civil matter? Ask us. We'll tell you in the first conversation.",
+  },
+  {
+    question: "What should I do if I receive a legal notice?",
+    answer:
+      "Don't ignore it. Read it carefully, note any deadline and keep everything connected to it, including emails and texts. Be careful about replying too quickly, because you could end up admitting something you haven't checked. If it's a Magistrates' Court complaint, you generally have 21 days to respond. Speak to a lawyer before you reply.",
+  },
+  {
+    question: "Can Bansal Lawyers help with breach of contract disputes?",
+    answer:
+      "Yes, we can. We'll look at the contract terms, the evidence of the alleged breach and any money you've lost, then go through your options with you. Depending on what the contract says and what you want, that might mean a formal notice, negotiation, mediation or court. Bring the contract, plus any emails or invoices, to your first appointment.",
+  },
+  {
+    question: "What's the difference between VCAT and a court?",
+    answer:
+      "VCAT is a tribunal. It hears specific kinds of disputes, like consumer and trader and building matters, and it's usually less formal than a court. The Magistrates' Court of Victoria hears money claims up to $100,000. The County Court has no monetary cap, and the Supreme Court takes complex or high-value matters and appeals. VCAT's limits depend on the type of claim, and for goods and services claims under $15,000 it generally doesn't allow lawyers to represent parties. Get advice before you file anything.",
+  },
+  {
+    question: "Does Bansal Lawyers offer consultations for civil disputes outside Melbourne?",
+    answer:
+      "We offer consultations at our Melbourne CBD office, and by phone or video. If you're interstate or overseas, you can still book a phone or video consultation. If your dispute is outside Victoria, let us know when you get in touch. Courts and time limits differ between states, so we'll check whether we can act or whether you need a local lawyer.",
+  },
+  {
+    question: "What happens if I ignore a letter of demand or a court complaint?",
+    answer:
+      "A letter of demand isn't a court order, but brushing it off often leads to a claim. A court complaint is more urgent. If you don't file a notice of defence within 21 days of being served in the Magistrates' Court, the other side can apply for default judgment without a hearing. That can include costs and interest. If either one is sitting on your desk, don't wait. Get advice now.",
+  },
+  {
+    question: "How much does a civil lawyer cost in Melbourne?",
+    answer: (
+      <>
+        It depends on the work involved, the forum and how far the dispute goes.{" "}
+        <a
+          href="https://www.lsc.vic.gov.au/for-consumers/costs-and-billing/about-legal-costs"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          In Victoria, a lawyer generally has to give you written costs disclosure when likely costs are more
+          than $750, not counting GST and disbursements
+        </a>
+        , and fees must be fair and reasonable. We&apos;ll give you a written estimate before we start and
+        tell you if it changes. Our debt recovery lawyers and litigation team work the same way.
+      </>
+    ),
+    answerText:
+      "It depends on the work involved, the forum and how far the dispute goes. In Victoria, a lawyer generally has to give you written costs disclosure when likely costs are more than $750, not counting GST and disbursements, and fees must be fair and reasonable. We'll give you a written estimate before we start and tell you if it changes. Our debt recovery lawyers and litigation team work the same way.",
+  },
+  {
+    question: "Can I recover my legal costs if I win?",
+    answer:
+      "Often only some of them. In court, the losing party is usually ordered to contribute to your costs under the court's scale, which is typically less than what you actually paid. At VCAT, each side generally pays its own costs unless VCAT orders otherwise. We'll explain the likely costs position before you commit.",
+  },
+  {
+    question: "How long does a civil dispute take?",
+    answer: (
+      <>
+        There&apos;s no set timeline. A dispute that settles after a letter of demand can wrap up quickly,
+        while a defended court case takes much longer. The forum, how complex the matter is and whether the
+        other side engages all play a part. Once we&apos;ve looked at your documents, we&apos;ll go through
+        a realistic range. <Link href="/contact">Book an initial consultation</Link> and we&apos;ll start
+        there.
+      </>
+    ),
+    answerText:
+      "There's no set timeline. A dispute that settles after a letter of demand can wrap up quickly, while a defended court case takes much longer. The forum, how complex the matter is and whether the other side engages all play a part. Once we've looked at your documents, we'll go through a realistic range. Book an initial consultation and we'll start there.",
+  },
 ];
 
 export default function CivilLawyersMelbournePage() {
+  const turnstileSiteKey = getTurnstileSiteKey();
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Civil Lawyers Melbourne" },
@@ -128,13 +178,10 @@ export default function CivilLawyersMelbournePage() {
 
   return (
     <>
-      <StructuredData data={createLegalServiceSchema()} />
-      <StructuredData data={createBreadcrumbSchema(breadcrumbs)} />
-      <StructuredData data={createFaqSchema(civilFaqs)} />
+      <StructuredData data={createCivilLawyersMelbournePageGraphSchema(civilFaqs)} />
 
       <Breadcrumbs items={breadcrumbs} />
 
-      {/* 1. Hero Section: Civil Lawyers in Melbourne [H1] */}
       <Hero
         eyebrow="Bansal Lawyers · Melbourne CBD"
         title="Civil Lawyers in Melbourne"
@@ -149,10 +196,9 @@ export default function CivilLawyersMelbournePage() {
           </>
         }
         primaryAction={{ label: "Book a Consultation", href: "/contact" }}
-        secondaryAction={{
-          label: "Call Our Civil Law Team",
-          href: "tel:0422905860",
-        }}
+        aside={
+          <HeroBookingPlaceholder defaultPracticeArea="civil" turnstileSiteKey={turnstileSiteKey} />
+        }
       />
 
       <TrustBar
@@ -164,11 +210,9 @@ export default function CivilLawyersMelbournePage() {
         ]}
       />
 
-      {/* 2. Practical Advice for Civil Disputes [H2] */}
       <Section tone="white">
         <Container>
           <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
-            <span className="eyebrow">Clear Dispute Assessment</span>
             <h2>Practical Advice for Civil Disputes</h2>
             <p style={{ fontSize: "1.12rem", lineHeight: "1.75", color: "var(--ink)", marginTop: "1rem" }}>
               A civil dispute is easier to deal with when you get proper advice from the start. The right approach depends on the facts, the documents, the evidence, your legal position and the outcome you want.
@@ -180,155 +224,135 @@ export default function CivilLawyersMelbournePage() {
         </Container>
       </Section>
 
-      {/* 3. Civil Law Matters We Assist With [H2] */}
-      <Section tone="warm" id="matters">
+      <CivilLawyersMelbourneSections />
+
+      <Section tone="warm" id="our-team">
         <Container>
-          <SectionHeader
-            eyebrow="Comprehensive Practice"
-            title="Civil Law Matters We Assist With"
-            intro="As civil lawyers in Melbourne, Bansal Lawyers can assist with:"
-          />
-          <div className="matters-grid">
-            {civilMatters.map((matter) => (
-              <Link
-                key={matter.title}
-                href={matter.href}
-                className="matter-item"
-                title={`Explore ${matter.title}`}
-              >
-                <svg
-                  className="matter-item__icon"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
+          <div className="team-clean-header">
+            <div className="team-clean-eyebrow">
+              <span className="team-clean-eyebrow__line" aria-hidden="true" />
+              <span>LEGAL PRACTITIONERS</span>
+              <span className="team-clean-eyebrow__line" aria-hidden="true" />
+            </div>
+            <h2 className="team-clean-title">
+              Meet Our <span className="team-clean-title__serif">Legal Team</span>
+            </h2>
+            <p className="team-clean-intro">
+              Ajay Bansal is the director and principal lawyer. Michael Saleh is a solicitor. Read each profile, then book a consultation.
+            </p>
+          </div>
+          <div className="team-clean-grid">
+            {lawyers.map((member) => (
+              <article key={member.name} className="team-clean-card">
+                <Link
+                  href={member.profileHref}
+                  className="team-clean-card__media-link"
+                  title={`View ${member.name}'s profile`}
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
+                  <Image
+                    src={member.image}
+                    alt={member.alt}
+                    fill
+                    sizes="(max-width: 580px) 100vw, 420px"
+                    className="team-clean-card__img"
                   />
-                </svg>
-                <span>{matter.title}</span>
-                <svg
-                  className="matter-item__arrow"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </Link>
+                </Link>
+                <div className="team-clean-card__content">
+                  <h3 className="team-clean-card__name">
+                    <Link href={member.profileHref}>{member.name}</Link>
+                  </h3>
+                  <a href={`mailto:${member.email}`} className="team-clean-card__email">
+                    {member.email}
+                  </a>
+                  <p className="team-clean-card__role">{member.role}</p>
+                  <div className="team-clean-card__socials">
+                    <a
+                      href={member.phoneHref}
+                      className="team-clean-card__icon-link"
+                      aria-label={`Call ${member.name}`}
+                    >
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                      </svg>
+                    </a>
+                    <Link
+                      href={member.profileHref}
+                      className="team-clean-card__icon-link"
+                      aria-label={`View ${member.name}'s profile`}
+                    >
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="8.5" cy="7" r="4" />
+                        <polyline points="17 11 19 13 23 9" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </Container>
       </Section>
 
-      {/* 4. Contract and Debt Disputes [H2] */}
-      <Section tone="white" id="contract-and-debt-disputes">
+      <section
+        className="client-testimonials-section client-testimonials-section--corner-badge"
+        id="client-reviews"
+      >
         <Container>
-          <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
-            <span className="eyebrow">Agreements & Unpaid Monies</span>
-            <h2>Contract and Debt Disputes</h2>
-            <p style={{ fontSize: "1.08rem", lineHeight: "1.75", color: "var(--ink)", marginTop: "1rem" }}>
-              Disputes often start when one party doesn&apos;t follow an agreement, won&apos;t pay, delays action or disagrees about what the terms mean.
-            </p>
-            <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
-              As contract dispute lawyers in Melbourne, we review the agreement and the evidence, work out where each side stands and advise on the next step. Our debt dispute lawyers help whether you&apos;re owed money or you&apos;re being asked to pay a debt you don&apos;t think you owe. That includes unpaid amounts, legal notices, negotiation and court-related steps where required.
-            </p>
+          <header className="client-testimonials-section__header">
+            <h2>What Our Clients Say About Us</h2>
+          </header>
+          <ClientTestimonialsCarousel items={civilLawyersMelbourneTestimonials} />
+          <GoogleReviewSummaryBadge />
+        </Container>
+      </section>
 
-            <div className="deadline-alert-box">
-              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <div>
-                <strong>Statutory Limitation Periods in Victoria</strong>
-                <p style={{ margin: "0.25rem 0 0", fontSize: "0.92rem", color: "#7a271a" }}>
-                  Time limits apply. In Victoria, it&apos;s generally six years for a breach of contract, so it&apos;s worth getting advice before too much time passes.
-                </p>
-              </div>
+      <Section tone="white" id="office">
+        <Container>
+          <div className="location-grid">
+            <div>
+              <h2>Our Melbourne Office</h2>
+              <p style={{ fontSize: "1.05rem", lineHeight: "1.7", color: "var(--ink)", marginTop: "1rem" }}>
+                The office is at Level 8, 278 Collins Street, Melbourne VIC 3000, between Swanston and Elizabeth Streets. Trams on Collins Street stop nearby.
+              </p>
+              <p style={{ color: "var(--ink-secondary)", lineHeight: "1.7", marginTop: "1rem" }}>
+                Book a consultation to discuss a civil dispute, contract issue, debt claim or court-related matter.
+              </p>
+              <address style={{ fontStyle: "normal", margin: "1.5rem 0", color: "var(--navy-950)", fontWeight: 600 }}>
+                {businessDetails.address}
+              </address>
             </div>
+            <OfficeMapEmbed />
           </div>
         </Container>
       </Section>
 
-      {/* 5. Legal Notices and Negotiation [H2] */}
-      <Section tone="warm" id="notices-and-negotiation">
-        <Container>
-          <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
-            <span className="eyebrow">Pre-Litigation Strategy</span>
-            <h2>Legal Notices and Negotiation</h2>
-            <p style={{ fontSize: "1.08rem", lineHeight: "1.75", color: "var(--ink)", marginTop: "1rem" }}>
-              In many civil matters, a properly prepared legal notice or a sensible negotiation strategy can clarify the issue and open a path to resolution.
-            </p>
-            <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
-              As legal notice lawyers in Melbourne, we review the dispute, prepare correspondence, respond to claims and advise on practical options. A badly worded notice can weaken your position, and ignoring one can too, so get advice before you send or respond to one.
-            </p>
-          </div>
-        </Container>
-      </Section>
-
-      {/* 6. Court-Related Civil Matters [H2] */}
-      <Section tone="white" id="court-matters">
-        <Container>
-          <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
-            <span className="eyebrow">Tribunal & Court Representation</span>
-            <h2>Court-Related Civil Matters</h2>
-            <p style={{ fontSize: "1.08rem", lineHeight: "1.75", color: "var(--ink)", marginTop: "1rem" }}>
-              Some disputes can&apos;t be resolved through negotiation. Where court steps are needed, our civil litigation lawyers in Melbourne advise on the process, review the evidence and prepare the documents.
-            </p>
-            <p style={{ fontSize: "1.05rem", lineHeight: "1.75", color: "var(--ink-secondary)", marginTop: "0.75rem" }}>
-              Depending on the claim, a matter may be heard in VCAT, the Magistrates&apos; Court of Victoria, the County Court or the Supreme Court. Before starting most court proceedings in Victoria, parties are expected to take genuine steps to resolve the dispute under the Civil Procedure Act 2010, and we help with that step. We also assist with compensation-related claims, including where a breach of contract has caused financial loss.
-            </p>
-          </div>
-        </Container>
-      </Section>
-
-      {/* 7. Why Choose Bansal Lawyers for Civil Law? [H2] */}
-      <Section tone="warm" id="why-choose">
-        <Container>
-          <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
-            <span className="eyebrow">Strategic Decision-Making</span>
-            <h2>Why Choose Bansal Lawyers for Civil Law?</h2>
-            <p style={{ fontSize: "1.08rem", lineHeight: "1.75", color: "var(--ink)", marginTop: "1rem" }}>
-              Civil disputes need clear advice, strong documentation and practical decision-making.
-            </p>
-            <p style={{ fontSize: "1.02rem", fontWeight: 600, color: "var(--navy-950)", marginTop: "1.25rem", marginBottom: "0.75rem" }}>
-              Our approach includes:
-            </p>
-            <ul className="points-list">
-              {approachPoints.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-          </div>
-        </Container>
-      </Section>
-
-      {/* 8. Speak With Civil Lawyers in Melbourne [H2] */}
       <CtaSection
         title="Speak With Civil Lawyers in Melbourne"
         text="If you're involved in a civil dispute or need advice before sending or responding to a legal notice, Bansal Lawyers can help you understand your options."
         action={{ label: "Book a Consultation", href: "/contact" }}
         secondaryAction={{
           label: "Speak With Our Civil Law Team",
-          href: "tel:0422905860",
+          href: businessDetails.phoneTel,
         }}
         phone="1300 226 725"
         phoneLabel="Direct Civil Litigation Solicitor"
-        badges={["Letters of demand & dispute negotiation", "VCAT & Magistrates Court representation", "Melbourne CBD & virtual consultations"]}
+        badges={[
+          "Letters of demand & dispute negotiation",
+          "VCAT & Magistrates Court representation",
+          "Melbourne CBD & virtual consultations",
+        ]}
       />
 
-      {/* 9. FAQs [H2] */}
       <Section tone="warm" id="faqs">
-        <Faq items={civilFaqs} />
+        <Faq
+          items={civilFaqs}
+          title="Frequently Asked Questions"
+          subtitle="Quick answers to common questions about civil disputes in Melbourne."
+          contactTitle="Need advice about a civil dispute or legal notice?"
+          contactButtonLabel="Book a Consultation"
+          contactHref="/contact"
+        />
       </Section>
     </>
   );

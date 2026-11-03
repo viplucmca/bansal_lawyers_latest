@@ -4543,6 +4543,14 @@ h3 {
   text-decoration: none;
 }
 
+.matter-item h3 {
+  margin: 0;
+  flex: 1;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.35;
+}
+
 a.matter-item {
   cursor: pointer;
 }
