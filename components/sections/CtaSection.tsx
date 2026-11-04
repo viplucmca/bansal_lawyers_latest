@@ -4,8 +4,11 @@ import { ButtonLink } from "@/components/ui/Button";
 
 export type CtaSectionProps = {
   eyebrow?: string;
-  title: string;
-  text: ReactNode;
+  title?: string;
+  text?: ReactNode;
+  /** Keep the two-column grid; omit heading and body copy in the left column. */
+  hideContent?: boolean;
+  id?: string;
   action: { label: string; href: string };
   secondaryAction?: { label: string; href: string };
   phone?: string;
@@ -17,6 +20,8 @@ export function CtaSection({
   eyebrow,
   title,
   text,
+  hideContent = false,
+  id,
   action,
   secondaryAction,
   phone = "1300 226 725",
@@ -30,15 +35,30 @@ export function CtaSection({
   const telDigits = phone.replace(/[^+\d]/g, "");
 
   return (
-    <section className="cta-section">
+    <section className="cta-section" id={id}>
       <Container>
-        <div className="cta-section__grid">
-          <div className="cta-section__content">
-            {eyebrow && <span className="eyebrow eyebrow--light">{eyebrow}</span>}
-            <h2>{title}</h2>
-            <div className="cta-section__text">
-              {typeof text === "string" ? <p>{text}</p> : text}
-            </div>
+        <div
+          className={
+            hideContent
+              ? "cta-section__grid cta-section__grid--hide-content"
+              : "cta-section__grid"
+          }
+        >
+          <div
+            className="cta-section__content"
+            aria-hidden={hideContent ? true : undefined}
+          >
+            {!hideContent && (
+              <>
+                {eyebrow && <span className="eyebrow eyebrow--light">{eyebrow}</span>}
+                {title && <h2>{title}</h2>}
+                {text != null && text !== "" && (
+                  <div className="cta-section__text">
+                    {typeof text === "string" ? <p>{text}</p> : text}
+                  </div>
+                )}
+              </>
+            )}
           </div>
 
           <div className="cta-section__card">

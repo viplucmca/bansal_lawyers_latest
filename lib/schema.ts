@@ -449,6 +449,98 @@ export function createIndianLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
   };
 }
 
+export const CRIMINAL_LAWYERS_MELBOURNE_PAGE_TITLE =
+  "Indian Criminal Lawyers in Melbourne | Criminal Defence & Court Representation";
+export const CRIMINAL_LAWYERS_MELBOURNE_PAGE_DESCRIPTION =
+  "Need a criminal lawyer in Melbourne? Bansal Lawyers provides criminal defence advice and representation for summary offences, traffic matters, bail applications and court hearings. Legal assistance in English, Hindi and Punjabi. Contact our team today to discuss your legal needs.";
+
+const CRIMINAL_SERVICE_DESCRIPTION =
+  "Bansal Lawyers provides criminal defence legal advice and representation in Melbourne, assisting with Magistrates' Court matters, bail applications, police interviews, traffic offences, licence suspensions, assault and property offences, intervention order breaches and criminal appeals. Legal assistance is available in English, Hindi and Punjabi.";
+
+/** Criminal lawyers Melbourne hub JSON-LD @graph: WebPage, Service, BreadcrumbList, FAQPage. */
+export function createCriminalLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
+  const pageUrl = `${siteUrl}/criminal-lawyers-melbourne`;
+  const pageId = `${pageUrl}#webpage`;
+  const serviceId = `${pageUrl}#service`;
+  const breadcrumbId = `${pageUrl}#breadcrumb`;
+  const faqId = `${pageUrl}#faq`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": pageId,
+        url: pageUrl,
+        name: CRIMINAL_LAWYERS_MELBOURNE_PAGE_TITLE,
+        description: CRIMINAL_LAWYERS_MELBOURNE_PAGE_DESCRIPTION,
+        inLanguage: "en-AU",
+        isPartOf: { "@id": websiteId },
+        about: { "@id": serviceId },
+        mainEntity: { "@id": serviceId },
+        breadcrumb: { "@id": breadcrumbId },
+      },
+      {
+        "@type": "Service",
+        "@id": serviceId,
+        name: "Criminal Defence Legal Services in Melbourne",
+        serviceType: [
+          "Criminal Defence Legal Advice",
+          "Criminal Court Representation",
+          "Magistrates' Court Representation",
+          "Bail Applications",
+          "Police Interview Legal Advice",
+          "Traffic Offence Legal Services",
+          "Intervention Order Breach Defence",
+          "Assault Charge Defence",
+          "Criminal Appeals",
+          "Plea in Mitigation Representation",
+        ],
+        url: pageUrl,
+        description: CRIMINAL_SERVICE_DESCRIPTION,
+        provider: { "@id": organizationId },
+        areaServed: [
+          { "@type": "City", name: "Melbourne" },
+          { "@type": "AdministrativeArea", name: "Victoria" },
+        ],
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": breadcrumbId,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: homeUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Indian Criminal Lawyers in Melbourne",
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": faqId,
+        url: pageUrl,
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text:
+              item.answerText ??
+              (typeof item.answer === "string" ? item.answer : ""),
+          },
+        })),
+      },
+    ],
+  };
+}
+
 export const CIVIL_LAWYERS_MELBOURNE_PAGE_TITLE =
   "Civil Dispute Lawyers in Melbourne | Bansal Lawyers";
 export const CIVIL_LAWYERS_MELBOURNE_PAGE_DESCRIPTION =

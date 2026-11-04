@@ -3078,6 +3078,16 @@ h3 {
   max-width: 44rem;
 }
 
+.cta-section__grid--hide-content .cta-section__content {
+  min-height: 0;
+}
+
+@media (max-width: 768px) {
+  .cta-section__grid--hide-content .cta-section__content {
+    display: none;
+  }
+}
+
 .cta-section__content h2 {
   margin-block: 0.85rem 1.25rem;
   color: var(--white);
@@ -3094,6 +3104,22 @@ h3 {
 
 .cta-section__text p + p {
   margin-top: 0.85rem;
+}
+
+.cta-section__contact {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.cta-section__contact a {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.cta-section__contact a:hover {
+  color: var(--white);
 }
 
 /* Executive CTA Card */
