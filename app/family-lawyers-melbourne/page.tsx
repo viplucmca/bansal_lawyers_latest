@@ -173,8 +173,8 @@ const familyFaqs: FaqItem[] = [
     question: "Can I speak with a Hindi or Punjabi-speaking family lawyer in Melbourne?",
     answer: (
       <>
-        Yes. Ajay Bansal speaks English, Hindi and Punjabi and works on family law matters. If you want a{" "}
-        <strong>Hindi Speaking Family Lawyer Melbourne</strong>, tell us your preferred language when you{" "}
+        Yes. Ajay Bansal speaks English, Hindi and Punjabi and works on family law matters. If you want a Hindi
+        Speaking Family Lawyer Melbourne, tell us your preferred language when you{" "}
         <Link href="/contact">get in touch</Link> and we&apos;ll confirm availability. Court documents and legal
         paperwork are still in English, so Ajay will go through them with you in the language you&apos;re most
         comfortable with.
@@ -273,11 +273,10 @@ export default function FamilyLawyersMelbournePage() {
           <p style={proseBody}>
             The questions we hear from Indian-Australian families are often a mix. Some people married in India and
             separated in Melbourne. Some have parents or in-laws who put money into a home or business. Others have
-            children and relatives in two countries, and everyone has a view on what should happen. If you want an{" "}
-            <strong>Indian Family Lawyer Melbourne</strong> can offer for that kind of mix, we start by listening. Then
-            we explain what Australian law says about your situation. Our work as{" "}
-            <strong>Family Lawyers for Indian Community Melbourne</strong> families can call on is to make the law clear
-            so you can decide what to do next.
+            children and relatives in two countries, and everyone has a view on what should happen. If you want an Indian
+            Family Lawyer Melbourne can offer for that kind of mix, we start by listening. Then we explain what
+            Australian law says about your situation. Our work as Family Lawyers for Indian Community Melbourne families
+            can call on is to make the law clear so you can decide what to do next.
           </p>
         </div>
       </Section>
@@ -297,9 +296,8 @@ export default function FamilyLawyersMelbournePage() {
             English word, and you&apos;re less likely to leave out something important.
           </p>
           <p style={proseBody}>
-            If you&apos;ve been searching for a <strong>Hindi Speaking Family Lawyer Melbourne</strong> or a{" "}
-            <strong>Punjabi Speaking Family Lawyer Melbourne</strong>, tell us your preferred language when you book and
-            we&apos;ll confirm availability. Court forms and legal documents are still in English. Ajay will go through
+            If you&apos;ve been searching for a Hindi Speaking Family Lawyer Melbourne or a Punjabi Speaking Family
+            Lawyer Melbourne, tell us your preferred language when you book and we&apos;ll confirm availability. Court forms and legal documents are still in English. Ajay will go through
             them with you in whichever language you prefer.
           </p>
         </div>
@@ -310,9 +308,9 @@ export default function FamilyLawyersMelbournePage() {
           <h2>Family Law Matters We Assist With</h2>
           <p style={proseLead}>
             Family law covers a lot of ground. Here are the areas we help with most, from divorce to family violence
-            orders. Our <strong>Indian Family Law Solicitors Melbourne</strong> team explains your options, prepares
-            the paperwork, negotiates with the other side and goes to court where it&apos;s needed. These are the{" "}
-            <strong>Family Law Services Melbourne</strong> families ask about most.
+            orders. Our Indian Family Law Solicitors Melbourne team explains your options, prepares
+            the paperwork, negotiates with the other side and goes to court where it&apos;s needed. These are the Family
+            Law Services Melbourne families ask about most.
           </p>
         </div>
         <div className="matters-grid">
@@ -352,7 +350,7 @@ export default function FamilyLawyersMelbournePage() {
             court also has to be satisfied they&apos;re being properly cared for before it makes the order.
           </p>
           <p style={proseBody}>
-            Our <strong>Indian Divorce Lawyers Melbourne</strong> service starts with a conversation in English, Hindi
+            Our Indian Divorce Lawyers Melbourne service starts with a conversation in English, Hindi
             or Punjabi. As{" "}
             <Link href="/family-lawyers-melbourne/divorce-lawyer-melbourne/">divorce lawyers in Melbourne</Link>, we
             prepare the application, explain what the court will look at and help you plan what comes next.
@@ -387,12 +385,12 @@ export default function FamilyLawyersMelbournePage() {
             you need the court&apos;s permission.
           </p>
           <p style={proseBody}>
-            Looking for <strong>Indian Property Settlement Lawyers Melbourne</strong> to review your situation? As{" "}
+            Looking for Indian Property Settlement Lawyers Melbourne to review your situation? As{" "}
             <Link href="/family-lawyers-melbourne/property-settlement-lawyer-melbourne/">
               property settlement lawyers in Melbourne
             </Link>
-            , we help you work out what&apos;s in the pool, gather documents and negotiate{" "}
-            <strong>Property Division After Separation</strong>.
+            , we help you work out what&apos;s in the pool, gather documents and negotiate Property Division After
+            Separation.
           </p>
 
           <h3 style={h3Style}>Spousal Maintenance</h3>
@@ -438,8 +436,7 @@ export default function FamilyLawyersMelbournePage() {
           <p style={proseBody}>
             Our{" "}
             <Link href="/family-lawyers-melbourne/family-violence-lawyer-melbourne/">family violence lawyers</Link>{" "}
-            provide <strong>Family Violence Legal Advice Melbourne</strong> on{" "}
-            <strong>Family Violence Intervention Orders Victoria</strong>. Our{" "}
+            provide Family Violence Legal Advice Melbourne on Family Violence Intervention Orders Victoria. Our{" "}
             <Link href="/family-lawyers-melbourne/intervention-order-lawyer-melbourne/">
               intervention order lawyers
             </Link>{" "}
@@ -454,9 +451,8 @@ export default function FamilyLawyersMelbournePage() {
           <h2>Family Law Issues Affecting Indian-Australian Families</h2>
           <p style={proseLead}>
             Indian-Australian families often ask us the same few questions. Here are straight answers to the most common
-            ones, from marriages in India to family money and property overseas. They&apos;re general information on{" "}
-            <strong>Indian Family Law Melbourne</strong> matters, so they can&apos;t replace advice on your own
-            situation. If you&apos;d like to talk to someone first, visit our page for{" "}
+            ones, from marriages in India to family money and property overseas. They&apos;re general information on
+            Indian Family Law Melbourne matters, so they can&apos;t replace advice on your own situation. If you&apos;d like to talk to someone first, visit our page for{" "}
             <Link href="/indian-lawyers-melbourne/">Indian Lawyers in Melbourne</Link>.
           </p>
           <h3 style={h3Style}>Divorce after a marriage in India</h3>
@@ -469,8 +465,8 @@ export default function FamilyLawyersMelbournePage() {
           </p>
           <h3 style={h3Style}>Marriage certificates and translations</h3>
           <p style={proseBody}>
-            <strong>Indian Marriage Divorce Australia</strong> applications need a copy of your marriage certificate. If
-            it isn&apos;t in English, the court wants an English translation attached to an affidavit from the
+            Indian Marriage Divorce Australia applications need a copy of your marriage certificate. If it isn&apos;t in
+            English, the court wants an English translation attached to an affidavit from the
             translator. If you can&apos;t get a certificate for a marriage overseas, you can file an affidavit explaining
             why and giving details of the ceremony, so it&apos;s worth trying the authority where you married first.
           </p>
@@ -482,7 +478,7 @@ export default function FamilyLawyersMelbournePage() {
           <h3 style={h3Style}>Property or financial interests in India</h3>
           <p style={proseBody}>
             Australian courts can take overseas property into account, but enforcing an order abroad can be hard. Getting
-            this right is a big part of <strong>Overseas Property Settlement Australia</strong> matters. Our{" "}
+            this right is a big part of Overseas Property Settlement Australia matters. Our{" "}
             <Link href="/family-lawyers-melbourne/property-settlement-lawyer-melbourne/">
               property settlement lawyers in Melbourne
             </Link>{" "}
@@ -497,7 +493,7 @@ export default function FamilyLawyersMelbournePage() {
           <h3 style={h3Style}>When you may also need an Indian lawyer</h3>
           <p style={proseBody}>
             We advise on Australian law only. For a court case, property or registration issue in India, you may need a
-            lawyer there too. <strong>Indian Family Disputes Melbourne</strong> families face often involve both
+            lawyer there too. Indian Family Disputes Melbourne families face often involve both
             countries. We&apos;ll tell you what we can do from Melbourne and where to get Indian advice.
           </p>
         </div>
@@ -511,8 +507,8 @@ export default function FamilyLawyersMelbournePage() {
             <Link href="/about/ajay-bansal">Ajay Bansal</Link> founded Bansal Lawyers and is its Director and Principal
             Lawyer. He has seven years in practice, and his family law work covers separation, parenting arrangements,
             property settlement and family violence matters. He appears in Victorian and Federal courts. Ajay speaks
-            English, Hindi and Punjabi. If you want a <strong>Hindi Speaking Lawyer Melbourne</strong> or{" "}
-            <strong>Punjabi Speaking Lawyer Melbourne</strong> for your family matter, ask for him when you book.
+            English, Hindi and Punjabi. If you want a Hindi Speaking Lawyer Melbourne or Punjabi Speaking Lawyer Melbourne
+            for your family matter, ask for him when you book.
           </p>
           <p style={proseBody}>
             <Link href="/about/michael-saleh">Michael Saleh</Link> is a solicitor admitted to the Supreme Court of
@@ -522,8 +518,8 @@ export default function FamilyLawyersMelbournePage() {
             speaks English and Arabic.
           </p>
           <p style={proseBody}>
-            Together they make up our <strong>Family Law Solicitors Melbourne</strong> team for family matters, and our{" "}
-            <strong>Indian Family Lawyers Melbourne</strong> clients can talk to either of them.
+            Together they make up our Family Law Solicitors Melbourne team for family matters, and our Indian Family
+            Lawyers Melbourne clients can talk to either of them.
           </p>
         </div>
       </Section>
@@ -597,9 +593,9 @@ export default function FamilyLawyersMelbournePage() {
         <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
           <h2>Why Choose Bansal Lawyers?</h2>
           <p style={proseLead}>
-            Choosing a lawyer while your family life is up in the air is a big decision. If you&apos;re looking for{" "}
-            <strong>Indian Family Lawyers in Melbourne</strong>, here&apos;s what you can expect from us. If you&apos;ve
-            searched for the <strong>best Indian family lawyer in Melbourne</strong>, we understand that finding the
+            Choosing a lawyer while your family life is up in the air is a big decision. If you&apos;re looking for Indian
+            Family Lawyers in Melbourne, here&apos;s what you can expect from us. If you&apos;ve searched for the best
+            Indian family lawyer in Melbourne, we understand that finding the
             right lawyer is a personal decision. The right choice depends on your individual circumstances, legal needs,
             and the level of comfort and confidence you feel with your lawyer.
           </p>
@@ -629,7 +625,7 @@ export default function FamilyLawyersMelbournePage() {
           <h3 style={h3Style}>Easy to Reach, in Person or Online</h3>
           <p style={proseBody}>
             Our office is at Level 8, 278 Collins Street in the Melbourne CBD. You can meet us in person, by phone or on
-            video, so our <strong>Family Lawyers Melbourne</strong> team is easy to reach wherever you are. If you have
+            video, so our Family Lawyers Melbourne team is easy to reach wherever you are. If you have
             a court date or a deadline coming up, tell us when you get in touch so we can plan around it. If you&apos;re
             worried about your safety, say so at the start and we&apos;ll explain your options.
           </p>
@@ -708,7 +704,7 @@ export default function FamilyLawyersMelbournePage() {
               and we&apos;ll help you work out your next step.
             </p>
             <p className="cta-section__contact">
-              <strong>{businessDetails.name}</strong>
+              {businessDetails.name}
               <br />
               {businessDetails.address}
               <br />
