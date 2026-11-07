@@ -541,6 +541,208 @@ export function createCriminalLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
   };
 }
 
+export const FAMILY_LAWYERS_MELBOURNE_PAGE_TITLE =
+  "Indian Family Lawyers in Melbourne | Divorce, Parenting & Property";
+export const FAMILY_LAWYERS_MELBOURNE_PAGE_DESCRIPTION =
+  "Need a family lawyer in Melbourne? Bansal Lawyers provides legal advice and representation for divorce, parenting arrangements, property settlements, consent orders and family violence matters. Legal assistance in English, Hindi and Punjabi. Contact our team today to discuss your family law needs.";
+
+const FAMILY_LAWYERS_MELBOURNE_SERVICE_DESCRIPTION =
+  "Bansal Lawyers provides family law advice and representation in Melbourne, assisting with divorce and separation, parenting arrangements, child custody, property settlements, spousal maintenance, consent orders, binding financial agreements and family violence intervention orders. The firm also assists with matters involving marriages registered in India and provides legal assistance in English, Hindi and Punjabi.";
+
+/** Family lawyers Melbourne hub JSON-LD @graph: WebPage, Service, BreadcrumbList, FAQPage. */
+export function createFamilyLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
+  const pageUrl = `${siteUrl}/family-lawyers-melbourne`;
+  const pageId = `${pageUrl}#webpage`;
+  const serviceId = `${pageUrl}#service`;
+  const breadcrumbId = `${pageUrl}#breadcrumb`;
+  const faqId = `${pageUrl}#faq`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": pageId,
+        url: pageUrl,
+        name: FAMILY_LAWYERS_MELBOURNE_PAGE_TITLE,
+        description: FAMILY_LAWYERS_MELBOURNE_PAGE_DESCRIPTION,
+        inLanguage: "en-AU",
+        isPartOf: { "@id": websiteId },
+        about: { "@id": serviceId },
+        mainEntity: { "@id": serviceId },
+        breadcrumb: { "@id": breadcrumbId },
+      },
+      {
+        "@type": "Service",
+        "@id": serviceId,
+        name: "Family Law Legal Services in Melbourne",
+        serviceType: [
+          "Divorce and Separation",
+          "Indian Divorce Legal Services",
+          "Parenting Arrangements",
+          "Child Custody and Parenting Orders",
+          "Property Settlement After Separation",
+          "Property Division",
+          "Spousal Maintenance",
+          "Financial Support After Separation",
+          "Family Law Consent Orders",
+          "Parenting Consent Orders",
+          "Property Consent Orders",
+          "Binding Financial Agreements",
+          "Prenuptial and Postnuptial Agreements",
+          "Family Violence Legal Advice",
+          "Family Violence Intervention Orders",
+          "Intervention Order Applications and Responses",
+        ],
+        url: pageUrl,
+        description: FAMILY_LAWYERS_MELBOURNE_SERVICE_DESCRIPTION,
+        provider: { "@id": organizationId },
+        areaServed: [
+          { "@type": "City", name: "Melbourne" },
+          { "@type": "AdministrativeArea", name: "Victoria" },
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Family Law Services in Melbourne",
+          itemListElement: [
+            {
+              "@type": "OfferCatalog",
+              name: "Divorce and Separation",
+              itemListElement: [
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Divorce and Separation Legal Services",
+                    url: `${pageUrl}/divorce-lawyer-melbourne`,
+                  },
+                },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "Parenting Arrangements and Child Custody",
+              itemListElement: [
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Parenting Arrangements and Child Custody Legal Services",
+                    url: `${pageUrl}/child-custody-lawyer-melbourne`,
+                  },
+                },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "Property Settlement",
+              itemListElement: [
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Property Settlement After Separation",
+                    url: `${pageUrl}/property-settlement-lawyer-melbourne`,
+                  },
+                },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "Spousal Maintenance",
+              itemListElement: [
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Spousal Maintenance Legal Services",
+                    url: `${pageUrl}/spousal-maintenance-lawyer-melbourne`,
+                  },
+                },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "Consent Orders",
+              itemListElement: [
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Family Law Consent Orders",
+                    url: `${pageUrl}/consent-orders-lawyer-melbourne`,
+                  },
+                },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "Binding Financial Agreements",
+              itemListElement: [
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Binding Financial Agreements",
+                    url: `${pageUrl}/binding-financial-agreement-lawyer-melbourne`,
+                  },
+                },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "Family Violence and Intervention Orders",
+              itemListElement: [
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Family Violence and Intervention Order Legal Services",
+                    url: `${pageUrl}/family-violence-lawyer-melbourne`,
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": breadcrumbId,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: homeUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Indian Family Lawyers in Melbourne",
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": faqId,
+        url: pageUrl,
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text:
+              item.answerText ??
+              (typeof item.answer === "string" ? item.answer : ""),
+          },
+        })),
+      },
+    ],
+  };
+}
+
 export const CIVIL_LAWYERS_MELBOURNE_PAGE_TITLE =
   "Civil Dispute Lawyers in Melbourne | Bansal Lawyers";
 export const CIVIL_LAWYERS_MELBOURNE_PAGE_DESCRIPTION =

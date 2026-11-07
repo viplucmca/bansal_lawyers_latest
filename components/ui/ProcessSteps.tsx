@@ -1,7 +1,13 @@
 import type { ProcessItem } from "@/types/content";
 
-export function ProcessSteps({ items }: { items: ProcessItem[] }) {
-  const columnClass = items.length === 3 ? "process-grid--three" : "process-grid--four";
+type ProcessStepsProps = {
+  items: ProcessItem[];
+  columns?: 3 | 4;
+};
+
+export function ProcessSteps({ items, columns }: ProcessStepsProps) {
+  const useThreeColumns = columns === 3 || (columns !== 4 && items.length === 3);
+  const columnClass = useThreeColumns ? "process-grid--three" : "process-grid--four";
 
   return (
     <ol className={`process-grid ${columnClass}`}>
