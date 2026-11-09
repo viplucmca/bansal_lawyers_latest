@@ -70,6 +70,9 @@ export const metadata: Metadata = {
     email: false,
     address: false,
   },
+  verification: {
+    google: "v3RcCNNqLVXDQoEWlV1SzP3SHNvhWws-YuzpLxWuk8A",
+  },
   icons: {
     icon: [
       { url: "/favicon.png", type: "image/png" },
