@@ -4619,6 +4619,35 @@ a.matter-item:hover .matter-item__arrow {
   box-shadow: var(--shadow-sm);
 }
 
+.service-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.service-text-block h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.12rem;
+  line-height: 1.35;
+  color: var(--navy-950);
+}
+
+.service-text-block p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--ink-secondary);
+}
+
+.service-text-block p + p {
+  margin-top: 0.75rem;
+}
+
+.commercial-landing-page .section-header,
+.commercial-landing-page .section-header p {
+  max-width: none;
+}
+
 .deadline-alert-box {
   display: flex;
   align-items: flex-start;
@@ -5348,6 +5377,11 @@ a.matter-item:hover .matter-item__arrow {
   .matters-grid {
     grid-template-columns: 1fr;
     gap: 0.65rem;
+  }
+
+  .service-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .matter-item {

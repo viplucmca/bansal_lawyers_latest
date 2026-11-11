@@ -743,6 +743,118 @@ export function createFamilyLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
   };
 }
 
+export const COMMERCIAL_LAWYERS_MELBOURNE_PAGE_TITLE =
+  "Indian Commercial Lawyers in Melbourne | Hindi & Punjabi Speaking Legal Help";
+export const COMMERCIAL_LAWYERS_MELBOURNE_PAGE_DESCRIPTION =
+  "Need Indian Commercial Lawyers in Melbourne? Get guidance on business agreements, contract reviews, commercial disputes and debt recovery. Book a consultation.";
+
+const COMMERCIAL_LAWYERS_MELBOURNE_SERVICE_DESCRIPTION =
+  "Commercial legal assistance for businesses, business owners, entrepreneurs, professionals and investors in Melbourne. Services include business contracts, commercial agreements, loan agreements, shareholder agreements, partnership agreements, business sales and purchases, commercial disputes and debt recovery.";
+
+const COMMERCIAL_PAGE_ORGANIZATION_DESCRIPTION =
+  "Bansal Lawyers provides legal services and advice in Melbourne, Victoria.";
+
+/** Commercial lawyers Melbourne hub JSON-LD @graph. */
+export function createCommercialLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
+  const pageUrl = `${siteUrl}/commercial-lawyers-melbourne`;
+  const pageId = `${pageUrl}#webpage`;
+  const serviceId = `${pageUrl}#service`;
+  const breadcrumbId = `${pageUrl}#breadcrumb`;
+  const faqId = `${pageUrl}#faq`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LegalService", "LocalBusiness"],
+        "@id": organizationId,
+        name: businessDetails.name,
+        url: homeUrl,
+        description: COMMERCIAL_PAGE_ORGANIZATION_DESCRIPTION,
+        telephone: businessDetails.phone,
+        email: businessDetails.email,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: businessDetails.streetAddress,
+          addressLocality: businessDetails.addressLocality,
+          addressRegion: businessDetails.addressRegion,
+          postalCode: businessDetails.postalCode,
+          addressCountry: businessDetails.addressCountry,
+        },
+        areaServed: { "@type": "City", name: "Melbourne" },
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: businessDetails.phone,
+          contactType: "customer service",
+          email: businessDetails.email,
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        url: homeUrl,
+        name: businessDetails.name,
+        publisher: { "@id": organizationId },
+        inLanguage: "en-AU",
+      },
+      {
+        "@type": "WebPage",
+        "@id": pageId,
+        url: pageUrl,
+        name: COMMERCIAL_LAWYERS_MELBOURNE_PAGE_TITLE,
+        description: COMMERCIAL_LAWYERS_MELBOURNE_PAGE_DESCRIPTION,
+        isPartOf: { "@id": websiteId },
+        about: { "@id": serviceId },
+        publisher: { "@id": organizationId },
+        breadcrumb: { "@id": breadcrumbId },
+        inLanguage: "en-AU",
+      },
+      {
+        "@type": "Service",
+        "@id": serviceId,
+        name: "Indian Commercial Lawyers in Melbourne",
+        serviceType: "Commercial Legal Services",
+        description: COMMERCIAL_LAWYERS_MELBOURNE_SERVICE_DESCRIPTION,
+        provider: { "@id": organizationId },
+        areaServed: { "@type": "City", name: "Melbourne" },
+        url: pageUrl,
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": breadcrumbId,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: homeUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Indian Commercial Lawyers in Melbourne",
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": faqId,
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text:
+              item.answerText ??
+              (typeof item.answer === "string" ? item.answer : ""),
+          },
+        })),
+      },
+    ],
+  };
+}
+
 export const CIVIL_LAWYERS_MELBOURNE_PAGE_TITLE =
   "Civil Dispute Lawyers in Melbourne | Bansal Lawyers";
 export const CIVIL_LAWYERS_MELBOURNE_PAGE_DESCRIPTION =
