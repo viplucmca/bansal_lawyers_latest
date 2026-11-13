@@ -15,6 +15,7 @@ import {
   HeroBookingPlaceholder,
   ProcessSteps,
   Section,
+  SectionHeader,
   TrustBar,
 } from "@/components/ui";
 import { getTurnstileSiteKey } from "@/lib/booking/turnstile";
@@ -43,21 +44,6 @@ export const metadata: Metadata = createMetadata({
     "Consent Orders Melbourne",
   ],
 });
-
-const familyMatters = [
-  { title: "Divorce", href: "/family-lawyers-melbourne/divorce-lawyer-melbourne/" },
-  { title: "Separation advice", href: "/family-lawyers-melbourne/divorce-lawyer-melbourne/" },
-  { title: "Parenting arrangements", href: "/family-lawyers-melbourne/child-custody-lawyer-melbourne/" },
-  { title: "Child custody matters", href: "/family-lawyers-melbourne/child-custody-lawyer-melbourne/" },
-  { title: "Property settlement", href: "/family-lawyers-melbourne/property-settlement-lawyer-melbourne/" },
-  { title: "Consent orders", href: "/family-lawyers-melbourne/consent-orders-lawyer-melbourne/" },
-  { title: "Binding financial agreements", href: "/family-lawyers-melbourne/binding-financial-agreement-lawyer-melbourne/" },
-  { title: "Family violence matters", href: "/family-lawyers-melbourne/family-violence-lawyer-melbourne/" },
-  { title: "Intervention orders", href: "/family-lawyers-melbourne/intervention-order-lawyer-melbourne/" },
-  { title: "Spousal maintenance", href: "/family-lawyers-melbourne/spousal-maintenance-lawyer-melbourne/" },
-  { title: "Child support issues", href: "/family-lawyers-melbourne/child-support-lawyer-melbourne/" },
-  { title: "Family law negotiations", href: "/family-lawyers-melbourne/family-dispute-resolution-lawyer-melbourne/" },
-];
 
 const lawyers = [
   {
@@ -212,8 +198,6 @@ const proseBody = {
   marginTop: "0.75rem",
 } as const;
 
-const h3Style = { marginTop: "1.75rem" } as const;
-
 export default function FamilyLawyersMelbournePage() {
   const turnstileSiteKey = getTurnstileSiteKey();
   const breadcrumbs = [
@@ -222,7 +206,7 @@ export default function FamilyLawyersMelbournePage() {
   ];
 
   return (
-    <>
+    <div className="family-landing-page">
       <StructuredData data={createFamilyLawyersMelbournePageGraphSchema(familyFaqs)} />
 
       <Breadcrumbs items={breadcrumbs} />
@@ -263,101 +247,81 @@ export default function FamilyLawyersMelbournePage() {
       />
 
       <Section tone="white" id="indian-community-advice">
-        <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
-          <h2>Family Law Advice for Melbourne&apos;s Indian Community</h2>
-          <p style={proseLead}>
-            If you or your spouse live in Australia, Australian family law can deal with your divorce, parenting and
-            property issues, even if you married in India. It depends on things like citizenship, how long you&apos;ve
-            lived here and whether your marriage is recognised in Australia.
-          </p>
-          <p style={proseBody}>
-            The questions we hear from Indian-Australian families are often a mix. Some people married in India and
-            separated in Melbourne. Some have parents or in-laws who put money into a home or business. Others have
-            children and relatives in two countries, and everyone has a view on what should happen. If you want an Indian
-            Family Lawyer Melbourne can offer for that kind of mix, we start by listening. Then we explain what
-            Australian law says about your situation. Our work as Family Lawyers for Indian Community Melbourne families
-            can call on is to make the law clear so you can decide what to do next.
-          </p>
-        </div>
+        <SectionHeader
+          title="Family Law Advice for Melbourne's Indian Community"
+          intro={
+            <>
+              If you or your spouse live in Australia, Australian family law can deal with your divorce, parenting and
+              property issues, even if you married in India. It depends on things like citizenship, how long you&apos;ve
+              lived here and whether your marriage is recognised in Australia.
+            </>
+          }
+        />
+        <p style={proseBody}>
+          The questions we hear from Indian-Australian families are often a mix. Some people married in India and
+          separated in Melbourne. Some have parents or in-laws who put money into a home or business. Others have children
+          and relatives in two countries, and everyone has a view on what should happen. If you want an Indian Family Lawyer
+          Melbourne can offer for that kind of mix, we start by listening. Then we explain what Australian law says about
+          your situation. Our work as Family Lawyers for Indian Community Melbourne families can call on is to make the law
+          clear so you can decide what to do next.
+        </p>
       </Section>
 
       <Section tone="warm" id="hindi-punjabi-lawyers">
-        <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
-          <h2>Hindi and Punjabi-Speaking Family Lawyers</h2>
-          <p style={proseLead}>
-            If you&apos;re more comfortable in Hindi or Punjabi, you shouldn&apos;t have to push through a painful
-            conversation in English. Our Hindi and Punjabi-speaking lawyer in Melbourne,{" "}
-            <Link href="/about/ajay-bansal">Ajay Bansal</Link>, speaks English, Hindi and Punjabi, and works on family
-            law matters.
-          </p>
-          <p style={proseBody}>
-            That matters more than people expect. Separation means talking about your marriage, your children and your
-            money. It&apos;s easier to do that in the language you think in. You won&apos;t be hunting for the right
-            English word, and you&apos;re less likely to leave out something important.
-          </p>
-          <p style={proseBody}>
-            If you&apos;ve been searching for a Hindi Speaking Family Lawyer Melbourne or a Punjabi Speaking Family
-            Lawyer Melbourne, tell us your preferred language when you book and we&apos;ll confirm availability. Court forms and legal documents are still in English. Ajay will go through
-            them with you in whichever language you prefer.
-          </p>
-        </div>
+        <SectionHeader
+          title="Hindi and Punjabi-Speaking Family Lawyers"
+          intro={
+            <>
+              If you&apos;re more comfortable in Hindi or Punjabi, you shouldn&apos;t have to push through a painful
+              conversation in English. Our Hindi and Punjabi-speaking lawyer in Melbourne,{" "}
+              <Link href="/about/ajay-bansal">Ajay Bansal</Link>, speaks English, Hindi and Punjabi, and works on family
+              law matters.
+            </>
+          }
+        />
+        <p style={proseBody}>
+          That matters more than people expect. Separation means talking about your marriage, your children and your money.
+          It&apos;s easier to do that in the language you think in. You won&apos;t be hunting for the right English word,
+          and you&apos;re less likely to leave out something important.
+        </p>
+        <p style={proseBody}>
+          If you&apos;ve been searching for a Hindi Speaking Family Lawyer Melbourne or a Punjabi Speaking Family Lawyer
+          Melbourne, tell us your preferred language when you book and we&apos;ll confirm availability. Court forms and
+          legal documents are still in English. Ajay will go through them with you in whichever language you prefer.
+        </p>
       </Section>
 
       <Section tone="white" id="matters">
-        <div style={{ maxWidth: "52rem", margin: "0 auto 2rem" }}>
-          <h2>Family Law Matters We Assist With</h2>
-          <p style={proseLead}>
-            Family law covers a lot of ground. Here are the areas we help with most, from divorce to family violence
-            orders. Our Indian Family Law Solicitors Melbourne team explains your options, prepares
-            the paperwork, negotiates with the other side and goes to court where it&apos;s needed. These are the Family
-            Law Services Melbourne families ask about most.
-          </p>
-        </div>
-        <div className="matters-grid">
-          {familyMatters.map((matter) => (
-            <Link key={matter.title} href={matter.href} className="matter-item" title={`Explore ${matter.title}`}>
-              <svg className="matter-item__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span>{matter.title}</span>
-              <svg className="matter-item__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path
-                  fillRule="evenodd"
-                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </Link>
-          ))}
-        </div>
+        <SectionHeader
+          title="Family Law Matters We Assist With"
+          intro="Family law covers a lot of ground. Here are the areas we help with most, from divorce to family violence orders. Our Indian Family Law Solicitors Melbourne team explains your options, prepares the paperwork, negotiates with the other side and goes to court where it's needed."
+        />
 
-        <div style={{ maxWidth: "52rem", margin: "2.5rem auto 0" }}>
-          <h3>Divorce and Separation</h3>
-          <p style={proseBody}>
-            You can apply for a divorce once you&apos;ve been{" "}
-            <Link href="/family-lawyers-melbourne/divorce-lawyer-melbourne/">separated for 12 months</Link>. That time can
-            include months spent under the same roof, as long as you can show the court you were really separated. If you
-            married in India, you can still apply here when the marriage is recognised in Australia and you meet the
-            citizenship or residency requirements. You&apos;ll need your marriage certificate, with an English translation
-            if it&apos;s in another language.
-          </p>
-          <p style={proseBody}>
-            A divorce only ends the marriage. Parenting and property are separate. If you have children under 18, the
-            court also has to be satisfied they&apos;re being properly cared for before it makes the order.
-          </p>
-          <p style={proseBody}>
-            Our Indian Divorce Lawyers Melbourne service starts with a conversation in English, Hindi
-            or Punjabi. As{" "}
-            <Link href="/family-lawyers-melbourne/divorce-lawyer-melbourne/">divorce lawyers in Melbourne</Link>, we
-            prepare the application, explain what the court will look at and help you plan what comes next.
-          </p>
+        <div className="service-detail-grid">
+          <article className="service-text-block">
+            <h3>Divorce and Separation</h3>
+            <p>
+              You can apply for a divorce once you&apos;ve been{" "}
+              <Link href="/family-lawyers-melbourne/divorce-lawyer-melbourne/">separated for 12 months</Link>. That time can
+              include months spent under the same roof, as long as you can show the court you were really separated. If you
+              married in India, you can still apply here when the marriage is recognised in Australia and you meet the
+              citizenship or residency requirements. You&apos;ll need your marriage certificate, with an English translation
+              if it&apos;s in another language.
+            </p>
+            <p>
+              A divorce only ends the marriage. Parenting and property are separate. If you have children under 18, the
+              court also has to be satisfied they&apos;re being properly cared for before it makes the order.
+            </p>
+            <p>
+              Our Indian Divorce Lawyers Melbourne service starts with a conversation in English, Hindi or Punjabi. As{" "}
+              <Link href="/family-lawyers-melbourne/divorce-lawyer-melbourne/">divorce lawyers in Melbourne</Link>, we
+              prepare the application, explain what the court will look at and help you plan what comes next.
+            </p>
+          </article>
 
-          <h3 style={h3Style}>Parenting Arrangements and Child Custody</h3>
-          <p style={proseBody}>
+          <article className="service-text-block">
+            <h3>Parenting Arrangements and Child Custody</h3>
+            <p>
             People often say &ldquo;custody&rdquo;. The Family Law Act talks about parenting arrangements and parenting
             orders, and the court&apos;s main question is what&apos;s best for the child. Since 6 May 2024, there&apos;s
             no automatic presumption that parents share decision-making equally. Each case is looked at on its own facts.
@@ -370,10 +334,12 @@ export default function FamilyLawyersMelbournePage() {
             </Link>{" "}
             can help with parenting arrangements, negotiations, consent orders and court if it comes to that. We can also
             explain where child support fits in.
-          </p>
+            </p>
+          </article>
 
-          <h3 style={h3Style}>Property Settlement After Separation</h3>
-          <p style={proseBody}>
+          <article className="service-text-block">
+            <h3>Property Settlement After Separation</h3>
+            <p>
             Property settlement covers more than the house. Savings, loans, investments, a business and debts all count,
             and super is treated as property that can be split. Assets in India, like land, a flat or a family business
             interest, can be part of the picture too. But an Australian order may be hard to enforce overseas, so you
@@ -391,50 +357,60 @@ export default function FamilyLawyersMelbournePage() {
             </Link>
             , we help you work out what&apos;s in the pool, gather documents and negotiate Property Division After
             Separation.
-          </p>
+            </p>
+          </article>
 
-          <h3 style={h3Style}>Spousal Maintenance</h3>
-          <p style={proseBody}>
+          <article className="service-text-block">
+            <h3>Spousal Maintenance</h3>
+            <p>
             After separation, one person may need financial support from the other for a time. Spousal maintenance is
             separate from child support and property settlement, and time limits apply. Our{" "}
             <Link href="/family-lawyers-melbourne/spousal-maintenance-lawyer-melbourne/">
               spousal maintenance lawyers in Melbourne
             </Link>{" "}
             can explain whether you may be entitled to support, or whether you may need to pay it.
-          </p>
-          <h3 style={h3Style}>Consent Orders</h3>
-          <p style={proseBody}>
+            </p>
+          </article>
+
+          <article className="service-text-block">
+            <h3>Consent Orders</h3>
+            <p>
             If you and your former partner agree on parenting or property, consent orders let the court approve that
             agreement so it becomes enforceable. Our{" "}
             <Link href="/family-lawyers-melbourne/consent-orders-lawyer-melbourne/">
               consent orders lawyers in Melbourne
             </Link>{" "}
             prepare the documents and guide you through filing.
-          </p>
-          <h3 style={h3Style}>Binding Financial Agreements</h3>
-          <p style={proseBody}>
+            </p>
+          </article>
+
+          <article className="service-text-block">
+            <h3>Binding Financial Agreements</h3>
+            <p>
             A binding financial agreement is a private contract about how property and finances are divided. Each person
             needs independent legal advice for it to be binding. Our{" "}
             <Link href="/family-lawyers-melbourne/binding-financial-agreement-lawyer-melbourne/">
               binding financial agreement lawyers in Melbourne
             </Link>{" "}
             advise whether a BFA suits your situation before or after separation.
-          </p>
+            </p>
+          </article>
 
-          <h3 style={h3Style}>Family Violence and Intervention Orders</h3>
-          <p style={proseBody}>
+          <article className="service-text-block">
+            <h3>Family Violence and Intervention Orders</h3>
+            <p>
             If you&apos;re in danger now, call 000. In Victoria, intervention orders are court orders, usually from the
             Magistrates&apos; Court, to protect someone from a family member. Police can also apply on your behalf.
-          </p>
-          <p style={proseBody}>
+            </p>
+            <p>
             Police can issue a family violence safety notice for immediate protection. You then{" "}
             <Link href="/family-lawyers-melbourne/intervention-order-lawyer-melbourne/">
               go to a hearing within 14 days
             </Link>
             .
-          </p>
-          <p style={proseBody}>
-            Our{" "}
+            </p>
+            <p>
+              Our{" "}
             <Link href="/family-lawyers-melbourne/family-violence-lawyer-melbourne/">family violence lawyers</Link>{" "}
             provide Family Violence Legal Advice Melbourne on Family Violence Intervention Orders Victoria. Our{" "}
             <Link href="/family-lawyers-melbourne/intervention-order-lawyer-melbourne/">
@@ -442,215 +418,229 @@ export default function FamilyLawyersMelbournePage() {
             </Link>{" "}
             act for people applying for an order and for people responding to one. For 24/7 crisis support, call
             1800RESPECT on 1800 737 732 or Safe Steps on 1800 015 188.
-          </p>
+            </p>
+          </article>
         </div>
       </Section>
 
       <Section tone="warm" id="indian-australian-families">
-        <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
-          <h2>Family Law Issues Affecting Indian-Australian Families</h2>
-          <p style={proseLead}>
-            Indian-Australian families often ask us the same few questions. Here are straight answers to the most common
-            ones, from marriages in India to family money and property overseas. They&apos;re general information on
-            Indian Family Law Melbourne matters, so they can&apos;t replace advice on your own situation. If you&apos;d like to talk to someone first, visit our page for{" "}
-            <Link href="/indian-lawyers-melbourne/">Indian Lawyers in Melbourne</Link>.
-          </p>
-          <h3 style={h3Style}>Divorce after a marriage in India</h3>
-          <p style={proseBody}>
-            Divorce After Indian Marriage Australia is usually possible when the marriage is recognised here and you or
-            your spouse meet the citizenship or residency requirements. You still need 12 months of separation. When
-            you&apos;re ready to apply, our{" "}
-            <Link href="/family-lawyers-melbourne/divorce-lawyer-melbourne/">divorce lawyers in Melbourne</Link> can
-            prepare the paperwork.
-          </p>
-          <h3 style={h3Style}>Marriage certificates and translations</h3>
-          <p style={proseBody}>
-            Indian Marriage Divorce Australia applications need a copy of your marriage certificate. If it isn&apos;t in
-            English, the court wants an English translation attached to an affidavit from the
-            translator. If you can&apos;t get a certificate for a marriage overseas, you can file an affidavit explaining
-            why and giving details of the ceremony, so it&apos;s worth trying the authority where you married first.
-          </p>
-          <h3 style={h3Style}>Money from parents or extended family</h3>
-          <p style={proseBody}>
-            Gifts, loans and contributions from parents can come up in a property settlement. How they&apos;re treated
-            depends on the facts and the paperwork, so keep bank transfers and any written agreements.
-          </p>
-          <h3 style={h3Style}>Property or financial interests in India</h3>
-          <p style={proseBody}>
-            Australian courts can take overseas property into account, but enforcing an order abroad can be hard. Getting
-            this right is a big part of Overseas Property Settlement Australia matters. Our{" "}
-            <Link href="/family-lawyers-melbourne/property-settlement-lawyer-melbourne/">
-              property settlement lawyers in Melbourne
-            </Link>{" "}
-            can look at what&apos;s held overseas alongside what&apos;s here.
-          </p>
-          <h3 style={h3Style}>Parenting with family overseas</h3>
-          <p style={proseBody}>
-            Grandparents, relatives or a parent in India can be part of the picture. Travel to India, long holidays and
-            relocation can be dealt with in parenting orders or consent orders, so it&apos;s worth getting the
-            arrangements in writing.
-          </p>
-          <h3 style={h3Style}>When you may also need an Indian lawyer</h3>
-          <p style={proseBody}>
-            We advise on Australian law only. For a court case, property or registration issue in India, you may need a
-            lawyer there too. Indian Family Disputes Melbourne families face often involve both
-            countries. We&apos;ll tell you what we can do from Melbourne and where to get Indian advice.
-          </p>
-        </div>
-      </Section>
-
-      <Section tone="white" id="meet-our-family-lawyers">
-        <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
-          <h2>Meet Our Family Lawyers</h2>
-          <p style={proseLead}>These are the lawyers profiled on our website who work on family law.</p>
-          <p style={proseBody}>
-            <Link href="/about/ajay-bansal">Ajay Bansal</Link> founded Bansal Lawyers and is its Director and Principal
-            Lawyer. He has seven years in practice, and his family law work covers separation, parenting arrangements,
-            property settlement and family violence matters. He appears in Victorian and Federal courts. Ajay speaks
-            English, Hindi and Punjabi. If you want a Hindi Speaking Lawyer Melbourne or Punjabi Speaking Lawyer Melbourne
-            for your family matter, ask for him when you book.
-          </p>
-          <p style={proseBody}>
-            <Link href="/about/michael-saleh">Michael Saleh</Link> is a solicitor admitted to the Supreme Court of
-            Victoria, with a Bachelor of Laws and a Graduate Diploma of Legal Practice. His family law work covers
-            parenting orders, child custody disputes, intervention orders and financial settlements. He has appeared in
-            the Magistrates&apos; Court of Victoria and the Federal Circuit and Family Court of Australia. Michael
-            speaks English and Arabic.
-          </p>
-          <p style={proseBody}>
-            Together they make up our Family Law Solicitors Melbourne team for family matters, and our Indian Family
-            Lawyers Melbourne clients can talk to either of them.
-          </p>
-        </div>
-      </Section>
-
-      <Section tone="warm" id="our-team">
-        <Container>
-          <div className="team-clean-header">
-            <div className="team-clean-eyebrow">
-              <span className="team-clean-eyebrow__line" aria-hidden="true" />
-              <span>LEGAL PRACTITIONERS</span>
-              <span className="team-clean-eyebrow__line" aria-hidden="true" />
-            </div>
-            <h2 className="team-clean-title">
-              Meet Our <span className="team-clean-title__serif">Legal Team</span>
-            </h2>
-            <p className="team-clean-intro">
-              Ajay Bansal is the director and principal lawyer. Michael Saleh is a solicitor. Read each profile, then
-              book a consultation.
+        <SectionHeader
+          title="Family Law Issues Affecting Indian-Australian Families"
+          intro={
+            <>
+              Indian-Australian families often ask us the same few questions. Here are straight answers to the most common
+              ones, from marriages in India to family money and property overseas. They&apos;re general information on Indian
+              Family Law Melbourne matters, so they can&apos;t replace advice on your own situation. If you&apos;d like to
+              talk to someone first, visit our page for{" "}
+              <Link href="/indian-lawyers-melbourne/">Indian Lawyers in Melbourne</Link>.
+            </>
+          }
+        />
+        <div className="service-detail-grid">
+          <article className="service-text-block">
+            <h3>Divorce after a marriage in India</h3>
+            <p>
+              Divorce After Indian Marriage Australia is usually possible when the marriage is recognised here and you or
+              your spouse meet the citizenship or residency requirements. You still need 12 months of separation. When
+              you&apos;re ready to apply, our{" "}
+              <Link href="/family-lawyers-melbourne/divorce-lawyer-melbourne/">divorce lawyers in Melbourne</Link> can prepare
+              the paperwork.
             </p>
-          </div>
-          <div className="team-clean-grid">
-            {lawyers.map((member) => (
-              <article key={member.name} className="team-clean-card">
-                <Link
-                  href={member.profileHref}
-                  className="team-clean-card__media-link"
-                  title={`View ${member.name}'s profile`}
-                >
-                  <Image
-                    src={member.image}
-                    alt={member.alt}
-                    fill
-                    sizes="(max-width: 580px) 100vw, 420px"
-                    className="team-clean-card__img"
-                  />
-                </Link>
-                <div className="team-clean-card__content">
-                  <h3 className="team-clean-card__name">
-                    <Link href={member.profileHref}>{member.name}</Link>
-                  </h3>
-                  <a href={`mailto:${member.email}`} className="team-clean-card__email">
-                    {member.email}
-                  </a>
-                  <p className="team-clean-card__role">{member.role}</p>
-                  <div className="team-clean-card__socials">
-                    <a
-                      href={member.phoneHref}
-                      className="team-clean-card__icon-link"
-                      aria-label={`Call ${member.name}`}
-                    >
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                      </svg>
-                    </a>
-                    <Link href={member.profileHref} className="team-clean-card__icon-link" aria-label={`View ${member.name}'s profile`}>
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                        <circle cx="8.5" cy="7" r="4" />
-                        <polyline points="17 11 19 13 23 9" />
-                      </svg>
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </Container>
+          </article>
+          <article className="service-text-block">
+            <h3>Marriage certificates and translations</h3>
+            <p>
+              Indian Marriage Divorce Australia applications need a copy of your marriage certificate. If it isn&apos;t in
+              English, the court wants an English translation attached to an affidavit from the translator. If you can&apos;t
+              get a certificate for a marriage overseas, you can file an affidavit explaining why and giving details of the
+              ceremony, so it&apos;s worth trying the authority where you married first.
+            </p>
+          </article>
+          <article className="service-text-block">
+            <h3>Money from parents or extended family</h3>
+            <p>
+              Gifts, loans and contributions from parents can come up in a property settlement. How they&apos;re treated
+              depends on the facts and the paperwork, so keep bank transfers and any written agreements.
+            </p>
+          </article>
+          <article className="service-text-block">
+            <h3>Property or financial interests in India</h3>
+            <p>
+              Australian courts can take overseas property into account, but enforcing an order abroad can be hard. Getting
+              this right is a big part of Overseas Property Settlement Australia matters. Our{" "}
+              <Link href="/family-lawyers-melbourne/property-settlement-lawyer-melbourne/">
+                property settlement lawyers in Melbourne
+              </Link>{" "}
+              can look at what&apos;s held overseas alongside what&apos;s here.
+            </p>
+          </article>
+          <article className="service-text-block">
+            <h3>Parenting with family overseas</h3>
+            <p>
+              Grandparents, relatives or a parent in India can be part of the picture. Travel to India, long holidays and
+              relocation can be dealt with in parenting orders or consent orders, so it&apos;s worth getting the arrangements
+              in writing.
+            </p>
+          </article>
+          <article className="service-text-block">
+            <h3>When you may also need an Indian lawyer</h3>
+            <p>
+              We advise on Australian law only. For a court case, property or registration issue in India, you may need a
+              lawyer there too. Indian Family Disputes Melbourne families face often involve both countries. We&apos;ll tell
+              you what we can do from Melbourne and where to get Indian advice.
+            </p>
+          </article>
+        </div>
       </Section>
 
       <Section tone="white" id="why-choose">
-        <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
-          <h2>Why Choose Bansal Lawyers?</h2>
-          <p style={proseLead}>
-            Choosing a lawyer while your family life is up in the air is a big decision. If you&apos;re looking for Indian
-            Family Lawyers in Melbourne, here&apos;s what you can expect from us. If you&apos;ve searched for the best
-            Indian family lawyer in Melbourne, we understand that finding the
-            right lawyer is a personal decision. The right choice depends on your individual circumstances, legal needs,
-            and the level of comfort and confidence you feel with your lawyer.
-          </p>
-          <h3 style={h3Style}>Lawyers Who Speak Your Language</h3>
-          <p style={proseBody}>
-            You can talk to us in English, Hindi or Punjabi. <Link href="/about/ajay-bansal">Ajay Bansal</Link> speaks
-            all three, and he&apos;ll go through court forms and legal paperwork with you in whichever language
-            you&apos;re most comfortable with. That means fewer misunderstandings, and you&apos;re likely to tell us the
-            details that matter. Nobody should have to translate their own family problems on the spot. Tell us your
-            preference when you book and we&apos;ll confirm availability.
-          </p>
-          <h3 style={h3Style}>Clear Advice on Australian Family Law</h3>
-          <p style={proseBody}>
-            We explain Australian and Victorian family law in plain English, and we&apos;re upfront about what it can
-            and can&apos;t do. If part of your situation needs a lawyer in India, we&apos;ll tell you early. Before you
-            decide anything, you&apos;ll hear your options, the risks and the likely next steps. No lawyer can promise an
-            outcome, and we won&apos;t. What you will get is a straight explanation of where you stand.
-          </p>
-          <h3 style={h3Style}>A Team That Can Negotiate and Go to Court</h3>
-          <p style={proseBody}>
-            Bansal Lawyers is led by Ajay, who works alongside solicitor{" "}
-            <Link href="/about/michael-saleh">Michael Saleh</Link>. Ajay appears in Victorian and Federal courts, and
-            Michael has appeared in the Magistrates&apos; Court of Victoria and the Federal Circuit and Family Court of
-            Australia. Many matters settle through negotiation, so that&apos;s often where we start. Where court is needed,
-            we can take that step with you too.
-          </p>
-          <h3 style={h3Style}>Easy to Reach, in Person or Online</h3>
-          <p style={proseBody}>
-            Our office is at Level 8, 278 Collins Street in the Melbourne CBD. You can meet us in person, by phone or on
-            video, so our Family Lawyers Melbourne team is easy to reach wherever you are. If you have
-            a court date or a deadline coming up, tell us when you get in touch so we can plan around it. If you&apos;re
-            worried about your safety, say so at the start and we&apos;ll explain your options.
-          </p>
-          <h3 style={h3Style}>Confidential and Practical Support</h3>
-          <p style={proseBody}>
-            Your consultation with us is confidential. Bring what you have, and we&apos;ll help you work out the next step,
-            whether that&apos;s an agreement, a negotiation, a court application or simply understanding where you stand.
-            If you&apos;d like to know more about <Link href="/about">the firm</Link> first, or you&apos;re ready to talk,
-            you can <Link href="/contact">get in touch</Link> at any time.
-          </p>
+        <SectionHeader
+          title="Why Choose Bansal Lawyers?"
+          intro="Choosing a lawyer while your family life is up in the air is a big decision. If you're looking for Indian Family Lawyers in Melbourne, here's what you can expect from us."
+        />
+        <div className="service-detail-grid">
+          <article className="service-text-block">
+            <h3>Lawyers Who Speak Your Language</h3>
+            <p>
+              You can talk to us in English, Hindi or Punjabi. <Link href="/about/ajay-bansal">Ajay Bansal</Link> speaks
+              all three, and he&apos;ll go through court forms and legal paperwork with you in whichever language you&apos;re
+              most comfortable with. That means fewer misunderstandings, and you&apos;re more likely to tell us the details
+              that matter. Nobody should have to translate their own family problems on the spot. Tell us your preference
+              when you book and we&apos;ll confirm availability.
+            </p>
+          </article>
+          <article className="service-text-block">
+            <h3>Clear Advice on Australian Family Law</h3>
+            <p>
+              We explain Australian and Victorian family law in plain English, and we&apos;re upfront about what it can and
+              can&apos;t do. If part of your situation needs a lawyer in India, we&apos;ll tell you early. Before you decide
+              anything, you&apos;ll hear your options, the risks and the likely next steps. No lawyer can promise an outcome,
+              and we won&apos;t. What you will get is a straight explanation of where you stand.
+            </p>
+          </article>
+          <article className="service-text-block">
+            <h3>A Team That Can Negotiate and Go to Court</h3>
+            <p>
+              Bansal Lawyers is led by Ajay, who works alongside solicitor{" "}
+              <Link href="/about/michael-saleh">Michael Saleh</Link>. Ajay appears in Victorian and Federal courts, and
+              Michael has appeared in the Magistrates&apos; Court of Victoria and the Federal Circuit and Family Court of
+              Australia. Many matters settle through negotiation, so that&apos;s often where we start. Where court is needed,
+              we can take that step with you too.
+            </p>
+          </article>
+          <article className="service-text-block">
+            <h3>Easy to Reach, in Person or Online</h3>
+            <p>
+              Our office is at Level 8, 278 Collins Street in the Melbourne CBD. You can meet us in person, by phone or on
+              video, so our Family Lawyers Melbourne team is easy to reach wherever you are. If you have a court date or a
+              deadline coming up, tell us when you get in touch so we can plan around it. If you&apos;re worried about your
+              safety, say so at the start and we&apos;ll explain your options.
+            </p>
+          </article>
+          <article className="service-text-block">
+            <h3>Confidential and Practical Support</h3>
+            <p>
+              Your consultation with us is confidential. Bring what you have, and we&apos;ll help you work out the next step,
+              whether that&apos;s an agreement, a negotiation, a court application or simply understanding where you stand. If
+              you&apos;d like to know more about <Link href="/about">the firm</Link> first, or you&apos;re ready to talk, you
+              can <Link href="/contact">get in touch</Link> at any time.
+            </p>
+          </article>
         </div>
       </Section>
 
-      <Section tone="warm" id="family-law-process">
-        <Container>
-          <div style={{ maxWidth: "52rem", margin: "0 auto 2rem" }}>
-            <h2>Our Family Law Process</h2>
-            <p style={proseLead}>
-              Every family matter is different, but the steps are usually similar. Here&apos;s how we work with you, from
-              the first call to the final paperwork. Many matters settle without a court hearing, so not every step applies
-              to every client.
-            </p>
+      <Section tone="white" id="family-law-process">
+        <SectionHeader
+          title="Our Family Law Process"
+          intro="Every family matter is different, but the steps are usually similar. Here's how we work with you, from the first call to the final paperwork. Many matters settle without a court hearing, so not every step applies to every client."
+        />
+        <ProcessSteps items={familyProcessSteps} columns={3} />
+      </Section>
+
+      <Section tone="warm" id="our-team">
+        <div className="team-clean-header">
+          <div className="team-clean-eyebrow">
+            <span className="team-clean-eyebrow__line" aria-hidden="true" />
+            <span>LEGAL PRACTITIONERS</span>
+            <span className="team-clean-eyebrow__line" aria-hidden="true" />
           </div>
-          <ProcessSteps items={familyProcessSteps} columns={3} />
-        </Container>
+          <h2 className="team-clean-title">
+            Meet Our <span className="team-clean-title__serif">Family Lawyers</span>
+          </h2>
+          <p className="team-clean-intro">
+            Ajay Bansal is the director and principal lawyer. Michael Saleh is a solicitor. Read each profile, then book a
+            consultation.
+          </p>
+        </div>
+        <div className="service-detail-grid" style={{ marginBottom: "1.75rem" }}>
+          <article className="service-text-block">
+            <h3>
+              <Link href="/about/ajay-bansal">Ajay Bansal</Link>
+            </h3>
+            <p>
+              Ajay founded Bansal Lawyers and is its Director and Principal Lawyer. He has seven years in practice, and his
+              family law work covers separation, parenting arrangements, property settlement and family violence matters. He
+              appears in Victorian and Federal courts and speaks English, Hindi and Punjabi.
+            </p>
+          </article>
+          <article className="service-text-block">
+            <h3>
+              <Link href="/about/michael-saleh">Michael Saleh</Link>
+            </h3>
+            <p>
+              Michael is a solicitor admitted to the Supreme Court of Victoria, with a Bachelor of Laws and a Graduate
+              Diploma of Legal Practice. His family law work covers parenting orders, child custody disputes, intervention
+              orders and financial settlements. He has appeared in the Magistrates&apos; Court of Victoria and the Federal
+              Circuit and Family Court of Australia, and speaks English and Arabic.
+            </p>
+          </article>
+        </div>
+        <div className="team-clean-grid">
+          {lawyers.map((member) => (
+            <article key={member.name} className="team-clean-card">
+              <Link
+                href={member.profileHref}
+                className="team-clean-card__media-link"
+                title={`View ${member.name}'s profile`}
+              >
+                <Image
+                  src={member.image}
+                  alt={member.alt}
+                  fill
+                  sizes="(max-width: 580px) 100vw, 420px"
+                  className="team-clean-card__img"
+                />
+              </Link>
+              <div className="team-clean-card__content">
+                <h3 className="team-clean-card__name">
+                  <Link href={member.profileHref}>{member.name}</Link>
+                </h3>
+                <a href={`mailto:${member.email}`} className="team-clean-card__email">
+                  {member.email}
+                </a>
+                <p className="team-clean-card__role">{member.role}</p>
+                <div className="team-clean-card__socials">
+                  <a
+                    href={member.phoneHref}
+                    className="team-clean-card__icon-link"
+                    aria-label={`Call ${member.name}`}
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </a>
+                  <Link href={member.profileHref} className="team-clean-card__icon-link" aria-label={`View ${member.name}'s profile`}>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="8.5" cy="7" r="4" />
+                      <polyline points="17 11 19 13 23 9" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
       </Section>
 
       <section className="client-testimonials-section client-testimonials-section--corner-badge" id="client-reviews">
@@ -696,7 +686,7 @@ export default function FamilyLawyersMelbournePage() {
       </Section>
 
       <CtaSection
-        title="Speak With Family Lawyers in Melbourne"
+        title="Speak With Indian Family Lawyers in Melbourne"
         text={
           <>
             <p>
@@ -742,6 +732,6 @@ export default function FamilyLawyersMelbournePage() {
           contactHref="/contact"
         />
       </Section>
-    </>
+    </div>
   );
 }

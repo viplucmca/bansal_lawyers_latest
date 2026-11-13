@@ -4644,60 +4644,75 @@ a.matter-item:hover .matter-item__arrow {
 }
 
 .commercial-landing-page .section-header,
-.commercial-landing-page .section-header p {
+.commercial-landing-page .section-header p,
+.family-landing-page .section-header,
+.family-landing-page .section-header p {
   max-width: none;
 }
 
-/* Commercial lawyers hub — tighter vertical rhythm (page only) */
-.site-main--refined .commercial-landing-page .section {
+/* Practice hub landing pages — tighter vertical rhythm */
+.site-main--refined .commercial-landing-page .section,
+.site-main--refined .family-landing-page .section {
   padding-block: clamp(1.65rem, 3vw, 2.35rem);
 }
 
-.site-main--refined .commercial-landing-page .section + .section {
+.site-main--refined .commercial-landing-page .section + .section,
+.site-main--refined .family-landing-page .section + .section {
   padding-block-start: clamp(0.85rem, 1.75vw, 1.15rem);
 }
 
-.site-main--refined .commercial-landing-page .section-header {
+.site-main--refined .commercial-landing-page .section-header,
+.site-main--refined .family-landing-page .section-header {
   margin-bottom: clamp(1rem, 2vw, 1.35rem);
 }
 
-.site-main--refined .commercial-landing-page .service-detail-grid {
+.site-main--refined .commercial-landing-page .service-detail-grid,
+.site-main--refined .family-landing-page .service-detail-grid {
   gap: 0.85rem;
 }
 
-.site-main--refined .commercial-landing-page .service-text-block {
+.site-main--refined .commercial-landing-page .service-text-block,
+.site-main--refined .family-landing-page .service-text-block {
   padding: 1.5rem 1.65rem;
 }
 
-.site-main--refined .commercial-landing-page .section h2 {
+.site-main--refined .commercial-landing-page .section h2,
+.site-main--refined .family-landing-page .section h2 {
   margin-bottom: 0.65rem;
 }
 
-.site-main--refined .commercial-landing-page .section h3 {
+.site-main--refined .commercial-landing-page .section h3,
+.site-main--refined .family-landing-page .section h3 {
   margin-top: 1.15rem;
 }
 
-.site-main--refined .commercial-landing-page .points-list {
+.site-main--refined .commercial-landing-page .points-list,
+.site-main--refined .family-landing-page .points-list {
   margin-top: 1rem;
 }
 
-.site-main--refined .commercial-landing-page .image-text {
+.site-main--refined .commercial-landing-page .image-text,
+.site-main--refined .family-landing-page .image-text {
   gap: clamp(1.35rem, 3.5vw, 2.25rem);
 }
 
-.site-main--refined .commercial-landing-page .image-text__media {
+.site-main--refined .commercial-landing-page .image-text__media,
+.site-main--refined .family-landing-page .image-text__media {
   min-height: min(360px, 52vw);
 }
 
-.site-main--refined .commercial-landing-page .process-grid {
+.site-main--refined .commercial-landing-page .process-grid,
+.site-main--refined .family-landing-page .process-grid {
   margin-top: 0.25rem;
 }
 
-.site-main--refined .commercial-landing-page .client-testimonials-section {
+.site-main--refined .commercial-landing-page .client-testimonials-section,
+.site-main--refined .family-landing-page .client-testimonials-section {
   padding-block: clamp(1.75rem, 3vw, 2.5rem);
 }
 
-.site-main--refined .commercial-landing-page .team-clean-header {
+.site-main--refined .commercial-landing-page .team-clean-header,
+.site-main--refined .family-landing-page .team-clean-header {
   margin-bottom: 1.25rem;
 }
 

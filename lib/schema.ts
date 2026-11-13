@@ -542,14 +542,17 @@ export function createCriminalLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
 }
 
 export const FAMILY_LAWYERS_MELBOURNE_PAGE_TITLE =
-  "Indian Family Lawyers in Melbourne | Divorce, Parenting & Property";
+  "Indian Family Lawyers in Melbourne | Hindi & Punjabi Speaking Legal Help";
 export const FAMILY_LAWYERS_MELBOURNE_PAGE_DESCRIPTION =
   "Need a family lawyer in Melbourne? Bansal Lawyers provides legal advice and representation for divorce, parenting arrangements, property settlements, consent orders and family violence matters. Legal assistance in English, Hindi and Punjabi. Contact our team today to discuss your family law needs.";
 
 const FAMILY_LAWYERS_MELBOURNE_SERVICE_DESCRIPTION =
   "Bansal Lawyers provides family law advice and representation in Melbourne, assisting with divorce and separation, parenting arrangements, child custody, property settlements, spousal maintenance, consent orders, binding financial agreements and family violence intervention orders. The firm also assists with matters involving marriages registered in India and provides legal assistance in English, Hindi and Punjabi.";
 
-/** Family lawyers Melbourne hub JSON-LD @graph: WebPage, Service, BreadcrumbList, FAQPage. */
+const FAMILY_PAGE_ORGANIZATION_DESCRIPTION =
+  "Bansal Lawyers provides legal services and advice in Melbourne, Victoria.";
+
+/** Family lawyers Melbourne hub JSON-LD @graph. */
 export function createFamilyLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
   const pageUrl = `${siteUrl}/family-lawyers-melbourne`;
   const pageId = `${pageUrl}#webpage`;
@@ -561,6 +564,39 @@ export function createFamilyLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": ["LegalService", "LocalBusiness"],
+        "@id": organizationId,
+        name: businessDetails.name,
+        url: homeUrl,
+        description: FAMILY_PAGE_ORGANIZATION_DESCRIPTION,
+        telephone: businessDetails.phone,
+        email: businessDetails.email,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: businessDetails.streetAddress,
+          addressLocality: businessDetails.addressLocality,
+          addressRegion: businessDetails.addressRegion,
+          postalCode: businessDetails.postalCode,
+          addressCountry: businessDetails.addressCountry,
+        },
+        areaServed: { "@type": "City", name: "Melbourne" },
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: businessDetails.phone,
+          contactType: "customer service",
+          email: businessDetails.email,
+          availableLanguage: ["English", "Hindi", "Punjabi"],
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        url: homeUrl,
+        name: businessDetails.name,
+        publisher: { "@id": organizationId },
+        inLanguage: "en-AU",
+      },
+      {
         "@type": "WebPage",
         "@id": pageId,
         url: pageUrl,
@@ -570,6 +606,7 @@ export function createFamilyLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
         isPartOf: { "@id": websiteId },
         about: { "@id": serviceId },
         mainEntity: { "@id": serviceId },
+        publisher: { "@id": organizationId },
         breadcrumb: { "@id": breadcrumbId },
       },
       {
