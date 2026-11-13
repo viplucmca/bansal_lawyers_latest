@@ -6,6 +6,20 @@ export interface BlogArticle extends BlogArticleItem {
 
 export const blogArticles: BlogArticle[] = [
   {
+    id: "parenting-orders-vs-parenting-plans",
+    title: "Parenting Orders vs Parenting Plans in Australia: What's the Difference?",
+    eyebrow: "Family Law",
+    category: "Family Law",
+    description:
+      "Understand the difference between parenting orders and parenting plans in Australia, including enforceability, consent orders and changing arrangements.",
+    href: "/blog/parenting-orders-vs-parenting-plans-australia",
+    imageSrc: "/images/blog/parenting-orders-vs-parenting-plans-australia.jpg",
+    imageAlt: "Parenting orders vs parenting plans in Australia — Bansal Lawyers",
+    publishedDate: "Nov 12, 2026",
+    readTime: "8 min read",
+    wordCount: 2100,
+  },
+  {
     id: "divorce-lawyers-guide",
     title: "Divorce Lawyers in Melbourne Australia — Complete Guide for Couple",
     eyebrow: "Family Law",

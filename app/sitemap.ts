@@ -77,6 +77,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${siteUrl}/blog/parenting-orders-vs-parenting-plans-australia`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${siteUrl}/blog/divorce-lawyers-in-melbourne-australia-complete-guide-for-couple`,
       lastModified: currentDate,
       changeFrequency: "monthly",
