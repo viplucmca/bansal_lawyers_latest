@@ -23,15 +23,6 @@ export const metadata: Metadata = createMetadata({
   description:
     "Understand the difference between parenting orders and parenting plans in Australia, including enforceability, consent orders and changing arrangements.",
   path: "/blog/parenting-orders-vs-parenting-plans-australia",
-  keywords: [
-    "Parenting Orders vs Parenting Plans Australia",
-    "Parenting Plan Family Law Act",
-    "Consent Orders Parenting Melbourne",
-    "Parenting Orders Enforceable",
-    "Child Custody Lawyers Melbourne",
-    "Family Lawyers Melbourne",
-    "Bansal Lawyers Blog",
-  ],
 });
 
 const breadcrumbs = [
