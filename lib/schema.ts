@@ -892,6 +892,123 @@ export function createCommercialLawyersMelbournePageGraphSchema(faqs: FaqItem[])
   };
 }
 
+export const PROPERTY_LAWYERS_MELBOURNE_PAGE_TITLE =
+  "Indian Property Lawyers in Melbourne | Hindi & Punjabi Speaking Legal Help";
+export const PROPERTY_LAWYERS_MELBOURNE_PAGE_DESCRIPTION =
+  "Need property lawyers in Melbourne? Bansal Lawyers assists with property purchases, sales, contract reviews, leases, settlements and property disputes. Book a consultation today.";
+
+const PROPERTY_LAWYERS_MELBOURNE_CREATIVEWORK_DESCRIPTION =
+  "Information about property legal services offered by Bansal Lawyers, including property purchases, sales, contract reviews, leases, settlements and property-related disputes in Melbourne.";
+
+const PROPERTY_LAWYERS_MELBOURNE_SERVICE_DESCRIPTION =
+  "Property legal assistance in Melbourne, including property contract reviews, buying and selling property, conveyancing-related legal support, commercial and residential leases, settlement issues, property disputes and property-related legal notices.";
+
+/** Property lawyers Melbourne hub JSON-LD @graph. */
+export function createPropertyLawyersMelbournePageGraphSchema(faqs: FaqItem[]) {
+  const pageUrl = `${siteUrl}/property-lawyers-melbourne`;
+  const pageId = `${pageUrl}#webpage`;
+  const serviceId = `${pageUrl}#service`;
+  const creativeWorkId = `${pageUrl}#creativework`;
+  const breadcrumbId = `${pageUrl}#breadcrumb`;
+  const faqId = `${pageUrl}#faq`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LegalService",
+        "@id": organizationId,
+        name: businessDetails.name,
+        alternateName: "Bansal Lawyers Melbourne",
+        url: homeUrl,
+        telephone: businessDetails.nationalLine,
+        email: businessDetails.email,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: businessDetails.streetAddress,
+          addressLocality: businessDetails.addressLocality,
+          addressRegion: businessDetails.addressRegion,
+          postalCode: businessDetails.postalCode,
+          addressCountry: businessDetails.addressCountry,
+        },
+        areaServed: { "@type": "City", name: "Melbourne" },
+      },
+      {
+        "@type": "WebPage",
+        "@id": pageId,
+        url: pageUrl,
+        name: PROPERTY_LAWYERS_MELBOURNE_PAGE_TITLE,
+        description: PROPERTY_LAWYERS_MELBOURNE_PAGE_DESCRIPTION,
+        inLanguage: "en-AU",
+        isPartOf: { "@id": websiteId },
+        publisher: { "@id": organizationId },
+        about: { "@id": serviceId },
+        breadcrumb: { "@id": breadcrumbId },
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        url: homeUrl,
+        name: businessDetails.name,
+        publisher: { "@id": organizationId },
+        inLanguage: "en-AU",
+      },
+      {
+        "@type": "CreativeWork",
+        "@id": creativeWorkId,
+        name: "Property Lawyers Melbourne",
+        url: pageUrl,
+        description: PROPERTY_LAWYERS_MELBOURNE_CREATIVEWORK_DESCRIPTION,
+        inLanguage: "en-AU",
+        publisher: { "@id": organizationId },
+      },
+      {
+        "@type": "Service",
+        "@id": serviceId,
+        name: "Property Legal Services in Melbourne",
+        serviceType: "Property-Related Legal Services",
+        url: pageUrl,
+        description: PROPERTY_LAWYERS_MELBOURNE_SERVICE_DESCRIPTION,
+        provider: { "@id": organizationId },
+        areaServed: { "@type": "City", name: "Melbourne" },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": breadcrumbId,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: homeUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Property Lawyers Melbourne",
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": faqId,
+        url: pageUrl,
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text:
+              item.answerText ??
+              (typeof item.answer === "string" ? item.answer : ""),
+          },
+        })),
+      },
+    ],
+  };
+}
+
 export const CIVIL_LAWYERS_MELBOURNE_PAGE_TITLE =
   "Civil Dispute Lawyers in Melbourne | Bansal Lawyers";
 export const CIVIL_LAWYERS_MELBOURNE_PAGE_DESCRIPTION =
